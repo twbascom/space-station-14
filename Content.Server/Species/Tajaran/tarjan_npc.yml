@@ -1,0 +1,19 @@
+- id: tajaran_npc
+  name: Tajaran NPC
+  layers:
+    chest_f: tajaran/chest_f/chest_f.png
+    chest_m: tajaran/chest_m/chest_m.png
+    groin_f: tajaran/groin_f/groin_f.png
+    groin_m: tajaran/groin_m/groin_m.png
+    l_arm: tajaran/l_arm/l_arm.png
+    l_foot: tajaran/l_foot/l_foot.png
+    l_hand: tajaran/l_hand/l_hand.png
+    l_leg: tajaran/l_leg/l_leg.png
+    r_arm: tajaran/r_arm/r_arm.png
+    r_foot: tajaran/r_foot/r_foot.png
+    r_hand: tajaran/r_hand/r_hand.png
+    r_leg: tajaran/r_leg/r_leg.png
+
+  default_gender: male
+  mob_type: carbon
+  faction: neutral
