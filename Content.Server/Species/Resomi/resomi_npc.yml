@@ -1,34 +1,18 @@
 - id: resomi_npc
   name: Resomi NPC
   layers:
-    # Body parts
-    chest_f: resomi/chest_f/chest_f.png
-    chest_m: resomi/chest_m/chest_m.png
-    groin_f: resomi/groin_f/groin_f.png
-    groin_m: resomi/groin_m/groin_m.png
-    l_arm: resomi/l_arm/l_arm.png
-    l_foot: resomi/l_foot/l_foot.png
-    l_hand: resomi/l_hand/l_hand.png
-    l_leg: resomi/l_leg/l_leg.png
-    r_arm: resomi/r_arm/r_arm.png
-    r_foot: resomi/r_foot/r_foot.png
-    r_hand: resomi/r_hand/r_hand.png
-    r_leg: resomi/r_leg/r_leg.png
-
-    # Gear / clothing
-    back: resomi/back/back.png
-    belt: resomi/belt/belt.png
-    ears: resomi/ears/ears.png
-    eyes: resomi/eyes/eyes.png
-    feet: resomi/feet/feet.png
-    hands: resomi/hands/hands.png
-    head: resomi/head/head.png
-    inHand: resomi/inHand/inHand.png
-    jumpsuit: resomi/jumpsuit/jumpsuit.png
-    mask: resomi/mask/mask.png
-    neck: resomi/neck/neck.png
-    outerClothing: resomi/outerClothing/outerClothing.png
-    suitStorage: resomi/suitStorage/suitStorage.png
+    chest_f: resomi/parts.rsi:chest_f
+    chest_m: resomi/parts.rsi:chest_m
+    groin_f: resomi/parts.rsi:groin_f
+    groin_m: resomi/parts.rsi:groin_m
+    l_arm: resomi/parts.rsi:l_arm
+    l_foot: resomi/parts.rsi:l_foot
+    l_hand: resomi/parts.rsi:l_hand
+    l_leg: resomi/parts.rsi:l_leg
+    r_arm: resomi/parts.rsi:r_arm
+    r_foot: resomi/parts.rsi:r_foot
+    r_hand: resomi/parts.rsi:r_hand
+    r_leg: resomi/parts.rsi:r_leg
 
   default_gender: male
   mob_type: carbon
