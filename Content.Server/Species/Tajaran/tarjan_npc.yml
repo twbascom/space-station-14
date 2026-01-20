@@ -1,19 +1,20 @@
-- id: tajaran_npc
-  name: Tajaran NPC
+- id: tarjan_npc
+  name: Tarjan NPC
   layers:
-    chest_f: tajaran/parts.rsi:chest_f
-    chest_m: tajaran/parts.rsi:chest_m
-    groin_f: tajaran/parts.rsi:groin_f
-    groin_m: tajaran/parts.rsi:groin_m
-    l_arm: tajaran/parts.rsi:l_arm
-    l_foot: tajaran/parts.rsi:l_foot
-    l_hand: tajaran/parts.rsi:l_hand
-    l_leg: tajaran/parts.rsi:l_leg
-    r_arm: tajaran/parts.rsi:r_arm
-    r_foot: tajaran/parts.rsi:r_foot
-    r_hand: tajaran/parts.rsi:r_hand
-    r_leg: tajaran/parts.rsi:r_leg
+    chest_f: Tarjan/parts.rsi:chest_f
+    chest_m: Tarjan/parts.rsi:chest_m
+    groin_f: Tarjan/parts.rsi:groin_f
+    groin_m: Tarjan/parts.rsi:groin_m
+    l_arm: Tarjan/parts.rsi:l_arm
+    l_foot: Tarjan/parts.rsi:l_foot
+    l_hand: Tarjan/parts.rsi:l_hand
+    l_leg: Tarjan/parts.rsi:l_leg
+    r_arm: Tarjan/parts.rsi:r_arm
+    r_foot: Tarjan/parts.rsi:r_foot
+    r_hand: Tarjan/parts.rsi:r_hand
+    r_leg: Tarjan/parts.rsi:r_leg
 
   default_gender: male
   mob_type: carbon
   faction: neutral
+
