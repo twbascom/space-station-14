@@ -390,18 +390,16 @@
 
 - type: entity
   id: NanotrasenBorg
+  parent: BaseBorgChassisNT
   name: Nanotrasen Cyborg
   description: A Nanotrasen produced and weapon funded borg, made to serve under Nanotrasen command.
   components:
-  - type: Transform # Gives the borg a physical position in the world
   - type: Sprite
     sprite: Mobs/Silicon/chassis.rsi # Fixed: Singular 'Silicon' to match your folder
     layers:
     - state: peace
     - state: peace_e
       shader: unshaded
-  - type: Physics
-    bodyType: KinematicController
   - type: Fixtures
     fixtures:
       fix1:
@@ -444,9 +442,6 @@
     interactFailureString: petting-failure-syndicate-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: Clickable 
-  - type: InteractionOutline 
-  - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
     - Common
