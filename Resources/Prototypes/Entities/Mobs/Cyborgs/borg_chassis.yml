@@ -453,5 +453,10 @@
     - Supply
     - Service
     - CentCom
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
   - type: BatterySelfRecharger # Infinite power for elite units
   - type: MindContainer # Allows you to possess the borg via admin commands
