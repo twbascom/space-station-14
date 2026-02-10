@@ -387,3 +387,76 @@
     noMindState: synd_sec_derelict
   - type: Construction
     node: derelictcyborg
+
+- type: entity
+  id: NanotrasenBorg
+  name: Nanotrasen Cyborg
+  description: A Nanotrasen produced and weapon funded borg, made to serve under Nanotrasen command.
+  components:
+  - type: Transform # Gives the borg a physical position in the world
+  - type: Sprite
+    sprite: Mobs/Silicon/chassis.rsi # Fixed: Singular 'Silicon' to match your folder
+    layers:
+    - state: peace
+    - state: peace_e
+      shader: unshaded
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle # Fixed: Space before colon removed
+          radius: 0.35
+        density: 150
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: BorgTransponder
+    name: Nanotrasen Cyborg
+    sprite:
+      sprite: Mobs/Silicon/chassis.rsi # Fixed: Singular 'Silicon'
+      state: peace
+  - type: Access
+    tags:
+    - CentralCommand
+  - type: BorgChassis
+    maxModules: 3
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSyndicate
+      - BorgModuleSyndicateAssault
+    hasMindState: peace_e
+    noMindState: peace
+  - type: Storage # Expanded so Huge modules like the L6C LMG fit
+    maxItemSize: Huge
+    grid:
+      - 0,0,5,5
+  - type: StorageFill # Your custom weapon-funded loadout
+    contents:
+      - id: BorgModuleL6C
+      - id: BorgModuleEsword
+      - id: BorgModuleOperative
+  - type: InteractionPopup
+    interactSuccessString: petting-success-syndicate-cyborg
+    interactFailureString: petting-failure-syndicate-cyborg
+    interactSuccessSound:
+      path: /Audio/Ambience/Objects/periodic_beep.ogg
+  - type: Clickable 
+  - type: InteractionOutline 
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Common
+    - Engineering
+    - Command
+    - Medical
+    - Science
+    - Security
+    - Supply
+    - Service
+    - CentCom
+  - type: BatterySelfRecharger # Infinite power for elite units
+  - type: MindContainer # Allows you to possess the borg via admin commands

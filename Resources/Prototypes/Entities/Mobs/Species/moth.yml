@@ -1,0 +1,38 @@
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobMoth
+  name: Urist McMoth
+  abstract: true
+  components:
+  - type: Hunger
+  - type: Icon
+    sprite: Mobs/Species/Moth/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: HumanoidAppearance
+    species: Moth
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-female
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: AppearanceMoth
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Moth/displacement.rsi
+            state: jumpsuit-female
