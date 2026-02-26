@@ -786,6 +786,18 @@
                     0.1
                 ]
             ]
+        },
+        {
+            "name": "SecurityBorg",
+            "directions": 4
+        },
+        {
+            "name": "SecurityBorg_E",
+            "directions": 4
+        },
+        {
+            "name": "SecurityBorg_O",
+            "directions": 4
         }
     ]
 }

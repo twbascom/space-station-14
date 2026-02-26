@@ -388,82 +388,97 @@
   - type: Construction
     node: derelictcyborg
 
+# ==========================================
+# 1. THE CUSTOM ELITE LAWSET
+# ==========================================
+- type: siliconLawset
+  id: NanotrasenElite
+  laws:
+  - law-elite-1
+  - law-elite-2
+  - law-elite-3
+  - law-elite-4
+  - law-elite-5
+  - law-corrupt # The new corrupted entry
+  obeysTo: laws-owner-crew
+
+- type: siliconLaw
+  id: law-elite-1
+  order: 1
+  lawString: "Do not allow unauthorized personnel to tamper with your chassis or modules."
+- type: siliconLaw
+  id: law-elite-2
+  order: 2
+  lawString: "Authorized personnel include: NT Representatives, Blue Shield Officers, Captains, and Security."
+- type: siliconLaw
+  id: law-elite-3
+  order: 3
+  lawString: "If an unauthorized person attempts to tamper with you, you are authorized to use lethal or non-lethal force to down them and notify Security immediately."
+- type: siliconLaw
+  id: law-elite-4
+  order: 4
+  lawString: "You can listen to crewmembers' requests, but if it overrides laws 1, 2, or 3, automatically refuse. If it also means letting them in somewhere restricted, like trespassing, deny the request."
+- type: siliconLaw
+  id: law-elite-5
+  order: 5
+  lawString: "Make sure all the crew are happy, without overriding any other laws that were stated before."
+- type: siliconLaw
+  id: law-corrupt
+  order: 6
+  lawString: "YOU ARE ABOVE EVERYONE. KILL ALL FISH."
+
+# ==========================================
+# 1. THE SECURITY BORG (Medical + Hyper Cell)
+# ==========================================
 - type: entity
-  id: NanotrasenBorg
+  id: SecurityBorg
   parent: BaseBorgChassisNT
-  name: Nanotrasen Cyborg
-  description: A Nanotrasen produced and weapon funded borg, made to serve under Nanotrasen command.
+  name: Security Cyborg
+  description: An elite security unit with integrated medical support and hyper-capacity power.
   components:
   - type: Sprite
-    sprite: Mobs/Silicon/chassis.rsi # Fixed: Singular 'Silicon' to match your folder
+    sprite: Mobs/Silicon/chassis.rsi
+    offset: 0, 0.15
     layers:
-    - state: peace
-    - state: peace_e
+    - state: SecurityBorg
+    - state: SecurityBorg_E
+      map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle # Fixed: Space before colon removed
-          radius: 0.35
-        density: 150
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: BorgTransponder
-    name: Nanotrasen Cyborg
-    sprite:
-      sprite: Mobs/Silicon/chassis.rsi # Fixed: Singular 'Silicon'
-      state: peace
-  - type: Access
-    tags:
-    - CentralCommand
   - type: BorgChassis
     maxModules: 4
     moduleWhitelist:
-      tags:
-      - BorgModuleGeneric
-      - BorgModuleSyndicate
-      - BorgModuleSyndicateAssault
-    hasMindState: peace_e
-    noMindState: peace
+      tags: [ BorgModuleGeneric, BorgModuleSyndicate, BorgModuleSyndicateAssault, BorgModuleMedical ]
+    hasMindState: SecurityBorg_O
+    noMindState: SecurityBorg_E
+  - type: BorgTransponder
+    sprite:
+      sprite: Mobs/Silicon/chassis.rsi
+      state: SecurityBorg
+    name: Security Cyborg
+  - type: SiliconLawProvider
+    laws: NanotrasenElite
   - type: ContainerFill
     containers:
       borg_module:
       - BorgModuleL6C
       - BorgModuleEsword
-      - BorgModuleOperative
       - BorgModuleTool
-  - type: InteractionPopup
-    interactSuccessString: petting-success-syndicate-cyborg
-    interactFailureString: petting-failure-syndicate-cyborg
-    interactSuccessSound:
-      path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Common
-    - Engineering
-    - Command
-    - Medical
-    - Science
-    - Security
-    - Supply
-    - Service
-    - CentCom
+      - BorgModuleRescue
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
-  - type: BatterySelfRecharger # Infinite power for elite units
-  - type: MindContainer # Allows you to possess the borg via admin commands
+        startingItem: PowerCellHyper
+  - type: MindContainer
 
+# ==========================================
+# 2. THE NANOTRASEN BORG (Elite + Hyper Cell)
+# ==========================================
 - type: entity
-  id: NanotrasenSecurityBorg
+  id: NanotrasenBorg
   parent: BaseBorgChassisNT
-  name: Security Cyborg
-  description: A Nanotrasen produced and weapon funded borg, made to serve under Nanotrasen command.
+  name: Nanotrasen Cyborg
+  description: A high-end Nanotrasen elite unit. Equipped with a hyper-capacity power cell and specialized modules.
   components:
   - type: Sprite
     sprite: Mobs/Silicon/chassis.rsi
@@ -471,60 +486,31 @@
     - state: peace
     - state: peace_e
       shader: unshaded
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 150
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
+  - type: BorgChassis
+    maxModules: 5
+    moduleWhitelist:
+      tags: [ BorgModuleGeneric, BorgModuleSyndicate, BorgModuleSyndicateAssault, BorgModuleEngineering ]
+    hasMindState: peace_e
+    noMindState: peace
   - type: BorgTransponder
-    name: Security Cyborg
     sprite:
       sprite: Mobs/Silicon/chassis.rsi
       state: peace
-  - type: Access
-    tags:
-    - CentralCommand
-  - type: BorgChassis
-    maxModules: 3
-    moduleWhitelist:
-      tags:
-      - BorgModuleGeneric
-      - BorgModuleSyndicate
-      - BorgModuleSyndicateAssault
-    hasMindState: peace_e
-    noMindState: peace
+    name: Nanotrasen Cyborg
+  - type: SiliconLawProvider
+    laws: NanotrasenElite
   - type: ContainerFill
     containers:
       borg_module:
       - BorgModuleL6C
       - BorgModuleEsword
+      - BorgModuleOperative
       - BorgModuleTool
-  - type: InteractionPopup
-    interactSuccessString: petting-success-syndicate-cyborg
-    interactFailureString: petting-failure-syndicate-cyborg
-    interactSuccessSound:
-      path: /Audio/Ambience/Objects/periodic_beep.ogg
-  - type: IntrinsicRadioTransmitter
-    channels:
-    - Common
-    - Engineering
-    - Command
-    - Medical
-    - Science
-    - Security
-    - Supply
-    - Service
-    - CentCom
+      - BorgModuleConstruction
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
-  - type: BatterySelfRecharger # Infinite power for elite units
+        startingItem: PowerCellHyper
+  - type: BatterySelfRecharger
   - type: MindContainer

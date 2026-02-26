@@ -66,7 +66,7 @@ public sealed partial class MarkingSet
     {
         IoCManager.Resolve(ref markingManager, ref prototypeManager);
 
-        if (!prototypeManager.TryIndex(pointsPrototype, out MarkingPointsPrototype? points))
+        if (string.IsNullOrEmpty(pointsPrototype) || !prototypeManager.TryIndex(pointsPrototype, out MarkingPointsPrototype? points))
         {
             return;
         }
@@ -75,7 +75,7 @@ public sealed partial class MarkingSet
 
         foreach (var marking in markings)
         {
-            if (!markingManager.TryGetMarking(marking, out var prototype))
+            if (marking.MarkingId == null || !markingManager.TryGetMarking(marking, out var prototype))
             {
                 continue;
             }
@@ -96,7 +96,7 @@ public sealed partial class MarkingSet
 
         foreach (var marking in markings)
         {
-            if (!markingManager.TryGetMarking(marking, out var prototype))
+            if (marking.MarkingId == null || !markingManager.TryGetMarking(marking, out var prototype))
             {
                 continue;
             }
@@ -113,7 +113,7 @@ public sealed partial class MarkingSet
     {
         IoCManager.Resolve(ref markingManager, ref prototypeManager);
 
-        if (!prototypeManager.TryIndex(pointsPrototype, out MarkingPointsPrototype? points))
+        if (string.IsNullOrEmpty(pointsPrototype) || !prototypeManager.TryIndex(pointsPrototype, out MarkingPointsPrototype? points))
         {
             return;
         }
@@ -152,6 +152,9 @@ public sealed partial class MarkingSet
 
         var toRemove = new List<(MarkingCategories category, string id)>();
         var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
+        if (speciesProto.MarkingPoints == null)
+            return;
+
         var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;
 
         foreach (var (category, list) in Markings)

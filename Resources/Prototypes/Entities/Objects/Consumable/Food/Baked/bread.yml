@@ -122,7 +122,7 @@
   parent: FoodBreadBase
   id: FoodBreadCotton
   name: cotton bread
-  description: Bread, but for moff.
+  description: Bread, but for moth.
   components:
   - type: FlavorProfile
     flavors:

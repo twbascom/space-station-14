@@ -184,12 +184,12 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
         var proto = IoCManager.Resolve<IPrototypeManager>();
         var markingManager = IoCManager.Resolve<MarkingManager>();
 
-        if (!markingManager.MarkingsByCategory(MarkingCategories.Hair).ContainsKey(hairStyleId))
+        if (hairStyleId == null || !markingManager.MarkingsByCategory(MarkingCategories.Hair).ContainsKey(hairStyleId))
         {
             hairStyleId = HairStyles.DefaultHairStyle;
         }
 
-        if (!markingManager.MarkingsByCategory(MarkingCategories.FacialHair).ContainsKey(facialHairStyleId))
+        if (facialHairStyleId == null || !markingManager.MarkingsByCategory(MarkingCategories.FacialHair).ContainsKey(facialHairStyleId))
         {
             facialHairStyleId = HairStyles.DefaultFacialHairStyle;
         }
@@ -201,8 +201,11 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             markingSet = new MarkingSet(appearance.Markings, speciesProto.MarkingPoints, markingManager, proto);
             markingSet.EnsureValid(markingManager);
 
-            var strategy = proto.Index(speciesProto.SkinColoration).Strategy;
-            skinColor = strategy.EnsureVerified(skinColor);
+            if (speciesProto.SkinColoration != null)
+            {
+                var strategy = proto.Index(speciesProto.SkinColoration).Strategy;
+                skinColor = strategy.EnsureVerified(skinColor);
+            }
 
             markingSet.EnsureSpecies(species, skinColor, markingManager);
             markingSet.EnsureSexes(sex, markingManager);

@@ -455,6 +455,20 @@
     event: !type:GravityJumpEvent {}
 
 - type: entity
+  parent: BaseAction
+  id: ActionMothGravityJump
+  name: Flutter
+  description: Use your wings to flutter a short distance. Be careful not to bump into anything!
+  components:
+  - type: Action
+    useDelay: 10
+    icon:
+      sprite: Interface/Actions/jump.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:GravityJumpEvent {}
+
+- type: entity
   parent: BaseToggleAction
   id: ActionToggleRootable
   name: Rootable

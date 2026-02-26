@@ -32,7 +32,7 @@ marking-MothAntennasMaple-maple = Antennae
 marking-MothAntennasMaple = Antennae (Maple)
 
 marking-MothAntennasMoffra-moffra = Antennae
-marking-MothAntennasMoffra = Antennae (Moffra)
+marking-MothAntennasMoffra = Antennae (Mothra)
 
 marking-MothAntennasOakworm-oakworm = Antennae
 marking-MothAntennasOakworm = Antennae (Oak Worm)
@@ -100,7 +100,7 @@ marking-MothWingsMaple = Wings (Maple)
 
 marking-MothWingsMoffra-moffra_primary = Primary
 marking-MothWingsMoffra-moffra_secondary = Secondary
-marking-MothWingsMoffra = Wings (Moffra)
+marking-MothWingsMoffra = Wings (Mothra)
 
 marking-MothWingsOakworm-oakworm = Wing
 marking-MothWingsOakworm = Wings (Oak Worm)
@@ -221,7 +221,7 @@ marking-MothRArmFirewatch = Moth Right Arm (Firewatch)
 marking-MothChestGothic-gothic_chest = Chest
 marking-MothChestGothic = Moth Chest (Gothic)
 
-marking-MothHeadGothic-gothic_head = Head 
+marking-MothHeadGothic-gothic_head = Head
 marking-MothHeadGothic = Moth Head (Gothic)
 
 marking-MothLLegGothic-gothic_l_leg = Left Leg
