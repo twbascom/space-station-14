@@ -1,0 +1,217 @@
+- type: marking
+  id: TajaranEars
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/ears.rsi
+    state: ears
+  - sprite: Mobs/Customization/TajaranCustomization/ears.rsi
+    state: inears
+  - sprite: Mobs/Customization/TajaranCustomization/ears.rsi
+    state: outears
+
+- type: marking
+  id: TajaranTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/tails.rsi
+    state: tail
+
+- type: marking
+  id: TajaranTailAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/tails.rsi
+    state: tail_anim
+
+- type: marking
+  id: TajaranSnout
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: muzzle
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: nose
+
+- type: marking
+  id: TajaranGroin
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Species/TajaranParts/parts.rsi
+    state: groin_m
+
+- type: marking
+  id: TajaranGroinFemale
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Species/TajaranParts/parts.rsi
+    state: groin_f
+
+- type: marking
+  id: TajaranBelly
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/torso.rsi
+    state: belly
+
+- type: marking
+  id: TajaranFullBelly
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/torso.rsi
+    state: fullbelly
+
+- type: marking
+  id: TajaranCrest
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/torso.rsi
+    state: crest
+
+- type: marking
+  id: TajaranTailRings
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/tail_markings.rsi
+    state: tail_rings
+
+- type: marking
+  id: TajaranTailRingsAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/tail_markings.rsi
+    state: tail_anim_rings
+
+- type: marking
+  id: TajaranFoxTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/foxtail.rsi
+    state: base_fox_tail
+  - sprite: Mobs/Customization/TajaranCustomization/foxtail.rsi
+    state: base_fox_tail_tip
+
+- type: marking
+  id: TajaranEarsCurled
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: curled_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: curled_inner
+
+- type: marking
+  id: TajaranEarsDroopy
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: droopy_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: droopy_inner
+
+- type: marking
+  id: TajaranEarsStubby
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: stubby_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: stubby_inner
+
+- type: marking
+  id: TajaranEarsTall
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: tall_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: tall_inner
+
+- type: marking
+  id: TajaranEarsTorn
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: torn_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: torn_inner
+
+- type: marking
+  id: TajaranEarsWide
+  bodyPart: HeadTop
+  markingCategory: HeadTop
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: wide_outer
+  - sprite: Mobs/Customization/TajaranCustomization/felinid_ears.rsi
+    state: wide_inner
+
+- type: marking
+  id: TajaranHeadTigerFace
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: tiger_face
+
+- type: marking
+  id: TajaranHeadTigerHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: tiger_head
+
+- type: marking
+  id: TajaranHeadPatch
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: patch
+
+- type: marking
+  id: TajaranHeadPoints
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Tajaran]
+  sprites:
+  - sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: points

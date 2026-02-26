@@ -1,0 +1,60 @@
+- type: entity
+  save: false
+  name: Tajaran
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobTajaran
+  abstract: true
+  components:
+  - type: Hunger
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: Icon
+    sprite: Mobs/Customization/TajaranCustomization/head.rsi
+    state: muzzle
+  - type: HumanoidAppearance
+    species: Tajaran
+    hideLayersOnEquip:
+    - Hair
+    - FacialHair
+    - Snout
+    - SnoutCover
+    - HeadTop
+    - HeadSide
+    - Tail
+  - type: Inventory
+    speciesId: tajaran
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+  - type: Speech
+    speechSounds: Alto
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: FemaleHuman
+      Unsexed: MaleHuman
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobTajaranDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Tajaran
+    hideLayersOnEquip:
+    - Hair
+    - FacialHair
+    - Snout
+    - SnoutCover
+    - HeadTop
+    - HeadSide
+    - Tail
+  - type: Inventory
+    speciesId: tajaran
