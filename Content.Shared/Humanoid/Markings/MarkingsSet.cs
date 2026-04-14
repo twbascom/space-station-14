@@ -152,7 +152,7 @@ public sealed partial class MarkingSet
 
         var toRemove = new List<(MarkingCategories category, string id)>();
         var speciesProto = prototypeManager.Index<SpeciesPrototype>(species);
-        if (speciesProto.MarkingPoints == null)
+        if (string.IsNullOrEmpty(speciesProto.MarkingPoints))
             return;
 
         var onlyWhitelisted = prototypeManager.Index(speciesProto.MarkingPoints).OnlyWhitelisted;

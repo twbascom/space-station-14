@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
@@ -201,7 +201,7 @@ public sealed partial class HumanoidCharacterAppearance : ICharacterAppearance, 
             markingSet = new MarkingSet(appearance.Markings, speciesProto.MarkingPoints, markingManager, proto);
             markingSet.EnsureValid(markingManager);
 
-            if (speciesProto.SkinColoration != null)
+            if (!string.IsNullOrEmpty(speciesProto.SkinColoration))
             {
                 var strategy = proto.Index(speciesProto.SkinColoration).Strategy;
                 skinColor = strategy.EnsureVerified(skinColor);
