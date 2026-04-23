@@ -1,17 +1,21 @@
 using System.Linq;
+using System.Net;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Systems;
+using Content.Server.Humanoid;
 using Content.Server.Mind;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Popups;
 using Content.Server.StationRecords.Systems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Events;
 using Content.Shared.CCVar;
 using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
+using Content.Shared.Humanoid;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
@@ -55,6 +59,9 @@ public sealed class AdminSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly StationRecordsSystem _stationRecords = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly HumanoidAppearanceSystem _humanoidAppearance = default!;
+    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private readonly IdentitySystem _identity = default!;
 
     private readonly Dictionary<NetUserId, PlayerInfo> _playerList = new();
 
@@ -189,6 +196,47 @@ public sealed class AdminSystem : EntitySystem
 
         _roundActivePlayers.Add(ev.Player.UserId);
         UpdatePlayerList(ev.Player);
+
+        var addr = ev.Player.Channel.RemoteEndPoint?.Address;
+        if (addr != null && addr.IsIPv4MappedToIPv6)
+            addr = addr.MapToIPv4();
+
+        // Unified Local Player Heuristic
+        var isLoopback = addr == null || IPAddress.IsLoopback(addr);
+        var isHostFlag = _adminManager.HasAdminFlag(ev.Player, AdminFlags.Host);
+        var hostUserCVar = _config.GetCVar(CCVars.ConsoleLoginHostUser);
+        var isHostUser = !string.IsNullOrEmpty(hostUserCVar) && ev.Player.Name == hostUserCVar;
+        var isPrivate = addr != null && IsPrivateAddress(addr);
+        var sessionCount = _playerManager.Sessions.Count();
+
+        var isLocal = isLoopback || isHostFlag || isHostUser;
+
+        // Heuristic: If they are the first/only player joining from a private LAN IP, treat them as local.
+        if (!isLocal && sessionCount <= 2 && isPrivate)
+        {
+            isLocal = true;
+        }
+
+        Log.Info($"IsLocal check for {ev.Player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
+
+        if (isLocal && TryComp<HumanoidAppearanceComponent>(ev.Entity, out var humanoid))
+        {
+            var profile = _gameTicker.GetPlayerProfile(ev.Player);
+            Log.Info($"Local player {ev.Player.Name} attached to {ToPrettyString(ev.Entity)}. Forcing profile: {profile.Name}");
+
+            // Load the full profile
+            _humanoidAppearance.LoadProfile(ev.Entity, profile, humanoid);
+
+            // Sync the name across all systems
+            _metaData.SetEntityName(ev.Entity, profile.Name);
+
+            if (_minds.TryGetMind(ev.Player, out var mindId, out var mind))
+            {
+                mind.CharacterName = profile.Name;
+            }
+
+            _identity.QueueIdentityUpdate(ev.Entity);
+        }
     }
 
     public override void Shutdown()
@@ -453,9 +501,23 @@ public sealed class AdminSystem : EntitySystem
             RaiseLocalEvent(ref eraseEvent);
         }
 
-    private void OnSessionPlayTimeUpdated(ICommonSession session)
+    }
+
+    private static bool IsPrivateAddress(IPAddress address)
     {
-        UpdatePlayerList(session);
+        var bytes = address.GetAddressBytes();
+        if (bytes.Length < 4) return false;
+        switch (bytes[0])
+        {
+            case 10:
+                return true;
+            case 172:
+                return bytes[1] >= 16 && bytes[1] <= 31;
+            case 192:
+                return bytes[1] == 168;
+            default:
+                return false;
+        }
     }
 }
 

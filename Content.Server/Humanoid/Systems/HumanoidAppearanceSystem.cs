@@ -20,6 +20,17 @@ public sealed partial class HumanoidAppearanceSystem : SharedHumanoidAppearanceS
         SubscribeLocalEvent<HumanoidAppearanceComponent, GetVerbsEvent<Verb>>(OnVerbsRequest);
     }
 
+    public override void LoadProfile(EntityUid uid, HumanoidCharacterProfile? profile, HumanoidAppearanceComponent? humanoid = null)
+    {
+        base.LoadProfile(uid, profile, humanoid);
+
+        if (profile != null)
+        {
+            // Once we've loaded a profile, we don't want the random appearance system to override it.
+            RemCompDeferred<RandomHumanoidAppearanceComponent>(uid);
+        }
+    }
+
     /// <summary>
     ///     Removes a marking from a humanoid by ID.
     /// </summary>

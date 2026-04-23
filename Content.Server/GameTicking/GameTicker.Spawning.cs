@@ -1,3 +1,4 @@
+using System.Net;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
@@ -9,6 +10,7 @@ using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Administration;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -183,9 +185,34 @@ namespace Content.Server.GameTicking
                 return;
             }
 
-            string speciesId;
-            if (_randomizeCharacters)
+            var addr = player.Channel.RemoteEndPoint?.Address;
+            if (addr != null && addr.IsIPv4MappedToIPv6)
+                addr = addr.MapToIPv4();
+
+            // Unified Local Player Heuristic
+            var isLoopback = addr == null || IPAddress.IsLoopback(addr);
+            var isHostFlag = _adminManager.HasAdminFlag(player, AdminFlags.Host);
+            var hostUserCVar = _cfg.GetCVar(CCVars.ConsoleLoginHostUser);
+            var isHostUser = !string.IsNullOrEmpty(hostUserCVar) && player.Name == hostUserCVar;
+            var isPrivate = addr != null && IsPrivateAddress(addr);
+            var sessionCount = _playerManager.Sessions.Count();
+
+            var isLocal = isLoopback || isHostFlag || isHostUser;
+            
+            // Heuristic: If they are the first/only player joining from a private LAN IP, treat them as local.
+            if (!isLocal && sessionCount <= 2 && isPrivate)
             {
+                isLocal = true;
+            }
+
+            _sawmill.Info($"IsLocal check for {player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
+
+            if (isLocal)
+                _sawmill.Info($"Local player {player.Name} identified. Bypassing randomization for profile {character.Name}.");
+
+            if (_randomizeCharacters && !isLocal)
+            {
+                string speciesId;
                 var weightId = _cfg.GetCVar(CCVars.ICRandomSpeciesWeights);
 
                 // If blank, choose a round start species.
@@ -515,6 +542,23 @@ namespace Content.Server.GameTicking
             // This should be an error, if it didn't cause tests to start erroring when they delete a player.
             _sawmill.Warning("Found no observer spawn points!");
             return EntityCoordinates.Invalid;
+        }
+
+        private static bool IsPrivateAddress(IPAddress address)
+        {
+            var bytes = address.GetAddressBytes();
+            if (bytes.Length < 4) return false;
+            switch (bytes[0])
+            {
+                case 10:
+                    return true;
+                case 172:
+                    return bytes[1] >= 16 && bytes[1] <= 31;
+                case 192:
+                    return bytes[1] == 168;
+                default:
+                    return false;
+            }
         }
 
         #endregion
