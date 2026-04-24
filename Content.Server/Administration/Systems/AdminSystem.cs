@@ -217,12 +217,12 @@ public sealed class AdminSystem : EntitySystem
             isLocal = true;
         }
 
-        Log.Info($"IsLocal check for {ev.Player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
+        Log.Debug($"IsLocal check for {ev.Player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
 
         if (isLocal && TryComp<HumanoidAppearanceComponent>(ev.Entity, out var humanoid))
         {
             var profile = _gameTicker.GetPlayerProfile(ev.Player);
-            Log.Info($"Local player {ev.Player.Name} attached to {ToPrettyString(ev.Entity)}. Forcing profile: {profile.Name}");
+            Log.Debug($"Local player {ev.Player.Name} attached to {ToPrettyString(ev.Entity)}. Forcing profile: {profile.Name}");
 
             // Load the full profile
             _humanoidAppearance.LoadProfile(ev.Entity, profile, humanoid);
@@ -499,8 +499,11 @@ public sealed class AdminSystem : EntitySystem
                 _gameTicker.SpawnObserver(session);
 
             RaiseLocalEvent(ref eraseEvent);
-        }
+    }
 
+    private void OnSessionPlayTimeUpdated(ICommonSession session)
+    {
+        UpdatePlayerList(session);
     }
 
     private static bool IsPrivateAddress(IPAddress address)

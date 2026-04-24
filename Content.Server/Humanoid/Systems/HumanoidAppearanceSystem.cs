@@ -3,6 +3,7 @@ using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Verbs;
+using Content.Server.CharacterAppearance.Components;
 using Robust.Shared.GameObjects.Components.Localization;
 
 namespace Content.Server.Humanoid;

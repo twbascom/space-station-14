@@ -205,10 +205,10 @@ namespace Content.Server.GameTicking
                 isLocal = true;
             }
 
-            _sawmill.Info($"IsLocal check for {player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
+            _sawmill.Debug($"IsLocal check for {player.Name}: loopback={isLoopback}, hostFlag={isHostFlag}, hostUser={isHostUser}, privateIP={isPrivate}, sessions={sessionCount} -> result={isLocal}");
 
             if (isLocal)
-                _sawmill.Info($"Local player {player.Name} identified. Bypassing randomization for profile {character.Name}.");
+                _sawmill.Debug($"Local player {player.Name} identified. Bypassing randomization for profile {character.Name}.");
 
             if (_randomizeCharacters && !isLocal)
             {
