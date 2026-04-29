@@ -169,3 +169,9 @@ chat-speech-verb-wawa-1 = intones
 chat-speech-verb-wawa-2 = states
 chat-speech-verb-wawa-3 = declares
 chat-speech-verb-wawa-4 = ponders
+
+chat-speech-verb-name-resomi = Resomi
+chat-speech-verb-resomi-1 = chirps
+chat-speech-verb-resomi-2 = clicks
+chat-speech-verb-resomi-3 = whistles
+chat-speech-verb-resomi-4 = trills

@@ -145,3 +145,28 @@
   - type: Construction
     graph: SnapPopExplosiveGraph
     node: snapPopExplosive
+
+- type: entity
+  name: bomb
+  description: A bomb that's guaranteed to be funny. Or slippery.
+  parent: TimerGrenadeBase
+  id: FunnyBomb
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/funnybomb.rsi
+    layers:
+    - state: funnybombicon
+      map: ["base"]
+  - type: FunnyBomb
+  - type: TimerTrigger
+    delay: 3.0
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Primed: { state: funnybombiconactive }
+          Unprimed: { state: funnybombicon }
+
+
+
+

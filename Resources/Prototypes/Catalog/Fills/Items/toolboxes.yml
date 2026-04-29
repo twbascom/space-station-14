@@ -209,6 +209,8 @@
       - id: FoodBanana
       - id: FoodPieBananaCream
         weight: 0.75
+    - id: FunnyBomb
+      weight: 0.5
     - !type:GroupSelector # Fun clothing
       prob: 0.75
       children:

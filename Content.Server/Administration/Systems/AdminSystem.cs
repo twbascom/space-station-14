@@ -221,21 +221,27 @@ public sealed class AdminSystem : EntitySystem
 
         if (isLocal && TryComp<HumanoidAppearanceComponent>(ev.Entity, out var humanoid))
         {
-            var profile = _gameTicker.GetPlayerProfile(ev.Player);
-            Log.Debug($"Local player {ev.Player.Name} attached to {ToPrettyString(ev.Entity)}. Forcing profile: {profile.Name}");
-
-            // Load the full profile
-            _humanoidAppearance.LoadProfile(ev.Entity, profile, humanoid);
-
-            // Sync the name across all systems
-            _metaData.SetEntityName(ev.Entity, profile.Name);
-
-            if (_minds.TryGetMind(ev.Player, out var mindId, out var mind))
+            if (_gameTicker.TryGetPlayerProfile(ev.Player, out var profile))
             {
-                mind.CharacterName = profile.Name;
-            }
+                Log.Debug($"Local player {ev.Player.Name} attached to {ToPrettyString(ev.Entity)}. Forcing profile: {profile.Name}");
 
-            _identity.QueueIdentityUpdate(ev.Entity);
+                // Load the full profile
+                _humanoidAppearance.LoadProfile(ev.Entity, profile, humanoid);
+
+                // Sync the name across all systems
+                _metaData.SetEntityName(ev.Entity, profile.Name);
+
+                if (_minds.TryGetMind(ev.Player, out var mindId, out var mind))
+                {
+                    mind.CharacterName = profile.Name;
+                }
+
+                _identity.QueueIdentityUpdate(ev.Entity);
+            }
+            else
+            {
+                Log.Debug($"Local player {ev.Player.Name} attached, but preferences not loaded yet. Skipping profile enforcement.");
+            }
         }
     }
 

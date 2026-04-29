@@ -12,6 +12,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Server.GameTicking
 {
@@ -185,6 +186,18 @@ namespace Content.Server.GameTicking
         public HumanoidCharacterProfile GetPlayerProfile(ICommonSession p)
         {
             return (HumanoidCharacterProfile) _prefsManager.GetPreferences(p.UserId).SelectedCharacter;
+        }
+
+        public bool TryGetPlayerProfile(ICommonSession p, [NotNullWhen(true)] out HumanoidCharacterProfile? profile)
+        {
+            if (_prefsManager.GetPreferencesOrNull(p.UserId)?.SelectedCharacter is HumanoidCharacterProfile humanoid)
+            {
+                profile = humanoid;
+                return true;
+            }
+
+            profile = null;
+            return false;
         }
 
         public void PlayerJoinGame(ICommonSession session, bool silent = false)
