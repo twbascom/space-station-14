@@ -1,0 +1,9 @@
+- type: speechSounds
+  id: Steamgem
+  saySound:
+    path: /Textures/Mobs/Species/Steamgem/sfx/voice.ogg
+  askSound:
+    path: /Textures/Mobs/Species/Steamgem/sfx/voice.ogg
+  exclaimSound:
+    path: /Textures/Mobs/Species/Steamgem/sfx/voice.ogg
+  variation: 0.1

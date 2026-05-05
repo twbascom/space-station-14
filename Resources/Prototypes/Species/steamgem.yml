@@ -1,0 +1,152 @@
+- type: species
+  id: Steamgem
+  name: species-name-steamgem
+  roundStart: true
+  prototype: MobSteamgem
+  sprites: MobSteamgemSprites
+  markingLimits: MobSteamgemMarkingLimits
+  dollPrototype: AppearanceSteamgem
+  skinColoration: Custom
+  maleFirstNames: names_vulpkanin_male
+  femaleFirstNames: names_vulpkanin_female
+  lastNames: names_vulpkanin_last
+
+- type: speciesBaseSprites
+  id: MobSteamgemSprites
+  sprites:
+    Head: MobSteamgemHead
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    Chest: MobSteamgemTorso
+    Eyes: MobSteamgemEyes
+    Snout: MobHumanoidAnyMarking
+    LArm: MobSteamgemLArm
+    RArm: MobSteamgemRArm
+    LHand: MobSteamgemLHand
+    RHand: MobSteamgemRHand
+    LLeg: MobSteamgemLLeg
+    RLeg: MobSteamgemRLeg
+    LFoot: MobSteamgemLFoot
+    RFoot: MobSteamgemRFoot
+
+- type: humanoidBaseSprite
+  id: MobSteamgemHead
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobSteamgemHeadMale
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: head_m
+
+- type: humanoidBaseSprite
+  id: MobSteamgemHeadFemale
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: head_f
+
+- type: humanoidBaseSprite
+  id: MobSteamgemTorso
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobSteamgemTorsoMale
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobSteamgemTorsoFemale
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobSteamgemLLeg
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobSteamgemRLeg
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobSteamgemLArm
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobSteamgemRArm
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobSteamgemLHand
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobSteamgemRHand
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobSteamgemLFoot
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobSteamgemRFoot
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: r_foot
+
+- type: humanoidBaseSprite
+  id: MobSteamgemEyes
+  baseSprite:
+    sprite: Mobs/Species/Steamgem/parts.rsi
+    state: eyes
+
+- type: markingPoints
+  id: MobSteamgemMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Chest:
+      points: 2
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+    Snout:
+      points: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceSteamgem
+  components:
+  - type: HumanoidAppearance
+    species: Steamgem
