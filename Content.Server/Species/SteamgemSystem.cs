@@ -23,6 +23,7 @@ namespace Content.Server.Species
         [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
         [Dependency] private readonly PopupSystem _popup = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
 
         public override void Initialize()
         {
@@ -99,6 +100,17 @@ namespace Content.Server.Species
 
         private void OnEntitySpoke(EntityUid uid, SteamgemComponent component, EntitySpokeEvent args)
         {
+            if (!TryComp<SpeechComponent>(uid, out var speech))
+                return;
+
+            var currentTime = _timing.CurTime;
+            var cooldown = TimeSpan.FromSeconds(speech.SoundCooldownTime);
+
+            if (currentTime - speech.LastTimeSoundPlayed < cooldown)
+                return;
+
+            speech.LastTimeSoundPlayed = currentTime;
+
             var startOffset = 2f + _random.NextFloat(0f, 30f); 
             var audioParams = AudioParams.Default
                 .WithVolume(-2f)

@@ -6,7 +6,6 @@
   - type: HumanoidAppearance
     species: Steamgem
   - type: Speech
-    speechSounds: Steamgem
   - type: Vocal
     sounds:
       Male: MaleHuman
