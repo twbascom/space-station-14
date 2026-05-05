@@ -553,7 +553,104 @@
     DefaultDeathgasp:
       collection: FemaleDeathGasp
 
-# body emotes
+# Resomi Sounds
+- type: emoteSounds
+  id: MaleResomi
+  params:
+    variation: 0.125
+    pitch: 1.5 # High pitched
+  sounds:
+    Scream:
+      collection: MaleScreams
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Sigh:
+      collection: MaleSigh
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+
+- type: emoteSounds
+  id: FemaleResomi
+  params:
+    variation: 0.125
+    pitch: 1.5 # High pitched
+  sounds:
+    Scream:
+      collection: FemaleScreams
+    Laugh:
+      collection: FemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Sigh:
+      collection: FemaleSigh
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: FemaleGasp
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp
+
+- type: emoteSounds
+  id: MaleNamiod
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: CatMeows
+    Laugh:
+      collection: CatMeows
+    Sneeze:
+      collection: CatMeows
+    Cough:
+      collection: CatMeows
+    Sigh:
+      collection: CatMeows
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: CatMeows
+    DefaultDeathgasp:
+      collection: CatMeows
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+
+- type: emoteSounds
+  id: FemaleNamiod
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: CatMeows
+    Laugh:
+      collection: CatMeows
+    Sneeze:
+      collection: CatMeows
+    Cough:
+      collection: CatMeows
+    Sigh:
+      collection: CatMeows
+    Honk:
+      collection: BikeHorn
+    Gasp:
+      collection: CatMeows
+    DefaultDeathgasp:
+      collection: CatMeows
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
 - type: emoteSounds
   id: GeneralBodyEmotes
   sounds:

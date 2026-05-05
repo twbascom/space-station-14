@@ -1,0 +1,158 @@
+- type: species
+  id: Namiod
+  name: species-name-namiod
+  roundStart: true
+  prototype: MobNamiod
+  sprites: MobNamiodSprites
+  markingLimits: MobNamiodMarkingLimits
+  dollPrototype: AppearanceNamiod
+  skinColoration: Custom
+  maleFirstNames: names_vulpkanin_male # Placeholder
+  femaleFirstNames: names_vulpkanin_female
+  lastNames: names_vulpkanin_last
+
+- type: speciesBaseSprites
+  id: MobNamiodSprites
+  sprites:
+    Head: MobNamiodHead
+    Hair: MobHumanoidAnyMarking
+    FacialHair: MobHumanoidAnyMarking
+    Snout: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    Chest: MobNamiodTorso
+    Eyes: MobNamiodEyes
+    LArm: MobNamiodLArm
+    RArm: MobNamiodRArm
+    LHand: MobNamiodLHand
+    RHand: MobNamiodRHand
+    LLeg: MobNamiodLLeg
+    RLeg: MobNamiodRLeg
+    LFoot: MobNamiodLFoot
+    RFoot: MobNamiodRFoot
+    Tail: MobNamiodTail
+
+- type: markingPoints
+  id: MobNamiodMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Tail:
+      points: 1
+      required: true
+    Head:
+      points: 1
+      required: false
+    Chest:
+      points: 2
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+
+- type: humanoidBaseSprite
+  id: MobNamiodHead
+  baseSprite:
+    sprite: Mobs/Species/Namiod/head.rsi
+    state: head_m
+    pixel_offset: 0, 0
+
+- type: humanoidBaseSprite
+  id: MobNamiodHeadMale
+  baseSprite:
+    sprite: Mobs/Species/Namiod/head.rsi
+    state: head_m
+    pixel_offset: 0, 0
+
+- type: humanoidBaseSprite
+  id: MobNamiodHeadFemale
+  baseSprite:
+    sprite: Mobs/Species/Namiod/head.rsi
+    state: head_f
+    pixel_offset: 0, 0
+
+- type: humanoidBaseSprite
+  id: MobNamiodTorso
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobNamiodTorsoMale
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: torso_m
+
+- type: humanoidBaseSprite
+  id: MobNamiodTorsoFemale
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: torso_f
+
+- type: humanoidBaseSprite
+  id: MobNamiodLLeg
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: l_leg
+
+- type: humanoidBaseSprite
+  id: MobNamiodLArm
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: l_arm
+
+- type: humanoidBaseSprite
+  id: MobNamiodLHand
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: l_hand
+
+- type: humanoidBaseSprite
+  id: MobNamiodLFoot
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: l_foot
+
+- type: humanoidBaseSprite
+  id: MobNamiodRLeg
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: r_leg
+
+- type: humanoidBaseSprite
+  id: MobNamiodRArm
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: r_arm
+
+- type: humanoidBaseSprite
+  id: MobNamiodRHand
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: r_hand
+
+- type: humanoidBaseSprite
+  id: MobNamiodRFoot
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: r_foot
+
+- type: humanoidBaseSprite
+  id: MobNamiodTail
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: tail
+    pixel_offset: 0, 8
+
+- type: humanoidBaseSprite
+  id: MobNamiodEyes
+  baseSprite:
+    sprite: Mobs/Species/Namiod/parts.rsi
+    state: eyes

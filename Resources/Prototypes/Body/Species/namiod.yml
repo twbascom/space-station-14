@@ -1,0 +1,98 @@
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceNamiod
+  name: namiod appearance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganHumanTorso
+        - id: OrganHumanHead
+        - id: OrganHumanArmLeft
+        - id: OrganHumanArmRight
+        - id: OrganHumanHandRight
+        - id: OrganHumanHandLeft
+        - id: OrganHumanLegLeft
+        - id: OrganHumanLegRight
+        - id: OrganHumanFootLeft
+        - id: OrganHumanFootRight
+        - id: OrganHumanBrain
+        - id: OrganHumanEyes
+        - id: OrganHumanTongue
+        - id: OrganHumanAppendix
+        - id: OrganHumanEars
+        - id: OrganHumanLungs
+        - id: OrganHumanHeart
+        - id: OrganHumanStomach
+        - id: OrganHumanLiver
+        - id: OrganHumanKidneys
+  - type: HumanoidAppearance
+    species: Namiod
+  - type: Inventory
+    speciesId: namiod
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: jumpsuit
+      back:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: back
+      outerClothing:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: outerwear
+      hands:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: hand
+      shoes:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: shoes
+      head:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: head
+      neck:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: neck
+      eyes:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: eyes
+      belt:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Namiod/displacement.rsi
+            state: belt
+
+- type: entity
+  parent:
+  - AppearanceNamiod
+  - BaseSpeciesMobOrganic
+  id: MobNamiod
+  name: Urist McNamiod
+  components:
+  - type: Speech
+    speechSounds: Cat
+  - type: Vocal
+    sounds:
+      Male: MaleNamiod
+      Female: FemaleNamiod
+      Unsexed: MaleNamiod
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5

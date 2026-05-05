@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "size": {
+    "x": 64,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "head_m",
+      "directions": 4
+    },
+    {
+      "name": "head_f",
+      "directions": 4
+    }
+  ]
+}
