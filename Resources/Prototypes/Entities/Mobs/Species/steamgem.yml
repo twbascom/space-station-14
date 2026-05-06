@@ -1,18 +1,34 @@
 - type: entity
-  parent: BaseSpeciesMobOrganic
+  parent: [ AppearanceSteamgem, BaseSpeciesMobOrganic ]
   id: MobSteamgem
   components:
+  - type: Hands
   - type: Steamgem
   - type: HumanoidAppearance
     species: Steamgem
   - type: Speech
+    allowedEmotes: [ "Scream", "Laugh", "Sigh", "Cough" ]
   - type: Vocal
     sounds:
       Male: MaleHuman
       Female: FemaleHuman
       Unsexed: MaleHuman
+  - type: SteamgemReservoir
+    water: 1000
+    maxWater: 1000
+  - type: DamageModifierSet
+    id: Steamgem
   - type: Flammable
-    fireResistance: 1 # Default
+    fireResistance: 5
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
     baseSprintSpeed: 4.5
+  - type: Body
+    prototype: Human
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Critical
+      200: Dead
+  - type: MobState
+  - type: AtmosExposed

@@ -16,7 +16,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant ]
+          type: [ Human, Animal, Rat, Plant, Steamgem ]
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -47,7 +47,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Human, Animal, Rat, Plant, Arachnid, Moth ]
+          type: [ Human, Animal, Rat, Plant, Arachnid, Moth, Steamgem ]
       # Convert Oxygen into CO2.
       - !type:ModifyLungGas
         conditions:
@@ -170,7 +170,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, Steamgem ]
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
@@ -192,7 +192,7 @@
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Plant ]
+          type: [ Plant, Steamgem ]
       - !type:HealthChange
         minScale: 0.5
         conditions:

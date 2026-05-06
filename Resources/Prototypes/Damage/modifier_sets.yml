@@ -211,6 +211,17 @@
     Heat: 1.2
 
 - type: damageModifierSet
+  id: Steamgem
+  coefficients:
+    Blunt: 0.8
+    Slash: 0.8
+    Piercing: 0.8
+    Heat: 0.5
+    Cold: 1.2
+    Poison: 0.8
+    Radiation: 0.8
+
+- type: damageModifierSet
   id: Vox
   coefficients: # To be decided
     Poison: 1

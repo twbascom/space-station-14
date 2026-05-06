@@ -18,5 +18,15 @@ namespace Content.Server.Species.Components
         /// Whether the water sound is currently playing.
         /// </summary>
         public EntityUid? WaterStream;
+
+        /// <summary>
+        /// Next time to spawn a steam effect.
+        /// </summary>
+        public TimeSpan NextSteamTime;
+
+        public bool IsHeaterActive;
+
+        public TimeSpan NextIgniteAttempt;
+        public TimeSpan NextIgniteMessage;
     }
 }

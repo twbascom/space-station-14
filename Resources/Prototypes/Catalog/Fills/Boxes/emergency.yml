@@ -1,4 +1,25 @@
 - type: entity
+  parent: BoxSurvival
+  id: BoxSurvivalSteamgem
+  suffix: Steamgem
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Steamgem/fueltanks/emergency.rsi
+    state: icon
+  - type: Item
+    sprite: Mobs/Species/Steamgem/fueltanks/emergency.rsi
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: OxygenTankFilled
+        - id: BreathMask
+        - id: Flare
+        - id: DrinkWaterBottleFull
+        - id: SteamgemFuelTank
+        - id: SurvivalMedipen
+
+- type: entity
   parent: BoxCardboard
   id: BoxSurvival
   name: survival box

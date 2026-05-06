@@ -7,9 +7,9 @@
   markingLimits: MobSteamgemMarkingLimits
   dollPrototype: AppearanceSteamgem
   skinColoration: Custom
-  maleFirstNames: names_vulpkanin_male
-  femaleFirstNames: names_vulpkanin_female
-  lastNames: names_vulpkanin_last
+  maleFirstNames: names_human_male
+  femaleFirstNames: names_human_female
+  lastNames: names_human_last
 
 - type: speciesBaseSprites
   id: MobSteamgemSprites
@@ -22,7 +22,6 @@
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobSteamgemTorso
     Eyes: MobSteamgemEyes
-    Snout: MobHumanoidAnyMarking
     LArm: MobSteamgemLArm
     RArm: MobSteamgemRArm
     LHand: MobSteamgemLHand
@@ -150,3 +149,28 @@
   components:
   - type: HumanoidAppearance
     species: Steamgem
+  - type: Inventory
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganHumanTorso
+        - id: OrganHumanHead
+        - id: OrganHumanArmLeft
+        - id: OrganHumanArmRight
+        - id: OrganHumanHandRight
+        - id: OrganHumanHandLeft
+        - id: OrganHumanLegLeft
+        - id: OrganHumanLegRight
+        - id: OrganHumanFootLeft
+        - id: OrganHumanFootRight
+        - id: OrganHumanBrain
+        - id: OrganHumanEyes
+        - id: OrganHumanTongue
+        - id: OrganHumanAppendix
+        - id: OrganHumanEars
+        - id: OrganSteamgemLungs
+        - id: OrganSteamgemHeart
+        - id: OrganSteamgemStomach
+        - id: OrganSteamgemLiver
+        - id: OrganSteamgemKidneys

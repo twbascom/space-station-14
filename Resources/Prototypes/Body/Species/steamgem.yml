@@ -1,0 +1,26 @@
+- type: entity
+  id: OrganSteamgemMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Steamgem ]
+
+- type: entity
+  parent: [ OrganHumanLungs, OrganSteamgemMetabolizer ]
+  id: OrganSteamgemLungs
+
+- type: entity
+  parent: [ OrganHumanHeart, OrganSteamgemMetabolizer ]
+  id: OrganSteamgemHeart
+
+- type: entity
+  parent: [ OrganHumanStomach, OrganSteamgemMetabolizer ]
+  id: OrganSteamgemStomach
+
+- type: entity
+  parent: [ OrganHumanLiver, OrganSteamgemMetabolizer ]
+  id: OrganSteamgemLiver
+
+- type: entity
+  parent: [ OrganHumanKidneys, OrganSteamgemMetabolizer ]
+  id: OrganSteamgemKidneys
