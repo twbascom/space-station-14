@@ -2,7 +2,7 @@
   id: Steamgem
   name: species-name-steamgem
   roundStart: true
-  prototype: MobSteamgem
+  prototype: MobHuman # TEST: Using MobHuman temporarily
   sprites: MobSteamgemSprites
   markingLimits: MobSteamgemMarkingLimits
   dollPrototype: AppearanceSteamgem
@@ -30,6 +30,33 @@
     RLeg: MobSteamgemRLeg
     LFoot: MobSteamgemLFoot
     RFoot: MobSteamgemRFoot
+    Tail: MobHumanoidAnyMarking
+
+- type: markingPoints
+  id: MobSteamgemMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Chest:
+      points: 2
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+    Snout:
+      points: 1
+      required: false
+    Tail:
+      points: 1
+      required: true
+      defaultMarkings: [ SteamgemFuelTank ]
 
 - type: humanoidBaseSprite
   id: MobSteamgemHead
@@ -121,56 +148,9 @@
     sprite: Mobs/Species/Steamgem/parts.rsi
     state: eyes
 
-- type: markingPoints
-  id: MobSteamgemMarkingLimits
-  points:
-    Hair:
-      points: 1
-      required: false
-    FacialHair:
-      points: 1
-      required: false
-    Chest:
-      points: 2
-      required: false
-    Legs:
-      points: 2
-      required: false
-    Arms:
-      points: 2
-      required: false
-    Snout:
-      points: 1
-      required: false
-
 - type: entity
-  parent: BaseSpeciesAppearance
+  parent: AppearanceHuman
   id: AppearanceSteamgem
   components:
   - type: HumanoidAppearance
     species: Steamgem
-  - type: Inventory
-  - type: EntityTableContainerFill
-    containers:
-      body_organs: !type:AllSelector
-        children:
-        - id: OrganHumanTorso
-        - id: OrganHumanHead
-        - id: OrganHumanArmLeft
-        - id: OrganHumanArmRight
-        - id: OrganHumanHandRight
-        - id: OrganHumanHandLeft
-        - id: OrganHumanLegLeft
-        - id: OrganHumanLegRight
-        - id: OrganHumanFootLeft
-        - id: OrganHumanFootRight
-        - id: OrganHumanBrain
-        - id: OrganHumanEyes
-        - id: OrganHumanTongue
-        - id: OrganHumanAppendix
-        - id: OrganHumanEars
-        - id: OrganSteamgemLungs
-        - id: OrganSteamgemHeart
-        - id: OrganSteamgemStomach
-        - id: OrganSteamgemLiver
-        - id: OrganSteamgemKidneys
