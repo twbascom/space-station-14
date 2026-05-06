@@ -1,8 +1,10 @@
-﻿using Content.Server.GameTicking;
+using Content.Server.GameTicking;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Systems;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.Spawners.EntitySystems;
 
@@ -58,8 +60,17 @@ public sealed class SpawnPointSystem : EntitySystem
             }
             else
             {
-                Log.Error($"No spawn points were available!\nRunLevel: {_gameTicker.RunLevel} Station: {ToPrettyString(args.Station)} Job: {args.Job}");
-                return;
+                Log.Error($"No spawn points were available! Falling back to grid root.\nRunLevel: {_gameTicker.RunLevel} Station: {ToPrettyString(args.Station)} Job: {args.Job}");
+                
+                var gridQuery = EntityQueryEnumerator<MapGridComponent, TransformComponent>();
+                if (gridQuery.MoveNext(out var gridUid, out _, out var gridXform))
+                {
+                    possiblePositions.Add(new EntityCoordinates(gridUid, Vector2.Zero));
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 

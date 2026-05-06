@@ -2,9 +2,6 @@ using Robust.Shared.Audio;
 
 namespace Content.Server.Species.Components
 {
-    /// <summary>
-    /// Component for the Steamgem species logic.
-    /// </summary>
     [RegisterComponent]
     public sealed partial class SteamgemComponent : Component
     {
@@ -14,14 +11,8 @@ namespace Content.Server.Species.Components
         [DataField("printingSound")]
         public SoundSpecifier PrintingSound = new SoundPathSpecifier("/Audio/Machines/diagnoser_printing.ogg");
 
-        /// <summary>
-        /// Whether the water sound is currently playing.
-        /// </summary>
         public EntityUid? WaterStream;
 
-        /// <summary>
-        /// Next time to spawn a steam effect.
-        /// </summary>
         public TimeSpan NextSteamTime;
 
         public bool IsHeaterActive;

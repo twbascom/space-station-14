@@ -1,0 +1,8 @@
+- type: marking
+  id: SteamgemFuelTank
+  item: SteamgemFuelTank
+  bodyPart: Chest
+  markingCategory: Chest
+  sprites:
+  - sprite: Mobs/Species/Steamgem/fueltanks/fueltank.rsi
+    state: equipped-BACKPACK

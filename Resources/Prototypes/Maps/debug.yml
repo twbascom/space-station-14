@@ -16,10 +16,10 @@
 - type: gameMap
   id: Dev
   mapName: Dev
-  mapPath: /Maps/Test/dev_map.yml
+  mapPath: /Maps/saltern.yml
   minPlayers: 0
   stations:
-    Dev:
+    Saltern:
       stationProto: StandardNanotrasenStation
       components:
         - type: StationNameSetup

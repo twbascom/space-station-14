@@ -2,11 +2,11 @@
   id: Steamgem
   name: species-name-steamgem
   roundStart: true
-  prototype: MobHuman # TEST: Using MobHuman temporarily
+  prototype: MobSteamgem
   sprites: MobSteamgemSprites
   markingLimits: MobSteamgemMarkingLimits
   dollPrototype: AppearanceSteamgem
-  skinColoration: Custom
+  skinColoration: HumanToned
   maleFirstNames: names_human_male
   femaleFirstNames: names_human_female
   lastNames: names_human_last
@@ -21,7 +21,7 @@
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobSteamgemTorso
-    Eyes: MobSteamgemEyes
+    Eyes: MobHumanoidEyes
     LArm: MobSteamgemLArm
     RArm: MobSteamgemRArm
     LHand: MobSteamgemLHand
@@ -30,33 +30,6 @@
     RLeg: MobSteamgemRLeg
     LFoot: MobSteamgemLFoot
     RFoot: MobSteamgemRFoot
-    Tail: MobHumanoidAnyMarking
-
-- type: markingPoints
-  id: MobSteamgemMarkingLimits
-  points:
-    Hair:
-      points: 1
-      required: false
-    FacialHair:
-      points: 1
-      required: false
-    Chest:
-      points: 2
-      required: false
-    Legs:
-      points: 2
-      required: false
-    Arms:
-      points: 2
-      required: false
-    Snout:
-      points: 1
-      required: false
-    Tail:
-      points: 1
-      required: true
-      defaultMarkings: [ SteamgemFuelTank ]
 
 - type: humanoidBaseSprite
   id: MobSteamgemHead
@@ -147,6 +120,28 @@
   baseSprite:
     sprite: Mobs/Species/Steamgem/parts.rsi
     state: eyes
+
+- type: markingPoints
+  id: MobSteamgemMarkingLimits
+  points:
+    Hair:
+      points: 1
+      required: false
+    FacialHair:
+      points: 1
+      required: false
+    Chest:
+      points: 2
+      required: false
+    Legs:
+      points: 2
+      required: false
+    Arms:
+      points: 2
+      required: false
+    Snout:
+      points: 1
+      required: false
 
 - type: entity
   parent: AppearanceHuman

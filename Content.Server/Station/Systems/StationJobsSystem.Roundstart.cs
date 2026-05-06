@@ -56,7 +56,11 @@ public sealed partial class StationJobsSystem
     /// </remarks>
     public Dictionary<NetUserId, (ProtoId<JobPrototype>?, EntityUid)> AssignJobs(Dictionary<NetUserId, HumanoidCharacterProfile> profiles, IReadOnlyList<EntityUid> stations, bool useRoundStartJobs = true)
     {
-        DebugTools.Assert(stations.Count > 0);
+        if (stations.Count == 0)
+        {
+            Log.Error("AssignJobs called with 0 stations! This should not happen. Map may be improperly configured.");
+            return new();
+        }
 
         InitializeRoundStart();
 

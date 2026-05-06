@@ -1,33 +1,7 @@
 - type: entity
-  parent:
-  - AppearanceSteamgem
-  - BaseSpeciesMobOrganic
+  parent: MobHuman
   id: MobSteamgem
   name: Steamgem
   components:
-  - type: Butcherable
-    spawned:
-    - id: FoodMeatHuman # TODO: Steamgem meat?
-      amount: 5
-  - type: Steamgem
-  - type: SteamgemReservoir
-    water: 1000
-    maxWater: 1000
-  - type: Damageable
-    damageModifierSet: Steamgem
-  - type: MeleeWeapon
-    soundHit:
-      collection: Punch
-    angle: 30
-    animation: WeaponArcFist
-    attackRate: 1
-    damage:
-      types:
-        Blunt: 8
-        Slash: 4
-        Piercing: 2
-  - type: Flammable
-    fireResistance: 5
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 2.5
-    baseSprintSpeed: 4.5
+  - type: HumanoidAppearance
+    species: Steamgem
