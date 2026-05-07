@@ -114,8 +114,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         if (sexMorph)
             protoId = HumanoidVisualLayersExtension.GetSexMorph(key, component.Sex, protoId);
 
-        var proto = _prototypeManager.Index<HumanoidSpeciesSpriteLayer>(protoId);
-        component.BaseLayers[key] = proto;
+        if (!_prototypeManager.TryIndex<HumanoidSpeciesSpriteLayer>(protoId, out var proto))
+            return;
 
         if (proto.MatchSkin)
             layer.Color = component.SkinColor.WithAlpha(proto.LayerAlpha);
@@ -347,11 +347,25 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         var sprite = entity.Comp2;
 
         if (!_sprite.LayerMapTryGet((entity.Owner, sprite), markingPrototype.BodyPart, out var targetLayer, false))
+        {
+            Log.Debug($"[TAIL_DEBUG] Failed to find target layer {markingPrototype.BodyPart} for marking {markingPrototype.ID}");
             return;
+        }
+
+        Log.Debug($"[TAIL_DEBUG] Applying marking {markingPrototype.ID} to layer {markingPrototype.BodyPart} at index {targetLayer}");
 
         visible &= !IsHidden(humanoid, markingPrototype.BodyPart);
+        
+        if (!visible)
+            Log.Debug($"[TAIL_DEBUG] Marking {markingPrototype.ID} is HIDDEN by IsHidden");
+
         visible &= humanoid.BaseLayers.TryGetValue(markingPrototype.BodyPart, out var setting)
            && setting.AllowsMarkings;
+
+        if (setting == null)
+            Log.Debug($"[TAIL_DEBUG] Marking {markingPrototype.ID} has NO setting in BaseLayers");
+        else if (!setting.AllowsMarkings)
+            Log.Debug($"[TAIL_DEBUG] Marking {markingPrototype.ID} is DISALLOWED by AllowsMarkings");
 
         for (var j = 0; j < markingPrototype.Sprites.Count; j++)
         {

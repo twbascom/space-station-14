@@ -1,6 +1,6 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
-using Content.Server.Species.Components;
+using Content.Shared.Species.Components;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Chat;
 using Content.Shared.Movement.Systems;
@@ -63,7 +63,7 @@ namespace Content.Server.Species
 
             if (args.Emote.ID == "Scream")
             {
-                _audio.PlayPvs(new SoundPathSpecifier("/Textures/Mobs/Species/Steamgem/sfx/scream.ogg"), uid);
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Mobs/Species/Steamgem/scream.ogg"), uid);
                 args.Handled = true;
             }
         }
@@ -209,7 +209,7 @@ namespace Content.Server.Species
                 return;
 
             speech.LastTimeSoundPlayed = currentTime;
-            _audio.PlayPvs(new SoundPathSpecifier("/Textures/Mobs/Species/Steamgem/sfx/voice.ogg"), uid, AudioParams.Default.WithVolume(-3f));
+            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Mobs/Species/Steamgem/voice.ogg"), uid, AudioParams.Default.WithVolume(-3f));
         }
 
         private void OnSpeakAttempt(EntityUid uid, SteamgemComponent component, SpeakAttemptEvent args)

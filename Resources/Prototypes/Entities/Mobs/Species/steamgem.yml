@@ -5,3 +5,5 @@
   components:
   - type: HumanoidAppearance
     species: Steamgem
+  - type: Steamgem
+  - type: SteamgemReservoir

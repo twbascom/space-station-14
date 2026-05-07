@@ -44,7 +44,7 @@ namespace Content.Shared.Atmos.Components
         [DataField]
         public bool CanResistFire { get; private set; } = false;
 
-        [DataField(required: true)]
+        [DataField]
         [ViewVariables(VVAccess.ReadWrite)]
         public DamageSpecifier Damage = new(); // Empty by default, we don't want any funny NREs.
 

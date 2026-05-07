@@ -4,6 +4,7 @@ using Content.Server.Station.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using System.Linq;
 using System.Numerics;
 
 namespace Content.Server.Spawners.EntitySystems;
@@ -12,6 +13,7 @@ public sealed class SpawnPointSystem : EntitySystem
 {
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
     [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
 
@@ -75,6 +77,18 @@ public sealed class SpawnPointSystem : EntitySystem
         }
 
         var spawnLoc = _random.Pick(possiblePositions);
+
+        // Ensure we aren't spawning into the void (Map 0)
+        var mapId = spawnLoc.GetMapId(EntityManager);
+        if (mapId == MapId.Nullspace)
+        {
+            Log.Error("Spawn location resolved to Nullspace! Redirecting to default map.");
+            var defaultMap = _mapManager.GetAllMapIds().FirstOrDefault(m => m != MapId.Nullspace);
+            if (defaultMap != MapId.Nullspace)
+            {
+                spawnLoc = new EntityCoordinates(_mapManager.GetMapEntityId(defaultMap), Vector2.Zero);
+            }
+        }
 
         args.SpawnResult = _stationSpawning.SpawnPlayerMob(
             spawnLoc,
