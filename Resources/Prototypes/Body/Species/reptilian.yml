@@ -62,7 +62,6 @@
     - Snout
     - HeadTop
     - HeadSide
-    - Tail
     undergarmentBottom: UndergarmentBottomBoxersReptilian
 
 - type: entity
