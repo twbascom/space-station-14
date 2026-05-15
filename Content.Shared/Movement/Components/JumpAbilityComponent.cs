@@ -61,6 +61,25 @@ public sealed partial class JumpAbilityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public LocId? JumpFailedPopup = "jump-ability-failure";
+
+    /// <summary>
+    /// Whether this entity should ignore mob collisions during the jump.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Unstoppable = false;
+}
+
+/// <summary>
+/// Added to an entity during a jump if it should be unstoppable.
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class UnstoppableLeaperComponent : Component
+{
+    [DataField, AutoNetworkedField]
+    public int OldMask;
+
+    [DataField, AutoNetworkedField]
+    public int OldLayer;
 }
 
 public sealed partial class GravityJumpEvent : InstantActionEvent;

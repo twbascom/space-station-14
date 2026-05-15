@@ -1,0 +1,156 @@
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceElika
+  name: elika appearance
+  components:
+  - type: Inventory
+    speciesId: elika
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganElikaTorso
+        - id: OrganElikaHead
+        - id: OrganElikaArmLeft
+        - id: OrganElikaArmRight
+        - id: OrganElikaHandRight
+        - id: OrganElikaHandLeft
+        - id: OrganElikaLegLeft
+        - id: OrganElikaLegRight
+        - id: OrganElikaFootLeft
+        - id: OrganElikaFootRight
+        - id: OrganElikaBrain
+        - id: OrganElikaEyes
+        - id: OrganElikaTongue
+        - id: OrganElikaAppendix
+        - id: OrganElikaEars
+        - id: OrganElikaLungs
+        - id: OrganElikaHeart
+        - id: OrganElikaStomach
+        - id: OrganElikaLiver
+        - id: OrganElikaKidneys
+  - type: HumanoidAppearance
+    species: Elika
+
+- type: entity
+  parent:
+  - AppearanceElika
+  - BaseSpeciesMobOrganic
+  id: MobElika
+  name: Elika
+  components:
+  - type: JumpAbilityComponent
+    Action: ActionElikaFlight
+    JumpDistance: 8
+    JumpThrowSpeed: 12
+    CanCollide: false
+    Unstoppable: true
+
+- type: entity
+  parent: OrganBase
+  id: OrganElika
+  abstract: true
+  suffix: elika
+
+- type: entity
+  id: OrganElikaMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ] # Use human metabolism for now unless specified
+
+- type: entity
+  parent: OrganElika
+  id: OrganElikaInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Elika/organs.rsi
+
+- type: entity
+  parent: OrganElika
+  id: OrganElikaExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Elika/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorso, OrganElikaExternal ]
+  id: OrganElikaTorso
+
+- type: entity
+  parent: [ OrganBaseHead, OrganElikaExternal ]
+  id: OrganElikaHead
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganElikaExternal ]
+  id: OrganElikaArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganElikaExternal ]
+  id: OrganElikaArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganElikaExternal ]
+  id: OrganElikaHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganElikaExternal ]
+  id: OrganElikaHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganElikaExternal ]
+  id: OrganElikaLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganElikaExternal ]
+  id: OrganElikaLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganElikaExternal ]
+  id: OrganElikaFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganElikaExternal ]
+  id: OrganElikaFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganElikaInternal ]
+  id: OrganElikaBrain
+
+- type: entity
+  parent: [ OrganBaseEyes, OrganElikaInternal ]
+  id: OrganElikaEyes
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganElikaInternal ]
+  id: OrganElikaTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganElikaInternal ]
+  id: OrganElikaAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganElikaInternal ]
+  id: OrganElikaEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganElikaInternal, OrganElikaMetabolizer ]
+  id: OrganElikaLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganElikaInternal, OrganElikaMetabolizer ]
+  id: OrganElikaHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganElikaInternal, OrganElikaMetabolizer ]
+  id: OrganElikaStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganElikaInternal, OrganElikaMetabolizer ]
+  id: OrganElikaLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganElikaInternal, OrganElikaMetabolizer ]
+  id: OrganElikaKidneys

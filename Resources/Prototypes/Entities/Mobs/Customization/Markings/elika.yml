@@ -1,0 +1,26 @@
+- type: marking
+  id: ElikaWings
+  bodyPart: Chest
+  markingCategory: Wings
+  speciesRestriction: [Elika]
+  sprites:
+  - sprite: Mobs/Customization/elika_wings.rsi
+    state: wings
+
+- type: marking
+  id: ElikaFloof
+  bodyPart: Head
+  markingCategory: HeadFloof
+  speciesRestriction: [Elika]
+  sprites:
+  - sprite: Mobs/Customization/elika_floof.rsi
+    state: floof
+
+- type: marking
+  id: ElikaEars
+  bodyPart: Head
+  markingCategory: Ears
+  speciesRestriction: [Elika]
+  sprites:
+  - sprite: Mobs/Customization/elika_ears.rsi
+    state: ears

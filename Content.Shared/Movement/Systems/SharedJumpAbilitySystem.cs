@@ -7,8 +7,12 @@ using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
+using Content.Shared.Physics;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared.Movement.Systems;
 
@@ -21,6 +25,8 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly FixtureSystem _fixtures = default!;
 
     public override void Initialize()
     {
@@ -34,6 +40,10 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
         SubscribeLocalEvent<ActiveLeaperComponent, StartCollideEvent>(OnLeaperCollide);
         SubscribeLocalEvent<ActiveLeaperComponent, LandEvent>(OnLeaperLand);
         SubscribeLocalEvent<ActiveLeaperComponent, StopThrowEvent>(OnLeaperStopThrow);
+        SubscribeLocalEvent<UnstoppableLeaperComponent, LandEvent>(OnUnstoppableLand);
+        SubscribeLocalEvent<UnstoppableLeaperComponent, StopThrowEvent>(OnUnstoppableStopThrow);
+
+        SubscribeLocalEvent<UnstoppableLeaperComponent, ComponentShutdown>(OnUnstoppableShutdown);
 
         SubscribeLocalEvent<JumpAbilityComponent, CloningEvent>(OnClone);
     }
@@ -53,6 +63,9 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
 
     private void OnLeaperCollide(Entity<ActiveLeaperComponent> entity, ref StartCollideEvent args)
     {
+        if (HasComp<UnstoppableLeaperComponent>(entity))
+            return;
+
         _stun.TryKnockdown(entity.Owner, entity.Comp.KnockdownDuration, force: true);
         RemCompDeferred<ActiveLeaperComponent>(entity);
     }
@@ -65,6 +78,16 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
     private void OnLeaperStopThrow(Entity<ActiveLeaperComponent> entity, ref StopThrowEvent args)
     {
         RemCompDeferred<ActiveLeaperComponent>(entity);
+    }
+
+    private void OnUnstoppableLand(Entity<UnstoppableLeaperComponent> entity, ref LandEvent args)
+    {
+        RemCompDeferred<UnstoppableLeaperComponent>(entity);
+    }
+
+    private void OnUnstoppableStopThrow(Entity<UnstoppableLeaperComponent> entity, ref StopThrowEvent args)
+    {
+        RemCompDeferred<UnstoppableLeaperComponent>(entity);
     }
 
     private void OnGravityJump(Entity<JumpAbilityComponent> entity, ref GravityJumpEvent args)
@@ -91,7 +114,33 @@ public sealed partial class SharedJumpAbilitySystem : EntitySystem
             Dirty(entity.Owner, leaperComp);
         }
 
+        if (entity.Comp.Unstoppable && TryComp<PhysicsComponent>(args.Performer, out var physics) && TryComp<FixturesComponent>(args.Performer, out var fixtures))
+        {
+            var unstoppable = EnsureComp<UnstoppableLeaperComponent>(args.Performer);
+            unstoppable.OldLayer = physics.CollisionLayer;
+            unstoppable.OldMask = physics.CollisionMask;
+
+            foreach (var (id, fixture) in fixtures.Fixtures)
+            {
+                _physics.SetCollisionLayer(args.Performer, id, fixture, (int) CollisionGroup.FlyingMobLayer, manager: fixtures, body: physics);
+                _physics.SetCollisionMask(args.Performer, id, fixture, (int) CollisionGroup.FlyingMobMask, manager: fixtures, body: physics);
+            }
+            Dirty(args.Performer, unstoppable);
+        }
+
         args.Handled = true;
+    }
+
+    private void OnUnstoppableShutdown(Entity<UnstoppableLeaperComponent> entity, ref ComponentShutdown args)
+    {
+        if (!TryComp<PhysicsComponent>(entity, out var physics) || !TryComp<FixturesComponent>(entity, out var fixtures))
+            return;
+
+        foreach (var (id, fixture) in fixtures.Fixtures)
+        {
+            _physics.SetCollisionLayer(entity, id, fixture, entity.Comp.OldLayer, manager: fixtures, body: physics);
+            _physics.SetCollisionMask(entity, id, fixture, entity.Comp.OldMask, manager: fixtures, body: physics);
+        }
     }
 
     private void OnClone(Entity<JumpAbilityComponent> ent, ref CloningEvent args)
