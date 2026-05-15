@@ -39,7 +39,7 @@
   id: MobElika
   name: Elika
   components:
-  - type: JumpAbilityComponent
+  - type: JumpAbility
     Action: ActionElikaFlight
     JumpDistance: 8
     JumpThrowSpeed: 12

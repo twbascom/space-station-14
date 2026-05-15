@@ -1,6 +1,7 @@
 using Content.Shared.Actions;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
