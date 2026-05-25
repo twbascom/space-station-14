@@ -21,7 +21,7 @@
     Chest: MobElikaTorso
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
-    Eyes: MobHumanoidEyes
+    Eyes: MobElikaEyes
     HeadTop: MobHumanoidAnyMarking
     LArm: MobElikaLArm
     RArm: MobElikaRArm
@@ -76,6 +76,13 @@
       points: 1
       required: true
       defaultMarkings: [ ElikaWings ]
+
+- type: humanoidBaseSprite
+  id: MobElikaEyes
+  baseSprite:
+    sprite: Mobs/Customization/eyes.rsi
+    state: eyes
+  matchSkin: false
 
 - type: humanoidBaseSprite
   id: MobElikaHead
