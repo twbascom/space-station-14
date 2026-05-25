@@ -46,7 +46,9 @@
       required: false
     Snout:
       points: 1
-      required: false
+      required: true
+      defaultMarkings: [ ElikaSnout ]
+
     HeadTop:
       points: 1
       required: true

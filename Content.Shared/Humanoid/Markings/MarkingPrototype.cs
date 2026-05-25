@@ -1,3 +1,4 @@
+using System.Numerics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -8,6 +9,9 @@ namespace Content.Shared.Humanoid.Markings
     {
         [IdDataField]
         public string ID { get; private set; } = "uwu";
+
+        [DataField("offset")]
+        public Vector2 Offset { get; private set; } = Vector2.Zero;
 
         public string Name { get; private set; } = default!;
 

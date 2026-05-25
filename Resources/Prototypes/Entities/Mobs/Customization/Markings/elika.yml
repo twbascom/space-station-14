@@ -3,24 +3,37 @@
   bodyPart: Tail
   markingCategory: Wings
   speciesRestriction: [Elika]
+  offset: 0, 0
   sprites:
   - sprite: Mobs/Customization/elika_wings.rsi
     state: wings
 
 - type: marking
   id: ElikaFloof
-  bodyPart: Head
+  bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Elika]
+  offset: 0, 0
   sprites:
   - sprite: Mobs/Customization/elika_floof.rsi
     state: floof
 
 - type: marking
   id: ElikaEars
-  bodyPart: Head
+  bodyPart: HeadSide
   markingCategory: HeadSide
   speciesRestriction: [Elika]
+  offset: 0, 0
   sprites:
   - sprite: Mobs/Customization/elika_ears.rsi
     state: ears
+
+- type: marking
+  id: ElikaSnout
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Elika]
+  sprites:
+  - sprite: Mobs/Species/Elika/parts.rsi
+    state: snout
+

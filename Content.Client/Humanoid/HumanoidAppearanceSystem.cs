@@ -1,3 +1,4 @@
+using System.Numerics;
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
@@ -116,6 +117,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
         if (!_prototypeManager.TryIndex<HumanoidSpeciesSpriteLayer>(protoId, out var proto))
             return;
+
+        component.BaseLayers[key] = proto;
 
         if (proto.MatchSkin)
             layer.Color = component.SkinColor.WithAlpha(proto.LayerAlpha);
@@ -384,6 +387,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             }
 
             _sprite.LayerSetVisible((entity.Owner, sprite), layerId, visible);
+            _sprite.LayerSetOffset((entity.Owner, sprite), layerId, markingPrototype.Offset);
 
             if (!visible || setting == null) // this is kinda implied
                 continue;
