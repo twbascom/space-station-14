@@ -3,7 +3,7 @@
   bodyPart: Tail
   markingCategory: Wings
   speciesRestriction: [Elika]
-  offset: 0, 0.625
+  offset: 0, 0
   sprites:
   - sprite: Mobs/Customization/elika_wings.rsi
     state: wings
