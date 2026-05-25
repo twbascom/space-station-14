@@ -457,8 +457,8 @@
 - type: entity
   parent: BaseAction
   id: ActionElikaFlight
-  name: Flight
-  description: Use your wings to fly a long distance.
+  name: action-name-elika-flight
+  description: action-description-elika-flight
   components:
   - type: Action
     useDelay: 6

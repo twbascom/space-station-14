@@ -17,4 +17,4 @@ species-name-namiod = Namiod
 ## Misc species things
 
 snail-hurt-by-salt-popup = The salty solution burns like acid!
-species-name-elika = Elika 
+species-name-elika = Elika

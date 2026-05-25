@@ -1,6 +1,6 @@
 - type: marking
   id: ElikaWings
-  bodyPart: Chest
+  bodyPart: Tail
   markingCategory: Wings
   speciesRestriction: [Elika]
   sprites:
@@ -10,7 +10,7 @@
 - type: marking
   id: ElikaFloof
   bodyPart: Head
-  markingCategory: HeadFloof
+  markingCategory: HeadTop
   speciesRestriction: [Elika]
   sprites:
   - sprite: Mobs/Customization/elika_floof.rsi
@@ -19,7 +19,7 @@
 - type: marking
   id: ElikaEars
   bodyPart: Head
-  markingCategory: Ears
+  markingCategory: HeadSide
   speciesRestriction: [Elika]
   sprites:
   - sprite: Mobs/Customization/elika_ears.rsi
