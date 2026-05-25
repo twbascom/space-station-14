@@ -80,7 +80,7 @@
 - type: humanoidBaseSprite
   id: MobElikaEyes
   baseSprite:
-    sprite: Mobs/Customization/eyes.rsi
+    sprite: Mobs/Species/Elika/eyes.rsi
     state: eyes
   matchSkin: false
 
