@@ -1,8 +1,8 @@
-﻿[game]
+[game]
 # Straight in-game baby
-lobbyenabled = false
+lobbyenabled = true
 # Dev map for faster loading & convenience
-map = "Dev"
+map = "Bagel"
 role_timers = false
 admin_job_tracking = true
 role_loadout_timers = false

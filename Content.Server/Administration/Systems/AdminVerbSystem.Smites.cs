@@ -95,6 +95,7 @@ public sealed partial class AdminVerbSystem
     [Dependency] private readonly SuperBonkSystem _superBonkSystem = default!;
     [Dependency] private readonly SlipperySystem _slipperySystem = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly Robust.Shared.Audio.Systems.SharedAudioSystem _audio = default!;
 
     private readonly EntProtoId _actionViewLawsProtoId = "ActionViewLaws";
     private readonly ProtoId<SiliconLawsetPrototype> _crewsimovLawset = "Crewsimov";
@@ -797,6 +798,35 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", headstandName, Loc.GetString("admin-smite-headstand-description"))
         };
         args.Verbs.Add(headstand);
+
+        if (TryComp<PhysicsComponent>(args.Target, out var superSpinPhysics))
+        {
+            var superSpinName = "super spin";
+            Verb superSpin = new()
+            {
+                Text = superSpinName,
+                Category = VerbCategory.Smite,
+                Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/refresh.svg.192dpi.png")),
+                Act = () =>
+                {
+                    var xform = Transform(args.Target);
+                    var fixtures = Comp<FixturesComponent>(args.Target);
+                    _transformSystem.Unanchor(args.Target, xform);
+                    _physics.SetBodyType(args.Target, BodyType.Dynamic, manager: fixtures, body: superSpinPhysics);
+                    _physics.SetBodyStatus(args.Target, superSpinPhysics, BodyStatus.InAir);
+                    _physics.WakeBody(args.Target, manager: fixtures, body: superSpinPhysics);
+
+                    _physics.SetAngularVelocity(args.Target, MathF.PI * 30, manager: fixtures, body: superSpinPhysics);
+                    _physics.SetLinearDamping(args.Target, superSpinPhysics, 0.5f);
+                    _physics.SetAngularDamping(args.Target, superSpinPhysics, 0f);
+
+                    _audio.PlayPvs(new Robust.Shared.Audio.SoundPathSpecifier("/Audio/Effects/slip.ogg"), args.Target);
+                },
+                Impact = LogImpact.Extreme,
+                Message = "super spin: Spins the target uncontrollably on the spot!"
+            };
+            args.Verbs.Add(superSpin);
+        }
 
         var zoomInName = Loc.GetString("admin-smite-zoom-in-name").ToLowerInvariant();
         Verb zoomIn = new()

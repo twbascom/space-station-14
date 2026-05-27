@@ -7,6 +7,9 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Tag
+    tags:
+    - Apc
   - type: StationAiWhitelist
   - type: AmbientOnPowered
   - type: AmbientSound

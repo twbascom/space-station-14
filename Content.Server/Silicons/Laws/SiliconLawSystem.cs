@@ -291,6 +291,18 @@ public sealed class SiliconLawSystem : SharedSiliconLawSystem
         NotifyLawsChanged(target, cue);
     }
 
+    /// <summary>
+    /// Set the lawset prototype of a silicon provider.
+    /// </summary>
+    public void SetProviderLaws(EntityUid providerUid, ProtoId<SiliconLawsetPrototype> lawsetId, SiliconLawProviderComponent? provider = null)
+    {
+        if (!Resolve(providerUid, ref provider, false))
+            return;
+
+        provider.Laws = lawsetId;
+        provider.Lawset = null;
+    }
+
     protected override void OnUpdaterInsert(Entity<SiliconLawUpdaterComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
         // TODO: Prediction dump this

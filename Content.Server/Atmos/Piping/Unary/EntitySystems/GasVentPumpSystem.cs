@@ -28,6 +28,7 @@ using Content.Shared.Verbs;
 using JetBrains.Annotations;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Server.Silicons.StationAi;
 
 namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 {
@@ -234,6 +235,14 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
 
                     return;
                 case DeviceNetworkConstants.CmdSetState:
+                    if (EntityManager.TryGetComponent<MalfAiOverriddenComponent>(uid, out var overrideComp))
+                    {
+                        if (_timing.CurTime < overrideComp.ExpiresAt)
+                            return;
+                        else
+                            EntityManager.RemoveComponent<MalfAiOverriddenComponent>(uid);
+                    }
+
                     if (!args.Data.TryGetValue(DeviceNetworkConstants.CmdSetState, out GasVentPumpData? setData))
                         break;
 
@@ -309,7 +318,7 @@ namespace Content.Server.Atmos.Piping.Unary.EntitySystems
             }
         }
 
-        private void UpdateState(EntityUid uid, GasVentPumpComponent vent, AppearanceComponent? appearance = null)
+        public void UpdateState(EntityUid uid, GasVentPumpComponent vent, AppearanceComponent? appearance = null)
         {
             if (!Resolve(uid, ref appearance, false))
                 return;

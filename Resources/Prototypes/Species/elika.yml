@@ -23,10 +23,10 @@
     Tail: MobHumanoidAnyMarking
     Eyes: MobElikaEyes
     HeadTop: MobHumanoidAnyMarking
-    LArm: MobElikaLArm
-    RArm: MobElikaRArm
-    LHand: MobElikaLHand
-    RHand: MobElikaRHand
+    LArm: MobHumanoidAnyMarking
+    RArm: MobHumanoidAnyMarking
+    LHand: MobHumanoidAnyMarking
+    RHand: MobHumanoidAnyMarking
     LLeg: MobElikaLLeg
     RLeg: MobElikaRLeg
     LFoot: MobElikaLFoot
@@ -44,11 +44,6 @@
     FacialHair:
       points: 1
       required: false
-    Snout:
-      points: 1
-      required: true
-      defaultMarkings: [ ElikaSnout ]
-
     HeadTop:
       points: 1
       required: true
@@ -83,24 +78,28 @@
     sprite: Mobs/Species/Elika/eyes.rsi
     state: eyes
   matchSkin: false
+  offset: 0, 0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaHead
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: head_m
+  offset: 0, 0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaHeadMale
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: head_m
+  offset: 0, 0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaHeadFemale
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: head_f
+  offset: 0, 0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaTorso
@@ -125,6 +124,7 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: l_leg
+  offset: 0, -0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaLArm
@@ -143,12 +143,14 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: l_foot
+  offset: 0, -0.34375
 
 - type: humanoidBaseSprite
   id: MobElikaRLeg
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: r_leg
+  offset: 0, -0.1875
 
 - type: humanoidBaseSprite
   id: MobElikaRArm
@@ -167,3 +169,4 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: r_foot
+  offset: 0, -0.34375

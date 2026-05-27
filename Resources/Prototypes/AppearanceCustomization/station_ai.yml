@@ -17,6 +17,7 @@
   name: station-ai-customization-hologram
   category: Hologram
   protoIds:
+  - StationAiHologramYourCharacter
   - StationAiHologramFemale
   - StationAiHologramMale
   - StationAiHologramFace
@@ -42,6 +43,18 @@
       state: ai
     Dead:
       sprite: Mobs/Silicon/station_ai.rsi
+      state: ai_dead
+
+- type: stationAiCustomization
+  parent: StationAiIconBase
+  id: StationAiIconMalf
+  name: station-ai-icon-malf
+  layerData:
+    Occupied:
+      sprite: Mobs/Silicon/malf_ai.rsi
+      state: ai
+    Dead:
+      sprite: Mobs/Silicon/malf_ai.rsi
       state: ai_dead
 
 - type: stationAiCustomization
@@ -161,3 +174,12 @@
     Hologram:
       sprite: Mobs/Silicon/holograms.rsi
       state: ai_dog
+
+- type: stationAiCustomization
+  id: StationAiHologramYourCharacter
+  name: station-ai-hologram-your-character
+  previewKey: Hologram
+  layerData:
+    Hologram:
+      sprite: Mobs/Silicon/holograms.rsi
+      state: ai_face

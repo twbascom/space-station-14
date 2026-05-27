@@ -32,11 +32,22 @@ using Content.Shared.StationAi;
 using Content.Shared.Turrets;
 using Content.Shared.Weapons.Ranged.Events;
 using Robust.Server.Containers;
+using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using static Content.Server.Chat.Systems.ChatSystem;
+using Content.Server.Preferences.Managers;
+using Content.Server.Humanoid;
+using Content.Server.Station.Systems;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
+using Content.Shared.Preferences;
+using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Roles;
+using Content.Shared.Holopad;
 
 namespace Content.Server.Silicons.StationAi;
 
@@ -60,6 +71,9 @@ public sealed class StationAiSystem : SharedStationAiSystem
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly IServerPreferencesManager _prefsManager = default!;
+    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
+    [Dependency] private readonly StationSpawningSystem _stationSpawning = default!;
 
     private readonly HashSet<Entity<StationAiCoreComponent>> _stationAiCores = new();
 
@@ -89,6 +103,9 @@ public sealed class StationAiSystem : SharedStationAiSystem
 
         SubscribeLocalEvent<ExpandICChatRecipientsEvent>(OnExpandICChatRecipients);
         SubscribeLocalEvent<StationAiTurretComponent, AmmoShotEvent>(OnAmmoShot);
+
+        SubscribeLocalEvent<HolographicAvatarComponent, MindAddedMessage>(OnServerMindAdded);
+        SubscribeLocalEvent<HolographicAvatarComponent, PlayerAttachedEvent>(OnServerPlayerAttached);
     }
 
     private void AfterConstructionChangeEntity(Entity<StationAiCoreComponent> ent, ref AfterConstructionChangeEntityEvent args)
@@ -475,5 +492,71 @@ public sealed class StationAiSystem : SharedStationAiSystem
         }
 
         return hashSet;
+    }
+
+    protected override void OnStationAiCustomization(Entity<StationAiCoreComponent> entity, ref StationAiCustomizationMessage args)
+    {
+        base.OnStationAiCustomization(entity, ref args);
+
+        if (args.CustomizationProtoId != "StationAiHologramYourCharacter")
+            return;
+
+        if (!TryGetHeld((entity.Owner, entity.Comp), out var held))
+            return;
+
+        EnsureCharacterDummy(held.Value);
+    }
+
+    private void OnServerMindAdded(EntityUid uid, HolographicAvatarComponent component, MindAddedMessage args)
+    {
+        EnsureCharacterDummy(uid);
+    }
+
+    private void OnServerPlayerAttached(EntityUid uid, HolographicAvatarComponent component, PlayerAttachedEvent args)
+    {
+        EnsureCharacterDummy(uid);
+    }
+
+    private void EnsureCharacterDummy(EntityUid brain)
+    {
+        var dummyContainer = _container.EnsureContainer<ContainerSlot>(brain, "station_ai_character_dummy");
+        dummyContainer.ShowContents = true;
+        if (dummyContainer.ContainedEntities.Count > 0)
+            return; // Already has it!
+
+        NetUserId? userId = null;
+        if (_mind.TryGetMind(brain, out var mindId, out var mind) && mind.UserId != null)
+        {
+            userId = mind.UserId.Value;
+        }
+        else if (TryComp<ActorComponent>(brain, out var actor))
+        {
+            userId = actor.PlayerSession.UserId;
+        }
+
+        if (userId != null)
+        {
+            var prefs = _prefsManager.GetPreferences(userId.Value);
+            if (prefs.SelectedCharacter is HumanoidCharacterProfile profile)
+            {
+                var speciesId = profile.Species;
+                if (_proto.TryIndex<SpeciesPrototype>(speciesId, out var species))
+                {
+                    var coordinates = Transform(brain).Coordinates;
+                    var dummy = Spawn(species.DollPrototype, coordinates);
+                    
+                    // Load profile
+                    _humanoidSystem.LoadProfile(dummy, profile);
+                    
+                    // Equip default assistant clothes so they aren't naked in the hologram
+                    if (_proto.TryIndex<StartingGearPrototype>("StartingGearAssistant", out var assistantGear))
+                    {
+                        _stationSpawning.EquipStartingGear(dummy, assistantGear, raiseEvent: false);
+                    }
+                    
+                    _container.Insert(dummy, dummyContainer);
+                }
+            }
+        }
     }
 }

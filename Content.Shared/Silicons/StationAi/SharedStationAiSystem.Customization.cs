@@ -23,12 +23,15 @@ public abstract partial class SharedStationAiSystem
         SubscribeLocalEvent<StationAiCustomizationComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
-    private void OnStationAiCustomization(Entity<StationAiCoreComponent> entity, ref StationAiCustomizationMessage args)
+    protected virtual void OnStationAiCustomization(Entity<StationAiCoreComponent> entity, ref StationAiCustomizationMessage args)
     {
         if (!_protoManager.Resolve(args.GroupProtoId, out var groupPrototype) || !_protoManager.Resolve(args.CustomizationProtoId, out var customizationProto))
             return;
 
         if (!TryGetHeld((entity, entity.Comp), out var held))
+            return;
+
+        if (HasComp<MalfAiBrainComponent>(held))
             return;
 
         if (!TryComp<StationAiCustomizationComponent>(held, out var stationAiCustomization))
@@ -97,10 +100,23 @@ public abstract partial class SharedStationAiSystem
         if (!_protoManager.Resolve(protoId, out var prototype))
             return;
 
-        if (!prototype.LayerData.TryGetValue(StationAiState.Hologram.ToString(), out var layerData))
-            return;
-
-        avatar.LayerData = [layerData];
+        if (protoId == "StationAiHologramYourCharacter")
+        {
+            avatar.UseCharacterAppearance = true;
+            avatar.LayerData = null;
+        }
+        else
+        {
+            avatar.UseCharacterAppearance = false;
+            if (prototype.LayerData.TryGetValue(StationAiState.Hologram.ToString(), out var layerData))
+            {
+                avatar.LayerData = [layerData];
+            }
+            else
+            {
+                avatar.LayerData = null;
+            }
+        }
         Dirty(entity, avatar);
     }
 

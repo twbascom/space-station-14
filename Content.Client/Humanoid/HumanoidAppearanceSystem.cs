@@ -125,6 +125,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
         if (proto.BaseSprite != null)
             _sprite.LayerSetSprite((entity.Owner, sprite), layerIndex, proto.BaseSprite);
+
+        _sprite.LayerSetOffset((entity.Owner, sprite), layerIndex, proto.Offset);
     }
 
     /// <summary>

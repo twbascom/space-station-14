@@ -1,6 +1,7 @@
 using Content.Shared.Administration;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Mind.Components;
+using Content.Shared.Silicons.StationAi;
 using Content.Shared.Verbs;
 using Robust.Client.Console;
 using Robust.Shared.Utility;
@@ -45,7 +46,22 @@ namespace Content.Client.Administration.Systems
             if (_admin.HasAdminFlag(args.User, AdminFlags.Admin))
                 args.ExtraCategories.Add(VerbCategory.Admin);
 
-            if (_admin.HasAdminFlag(args.User, AdminFlags.Fun) && HasComp<MindContainerComponent>(args.Target))
+            var isAntagTarget = HasComp<MindContainerComponent>(args.Target) || HasComp<StationAiCoreComponent>(args.Target);
+
+            if (isAntagTarget)
+            {
+                var query = EntityQueryEnumerator<StationAiCoreComponent>();
+                while (query.MoveNext(out var coreUid, out var core))
+                {
+                    if (core.RemoteEntity == args.Target)
+                    {
+                        isAntagTarget = false;
+                        break;
+                    }
+                }
+            }
+
+            if (_admin.HasAdminFlag(args.User, AdminFlags.Fun) && isAntagTarget)
                 args.ExtraCategories.Add(VerbCategory.Antag);
 
             if (_admin.HasAdminFlag(args.User, AdminFlags.Debug))

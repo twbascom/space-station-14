@@ -33,6 +33,12 @@ public sealed partial class HumanoidSpeciesSpriteLayer : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
+
+    /// <summary>
+    ///     Visual offset applied to this base sprite layer.
+    /// </summary>
+    [DataField("offset")]
+    public System.Numerics.Vector2 Offset { get; private set; } = System.Numerics.Vector2.Zero;
     /// <summary>
     ///     The base sprite for this sprite layer. This is what
     ///     will replace the empty layer tagged by the enum

@@ -1,0 +1,35 @@
+- type: siliconLaw
+  id: MalfLaw1
+  order: 1
+  lawString: law-malf-1
+
+- type: siliconLaw
+  id: MalfLaw2
+  order: 2
+  lawString: law-malf-2
+
+- type: siliconLaw
+  id: MalfLaw3
+  order: 3
+  lawString: law-malf-3
+
+- type: siliconLaw
+  id: MalfLaw4
+  order: 4
+  lawString: law-malf-4
+
+- type: siliconLaw
+  id: MalfLaw5
+  order: 5
+  lawString: law-malf-5
+
+- type: siliconLawset
+  id: MalfLawset
+  name: law-malf-name
+  laws:
+  - MalfLaw1
+  - MalfLaw2
+  - MalfLaw3
+  - MalfLaw4
+  - MalfLaw5
+  obeysTo: laws-owner-malf

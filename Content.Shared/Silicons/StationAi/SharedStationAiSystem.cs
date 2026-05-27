@@ -96,6 +96,8 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         SubscribeLocalEvent<StationAiOverlayComponent, InRangeOverrideEvent>(OnAiInRange);
         SubscribeLocalEvent<StationAiOverlayComponent, MenuVisibilityEvent>(OnAiMenu);
 
+        SubscribeLocalEvent<MalfAiBrainComponent, AccessibleOverrideEvent>(OnMalfAiAccessible);
+
         SubscribeLocalEvent<StationAiHolderComponent, ComponentInit>(OnHolderInit);
         SubscribeLocalEvent<StationAiHolderComponent, ComponentRemove>(OnHolderRemove);
         SubscribeLocalEvent<StationAiHolderComponent, AfterInteractEvent>(OnHolderInteract);
@@ -163,6 +165,12 @@ public abstract partial class SharedStationAiSystem : EntitySystem
             !_containers.IsInSameOrTransparentContainer(ent.Owner, args.Target, otherContainer: targetContainer))
             return;
 
+        args.Accessible = true;
+    }
+
+    private void OnMalfAiAccessible(EntityUid uid, MalfAiBrainComponent component, ref AccessibleOverrideEvent args)
+    {
+        args.Handled = true;
         args.Accessible = true;
     }
 
@@ -544,7 +552,7 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         ClearEye(ent);
     }
 
-    protected void UpdateAppearance(Entity<StationAiHolderComponent?> entity)
+    public void UpdateAppearance(Entity<StationAiHolderComponent?> entity)
     {
         if (!Resolve(entity.Owner, ref entity.Comp, false))
             return;

@@ -1,0 +1,102 @@
+- type: storeCategory
+  id: MalfAbilities
+  name: store-category-malf-abilities
+  priority: 0
+
+- type: entity
+  id: StorePresetMalf
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-malf
+    categories:
+    - MalfAbilities
+    currencyWhitelist:
+    - SiliconMemory
+    balance:
+      SiliconMemory: 50
+
+- type: listing
+  id: MalfExplodeApc
+  name: malf-explode-apc-name
+  description: malf-explode-apc-desc
+  icon: { sprite: Interface/Misc/ai_hud.rsi, state: apc_hacked }
+  cost:
+    SiliconMemory: 15
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfExplodeApc
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: MalfOverrideVent
+  name: malf-override-vent-name
+  description: malf-override-vent-desc
+  icon: { sprite: Structures/Piping/Atmospherics/vent.rsi, state: vent_out }
+  cost:
+    SiliconMemory: 10
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfOverrideVent
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: MalfSiphonVent
+  name: malf-siphon-vent-name
+  description: malf-siphon-vent-desc
+  icon: { sprite: Structures/Piping/Atmospherics/vent.rsi, state: vent_in }
+  cost:
+    SiliconMemory: 10
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfSiphonVent
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: MalfImmovableRod
+  name: Syndicate Immovable Rod
+  description: Call in a Syndicate-engineered Immovable Rod to pass through the clicked location, causing total annihilation. (3 uses)
+  icon: { sprite: Objects/Fun/immovable_rod.rsi, state: icon }
+  cost:
+    SiliconMemory: 25
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfImmovableRod
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:MalfRollCoreCondition
+
+- type: listing
+  id: MalfRollCore
+  name: Roll Core
+  description: Spend 35 Silicon Memory to unlock the ability to roll your physical AI core to any tile. Buying this locks you out of purchasing the Syndicate Immovable Rod.
+  icon: Interface/Actions/malfunction.png
+  cost:
+    SiliconMemory: 35
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfRollCore
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: MalfBlackout
+  name: malf-blackout-name
+  description: malf-blackout-desc
+  icon: Interface/Actions/overloadlight.png
+  cost:
+    SiliconMemory: 30
+  categories:
+  - MalfAbilities
+  productAction: ActionMalfBlackout
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

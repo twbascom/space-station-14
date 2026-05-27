@@ -2,6 +2,7 @@ using Content.Shared.Chat.TypingIndicator;
 using Content.Shared.Holopad;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Linq;
@@ -15,6 +16,7 @@ public sealed class HolopadSystem : SharedHolopadSystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
 
     public override void Initialize()
     {
@@ -67,11 +69,34 @@ public sealed class HolopadSystem : SharedHolopadSystem
         {
             // Use the target's holographic avatar (if available)
             if (TryComp<HolographicAvatarComponent>(target, out var targetAvatar) &&
-                targetAvatar.LayerData != null)
+                (targetAvatar.LayerData != null || targetAvatar.UseCharacterAppearance))
             {
-                for (var i = 0; i < targetAvatar.LayerData.Length; i++)
+                if (targetAvatar.UseCharacterAppearance)
                 {
-                    _sprite.AddLayer((hologram, hologramSprite), targetAvatar.LayerData[i], i);
+                    // Copy from the character dummy entity if it exists!
+                    EntityUid? dummy = null;
+                    if (_containerSystem.TryGetContainer(target.Value, "station_ai_character_dummy", out var container) &&
+                        container.ContainedEntities.Count > 0)
+                    {
+                        dummy = container.ContainedEntities[0];
+                    }
+
+                    if (dummy != null && TryComp<SpriteComponent>(dummy.Value, out var dummySprite))
+                    {
+                        _sprite.CopySprite((dummy.Value, dummySprite), (hologram, hologramSprite));
+                    }
+                    else
+                    {
+                        // Fallback to target sprite
+                        _sprite.CopySprite((target.Value, targetSprite), (hologram, hologramSprite));
+                    }
+                }
+                else
+                {
+                    for (var i = 0; i < targetAvatar.LayerData!.Length; i++)
+                    {
+                        _sprite.AddLayer((hologram, hologramSprite), targetAvatar.LayerData[i], i);
+                    }
                 }
             }
 
@@ -98,6 +123,7 @@ public sealed class HolopadSystem : SharedHolopadSystem
         }
 
         // Override specific values
+        _sprite.SetVisible((hologram, hologramSprite), true);
         _sprite.SetColor((hologram, hologramSprite), Color.White);
         _sprite.SetOffset((hologram, hologramSprite), holopadhologram.Offset);
         _sprite.SetDrawDepth((hologram, hologramSprite), (int)DrawDepth.Mobs);

@@ -1,7 +1,10 @@
+using Content.Shared.Holopad;
 using Content.Shared.Silicons.StationAi;
+using Content.Shared.StationAi;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Containers;
 using Robust.Shared.Player;
 
 namespace Content.Client.Silicons.StationAi;
@@ -26,6 +29,19 @@ public sealed partial class StationAiSystem : SharedStationAiSystem
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentInit>(OnAiOverlayInit);
         SubscribeLocalEvent<StationAiOverlayComponent, ComponentRemove>(OnAiOverlayRemove);
         SubscribeLocalEvent<StationAiCoreComponent, AppearanceChangeEvent>(OnAppearanceChange);
+
+        SubscribeLocalEvent<HolographicAvatarComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
+    }
+
+    private void OnEntInserted(Entity<HolographicAvatarComponent> ent, ref EntInsertedIntoContainerMessage args)
+    {
+        if (args.Container.ID == "station_ai_character_dummy")
+        {
+            if (TryComp<SpriteComponent>(args.Entity, out var sprite))
+            {
+                _sprite.SetVisible((args.Entity, sprite), false);
+            }
+        }
     }
 
     private void OnAiOverlayInit(Entity<StationAiOverlayComponent> ent, ref ComponentInit args)

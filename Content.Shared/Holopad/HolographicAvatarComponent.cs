@@ -10,4 +10,7 @@ public sealed partial class HolographicAvatarComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public PrototypeLayerData[]? LayerData = null;
+
+    [DataField, AutoNetworkedField]
+    public bool UseCharacterAppearance = false;
 }

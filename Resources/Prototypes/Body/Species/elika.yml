@@ -5,6 +5,12 @@
   components:
   - type: Inventory
     speciesId: elika
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Elika/displacement.rsi
+            state: jumpsuit-female
   - type: EntityTableContainerFill
     containers:
       body_organs: !type:AllSelector
@@ -31,6 +37,8 @@
         - id: OrganElikaKidneys
   - type: HumanoidAppearance
     species: Elika
+  - type: Hands
+    inhandOffset: 0, 0.375
 
 - type: entity
   parent:
@@ -45,6 +53,15 @@
     JumpThrowSpeed: 12
     CanCollide: false
     Unstoppable: true
+    JumpSound:
+      collection: ElikaFlight
+  - type: Speech
+    speechSounds: Elika
+  - type: Vocal
+    sounds:
+      Male: UnisexElika
+      Female: UnisexElika
+      Unsexed: UnisexElika
 
 - type: entity
   parent: OrganBase

@@ -355,3 +355,16 @@
   - type: ChangelingRole
   - type: RoleBriefing
     briefing: changeling-briefing
+
+# Malf AI
+- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleMalfAi
+  name: Malfunctioning AI Role
+  components:
+  - type: MindRole
+    antagPrototype: MalfAi
+    roleType: SiliconAntagonist
+    subtype: role-subtype-malf-ai
+  - type: MalfAiRole
+

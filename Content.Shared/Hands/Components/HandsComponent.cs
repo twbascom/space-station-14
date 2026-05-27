@@ -97,6 +97,12 @@ public sealed partial class HandsComponent : Component
     public DisplacementData? RightHandDisplacement;
 
     /// <summary>
+    ///     Offset applied to all in-hand sprites for held items.
+    /// </summary>
+    [DataField("inhandOffset")]
+    public System.Numerics.Vector2 InhandOffset = System.Numerics.Vector2.Zero;
+
+    /// <summary>
     /// If false, hands cannot be stripped, and they do not show up in the stripping menu.
     /// </summary>
     [DataField]

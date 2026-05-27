@@ -1,0 +1,114 @@
+- type: entity
+  parent: ActionIntrinsicStore
+  id: ActionMalfAiUplink
+  name: AI Uplink
+  description: Access your malfunctioning AI uplink store.
+  components:
+  - type: Action
+    priority: -8
+    checkCanInteract: false
+    icon: Interface/Actions/shop.png
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfExplodeApc
+  name: Explode APC
+  description: Target an APC to detonate it.
+  components:
+  - type: Action
+    useDelay: 10
+    checkCanInteract: false
+    icon: { sprite: Interface/Misc/ai_hud.rsi, state: apc_hacked }
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: EntityTargetAction
+    event: !type:MalfExplodeApcActionEvent
+    whitelist:
+      tags:
+      - Apc
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfOverrideVent
+  name: Overpressurize Vent
+  description: Target a gas vent to overpressurize the room.
+  components:
+  - type: Action
+    useDelay: 5
+    checkCanInteract: false
+    icon: { sprite: Structures/Piping/Atmospherics/vent.rsi, state: vent_out }
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: EntityTargetAction
+    event: !type:MalfOverrideVentActionEvent
+    whitelist:
+      tags:
+      - GasVent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfSiphonVent
+  name: Siphon Vent
+  description: Target a gas vent to siphon the room.
+  components:
+  - type: Action
+    useDelay: 5
+    checkCanInteract: false
+    icon: { sprite: Structures/Piping/Atmospherics/vent.rsi, state: vent_in }
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: EntityTargetAction
+    event: !type:MalfSiphonVentActionEvent
+    whitelist:
+      tags:
+      - GasVent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfImmovableRod
+  name: Syndicate Immovable Rod
+  description: Call in an Immovable Rod from the Syndicate that will barrel through the target point.
+  components:
+  - type: Action
+    useDelay: 15
+    checkCanInteract: false
+    icon: { sprite: Objects/Fun/immovable_rod.rsi, state: icon }
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:MalfImmovableRodActionEvent
+  - type: LimitedCharges
+    maxCharges: 3
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfRollCore
+  name: Roll Core
+  description: Roll your physical AI core to any tile.
+  components:
+  - type: Action
+    useDelay: 5
+    checkCanInteract: false
+    icon: Interface/Actions/malfunction.png
+  - type: TargetAction
+    range: 0
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:MalfRollCoreActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMalfBlackout
+  name: System Blackout
+  description: Hack the power grid to toggle off all APC main breakers on the station, plunging it into darkness.
+  components:
+  - type: Action
+    useDelay: 60
+    checkCanInteract: false
+    icon: Interface/Actions/overloadlight.png
+  - type: InstantAction
+    event: !type:MalfBlackoutActionEvent

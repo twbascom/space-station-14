@@ -13,7 +13,7 @@
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Elika]
-  offset: 0, 0.09375
+  offset: 0, 0
   sprites:
   - sprite: Mobs/Customization/elika_floof.rsi
     state: floof
@@ -27,13 +27,4 @@
   sprites:
   - sprite: Mobs/Customization/elika_ears.rsi
     state: ears
-
-- type: marking
-  id: ElikaSnout
-  bodyPart: Snout
-  markingCategory: Snout
-  speciesRestriction: [Elika]
-  sprites:
-  - sprite: Mobs/Species/Elika/parts.rsi
-    state: snout
 

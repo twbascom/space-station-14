@@ -16,7 +16,8 @@ public sealed class StationAiCustomizationBoundUserInterface : BoundUserInterfac
     {
         base.Open();
 
-        _menu = new StationAiCustomizationMenu(Owner);
+        _menu = new StationAiCustomizationMenu();
+        _menu.InitializeMenu(Owner);
         _menu.OpenCentered();
         _menu.OnClose += Close;
 

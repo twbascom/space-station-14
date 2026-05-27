@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Linq;
 using Content.Shared.Store.Components;
 using Robust.Client.UserInterface;
+using Robust.Shared.IoC;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Store.Ui;
@@ -10,7 +11,7 @@ namespace Content.Client.Store.Ui;
 [UsedImplicitly]
 public sealed class StoreBoundUserInterface : BoundUserInterface
 {
-    private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     [ViewVariables]
     private StoreMenu? _menu;
@@ -23,6 +24,7 @@ public sealed class StoreBoundUserInterface : BoundUserInterface
 
     public StoreBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
     {
+        IoCManager.InjectDependencies(this);
     }
 
     protected override void Open()

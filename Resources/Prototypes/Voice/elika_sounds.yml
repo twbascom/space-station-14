@@ -1,0 +1,59 @@
+- type: soundCollection
+  id: ElikaChirps
+  files:
+    - /Audio/Mobs/Species/Elika/Elikachirp1.ogg
+    - /Audio/Mobs/Species/Elika/Elikachirp2.ogg
+    - /Audio/Mobs/Species/Elika/Elikachirp3.ogg
+    - /Audio/Mobs/Species/Elika/Elikachirp4.ogg
+    - /Audio/Mobs/Species/Elika/Elikachirp5.ogg
+
+- type: soundCollection
+  id: ElikaSpeaks
+  files:
+    - /Audio/Mobs/Species/Elika/Elikaspeak1.ogg
+    - /Audio/Mobs/Species/Elika/Elikatrill.ogg
+    - /Audio/Mobs/Species/Elika/Elikawarble.ogg
+    - /Audio/Mobs/Species/Elika/Elikawurble.ogg
+
+- type: soundCollection
+  id: ElikaFlight
+  files:
+    - /Audio/Mobs/Species/Elika/Elikatrill.ogg
+    - /Audio/Mobs/Species/Elika/Elikawarble.ogg
+    - /Audio/Mobs/Species/Elika/Elikawurble.ogg
+
+- type: speechSounds
+  id: Elika
+  saySound:
+    collection: ElikaSpeaks
+  askSound:
+    collection: ElikaSpeaks
+  exclaimSound:
+    collection: ElikaSpeaks
+  variation: 0.15
+
+- type: emoteSounds
+  id: UnisexElika
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ElikaSpeaks
+    Laugh:
+      collection: ElikaChirps
+    Sigh:
+      collection: ElikaChirps
+    Gasp:
+      collection: ElikaChirps
+    Crying:
+      collection: ElikaSpeaks
+    Chirp:
+      collection: ElikaChirps
+    Weh:
+      collection: ElikaChirps
+    Hew:
+      collection: ElikaChirps
+    Honk:
+      collection: BikeHorn
+    DefaultDeathgasp:
+      collection: ElikaSpeaks

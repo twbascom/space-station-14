@@ -13,6 +13,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using Content.Shared.Roles.Components;
+using Content.Shared.Silicons.StationAi;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Administration.Systems;
 
@@ -45,7 +47,23 @@ public sealed partial class AdminVerbSystem
         if (!_adminManager.HasAdminFlag(player, AdminFlags.Fun))
             return;
 
-        if (!HasComp<MindContainerComponent>(args.Target) || !TryComp<ActorComponent>(args.Target, out var targetActor))
+        var target = args.Target;
+        if (TryComp<StationAiCoreComponent>(target, out var coreComp))
+        {
+            var containerSystem = EntityManager.System<SharedContainerSystem>();
+            if (containerSystem.TryGetContainer(target, StationAiCoreComponent.Container, out var container) &&
+                container.ContainedEntities.Count > 0)
+            {
+                target = container.ContainedEntities[0];
+            }
+            else if (containerSystem.TryGetContainer(target, StationAiCoreComponent.BrainContainer, out var brainContainer) &&
+                brainContainer.ContainedEntities.Count > 0)
+            {
+                target = brainContainer.ContainedEntities[0];
+            }
+        }
+
+        if (!HasComp<MindContainerComponent>(target) || !TryComp<ActorComponent>(target, out var targetActor))
             return;
 
         var targetPlayer = targetActor.PlayerSession;
@@ -88,7 +106,7 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "Zombie"),
             Act = () =>
             {
-                _zombie.ZombifyEntity(args.Target);
+                _zombie.ZombifyEntity(target);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", zombieName, Loc.GetString("admin-verb-make-zombie")),
@@ -119,7 +137,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 // pirates just get an outfit because they don't really have logic associated with them
-                _outfit.SetOutfit(args.Target, PirateGearId);
+                _outfit.SetOutfit(target, PirateGearId);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", pirateName, Loc.GetString("admin-verb-make-pirate")),
@@ -184,7 +202,7 @@ public sealed partial class AdminVerbSystem
                 if (!TryComp<ParadoxCloneRuleComponent>(ruleEnt, out var paradoxCloneRuleComp))
                     return;
 
-                paradoxCloneRuleComp.OriginalBody = args.Target; // override the target player
+                paradoxCloneRuleComp.OriginalBody = target; // override the target player
 
                 _gameTicker.StartGameRule(ruleEnt);
             },
@@ -223,7 +241,25 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(ninja);
 
-        if (HasComp<HumanoidAppearanceComponent>(args.Target)) // only humanoids can be cloned
+        var malfAiName = Loc.GetString("admin-verb-text-make-malf-ai");
+        Verb malfAi = new()
+        {
+            Text = malfAiName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/job_icons.rsi"), "Syndicate"),
+            Act = () =>
+            {
+                if (_mindSystem.TryGetMind(target, out var mindId, out _))
+                {
+                    _role.MindAddRole(mindId, "MindRoleMalfAi");
+                }
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", malfAiName, Loc.GetString("admin-verb-make-malf-ai")),
+        };
+        args.Verbs.Add(malfAi);
+
+        if (HasComp<HumanoidAppearanceComponent>(target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
     }
 }

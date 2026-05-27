@@ -224,8 +224,11 @@ public abstract partial class SharedMoverController : VirtualController
          * doing unnecessary calculations.
          * Only a Kinematic Controller should be making it to this point.
          */
-        DebugTools.Assert(physicsComponent.BodyType == BodyType.KinematicController || physicsComponent.BodyType == BodyType.Kinematic,
-            $"Input mover: {ToPrettyString(uid)} in HandleMobMovement is not the correct BodyType, BodyType found: {physicsComponent.BodyType}, expected: KinematicController.");
+        if (physicsComponent.BodyType != BodyType.KinematicController && physicsComponent.BodyType != BodyType.Kinematic)
+        {
+            UsedMobMovement[uid] = false;
+            return;
+        }
 
         // If the body is in air but isn't weightless then it can't move
         var weightless = _gravity.IsWeightless(uid);

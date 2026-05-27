@@ -317,6 +317,14 @@ namespace Content.Client.Hands.Systems
 
                 _sprite.LayerSetData((ent, sprite), index, layerData);
 
+                if (handComp.InhandOffset != System.Numerics.Vector2.Zero)
+                {
+                    if (sprite[index] is SpriteComponent.Layer layer)
+                    {
+                        _sprite.LayerSetOffset((ent, sprite), index, layer.Offset + handComp.InhandOffset);
+                    }
+                }
+
                 // Add displacement maps
                 var displacement = hand.Value.Location switch
                 {

