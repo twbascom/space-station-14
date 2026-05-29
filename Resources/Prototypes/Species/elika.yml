@@ -106,25 +106,28 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: torso_m
+  offset: 0, -0.03125
 
 - type: humanoidBaseSprite
   id: MobElikaTorsoMale
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: torso_m
+  offset: 0, -0.03125
 
 - type: humanoidBaseSprite
   id: MobElikaTorsoFemale
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: torso_f
+  offset: 0, -0.03125
 
 - type: humanoidBaseSprite
   id: MobElikaLLeg
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: l_leg
-  offset: 0, -0.1875
+  offset: 0, -0.25
 
 - type: humanoidBaseSprite
   id: MobElikaLArm
@@ -143,14 +146,14 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: l_foot
-  offset: 0, -0.34375
+  offset: -0.03125, -0.34375
 
 - type: humanoidBaseSprite
   id: MobElikaRLeg
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: r_leg
-  offset: 0, -0.1875
+  offset: 0, -0.25
 
 - type: humanoidBaseSprite
   id: MobElikaRArm
@@ -169,4 +172,4 @@
   baseSprite:
     sprite: Mobs/Species/Elika/parts.rsi
     state: r_foot
-  offset: 0, -0.34375
+  offset: -0.0625, -0.34375

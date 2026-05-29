@@ -1,0 +1,82 @@
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceTajaran
+  name: tajaran appearance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      body_organs: !type:AllSelector
+        children:
+        - id: OrganHumanTorso
+        - id: OrganHumanHead
+        - id: OrganHumanArmLeft
+        - id: OrganHumanArmRight
+        - id: OrganHumanHandRight
+        - id: OrganHumanHandLeft
+        - id: OrganHumanLegLeft
+        - id: OrganHumanLegRight
+        - id: OrganHumanFootLeft
+        - id: OrganHumanFootRight
+        - id: OrganHumanBrain
+        - id: OrganHumanEyes
+        - id: OrganHumanTongue
+        - id: OrganHumanAppendix
+        - id: OrganHumanEars
+        - id: OrganHumanLungs
+        - id: OrganHumanHeart
+        - id: OrganHumanStomach
+        - id: OrganHumanLiver
+        - id: OrganHumanKidneys
+  - type: HumanoidAppearance
+    species: Tajaran
+    hideLayersOnEquip:
+    - Snout
+    - SnoutCover
+    - HeadTop
+    - HeadSide
+    - FacialHair
+    - Hair
+
+- type: entity
+  parent:
+  - AppearanceTajaran
+  - BaseSpeciesMobOrganic
+  id: MobTajaran
+  name: Urist McTajaran
+  components:
+  - type: Speech
+    speechSounds: Tajaran
+    speechVerb: Tajaran
+    allowedEmotes: [ 'CatMeow', 'Purr', 'Growl', 'CatHisses', 'Scream', 'Sigh', 'Gasp', 'MonkeyScreeches' ]
+    SuffixSpeechVerbs:
+      chat-speech-verb-suffix-exclamation-strong: TajaranExclamationStrong
+      chat-speech-verb-suffix-exclamation: TajaranExclamation
+      chat-speech-verb-suffix-question: TajaranQuestion
+      chat-speech-verb-suffix-stutter: DefaultStutter
+      chat-speech-verb-suffix-mumble: DefaultMumble
+  - type: Vocal
+    sounds:
+      Male: MaleTajaran
+      Female: FemaleTajaran
+      Unsexed: MaleTajaran
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: TemperatureDamage
+    heatDamageThreshold: 320
+    coldDamageThreshold: 260
+    coldDamage:
+      types:
+        Cold: 0.1
+    heatDamage:
+      types:
+        Heat: 3.0

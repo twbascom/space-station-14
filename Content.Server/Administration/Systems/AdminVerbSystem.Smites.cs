@@ -812,7 +812,9 @@ public sealed partial class AdminVerbSystem
                     var xform = Transform(args.Target);
                     var fixtures = Comp<FixturesComponent>(args.Target);
                     _transformSystem.Unanchor(args.Target, xform);
-                    _physics.SetBodyType(args.Target, BodyType.Dynamic, manager: fixtures, body: superSpinPhysics);
+
+                    var bodyType = HasComp<InputMoverComponent>(args.Target) ? BodyType.KinematicController : BodyType.Dynamic;
+                    _physics.SetBodyType(args.Target, bodyType, manager: fixtures, body: superSpinPhysics);
                     _physics.SetBodyStatus(args.Target, superSpinPhysics, BodyStatus.InAir);
                     _physics.WakeBody(args.Target, manager: fixtures, body: superSpinPhysics);
 

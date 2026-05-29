@@ -223,9 +223,6 @@ public sealed class MalfAiSystem : EntitySystem
             // Play antimov sound globally to the player who became Malf AI
             _audio.PlayGlobal(new SoundPathSpecifier("/Audio/Ambience/Antag/emagged_borg.ogg"), actor.PlayerSession, AudioParams.Default.WithVolume(10f));
         }
-
-        // Play antimov sound spatially at the core/brain
-        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Ambience/Antag/emagged_borg.ogg"), brain, AudioParams.Default.WithVolume(10f));
     }
 
     private void OnStoreBuyFinished(ref StoreBuyFinishedEvent ev)

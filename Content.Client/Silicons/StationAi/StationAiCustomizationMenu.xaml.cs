@@ -85,7 +85,6 @@ public sealed partial class StationAiCustomizationMenu : FancyWindow
         if (_isMalf)
         {
             ShowMalfErrorPopup();
-            return;
         }
 
         SendStationAiCustomizationMessageAction?.Invoke(groupProtoId, customizationProtoId);

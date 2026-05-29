@@ -13,6 +13,7 @@ species-name-gingerbread = delicious baked good
 species-name-vulpkanin = Vulpkanin
 species-name-resomi = Resomi
 species-name-namiod = Namiod
+species-name-tajaran = Tajaran
 
 ## Misc species things
 

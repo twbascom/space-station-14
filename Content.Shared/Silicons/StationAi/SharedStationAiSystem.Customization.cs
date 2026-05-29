@@ -32,7 +32,10 @@ public abstract partial class SharedStationAiSystem
             return;
 
         if (HasComp<MalfAiBrainComponent>(held))
+        {
+            _audio.PlayPvs(new Robust.Shared.Audio.SoundPathSpecifier("/Audio/Silicon/errorsfx.ogg"), entity, Robust.Shared.Audio.AudioParams.Default.WithVolume(10f));
             return;
+        }
 
         if (!TryComp<StationAiCustomizationComponent>(held, out var stationAiCustomization))
             return;

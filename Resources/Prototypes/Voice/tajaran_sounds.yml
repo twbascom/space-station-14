@@ -1,0 +1,233 @@
+# Rare and standard sound collections
+- type: soundCollection
+  id: TajaranSpeaks
+  files:
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_meow3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_mew2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_deepmeow.ogg # Rare! (1 in 51 chance)
+
+- type: soundCollection
+  id: TajaranHisses
+  files:
+    - /Audio/Mobs/Species/Tajaran/cat_hiss1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_hiss2.ogg
+
+- type: soundCollection
+  id: TajaranGrowls
+  files:
+    - /Audio/Mobs/Species/Tajaran/cat_growl1.ogg
+
+- type: soundCollection
+  id: TajaranScreams
+  files:
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream1.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream2.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_scream3.ogg
+    - /Audio/Mobs/Species/Tajaran/cat_wilhelm.ogg # Rare! (1 in 31 chance)
+
+- type: soundCollection
+  id: TajaranPurrs
+  files:
+    - /Audio/Mobs/Species/Tajaran/cat_purr1.ogg
+
+- type: speechSounds
+  id: Tajaran
+  saySound:
+    collection: TajaranSpeaks
+  askSound:
+    collection: TajaranSpeaks
+  exclaimSound:
+    collection: TajaranSpeaks
+  variation: 0.15
+
+- type: emoteSounds
+  id: UnisexTajaran
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: TajaranScreams
+    Laugh:
+      collection: TajaranSpeaks
+    Sigh:
+      collection: TajaranPurrs
+    Gasp:
+      collection: TajaranSpeaks
+    Crying:
+      collection: TajaranScreams
+    Growl:
+      collection: TajaranGrowls
+    CatHisses:
+      collection: TajaranHisses
+    CatMeow:
+      collection: TajaranSpeaks
+    MonkeyScreeches:
+      collection: TajaranScreams
+    Purr:
+      collection: TajaranPurrs
+    DefaultDeathgasp:
+      collection: TajaranScreams
+
+- type: emoteSounds
+  id: MaleTajaran
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: TajaranScreams
+    Laugh:
+      collection: TajaranSpeaks
+    Sigh:
+      collection: TajaranPurrs
+    Gasp:
+      collection: MaleGasp
+    Crying:
+      collection: TajaranScreams
+    Growl:
+      collection: TajaranGrowls
+    CatHisses:
+      collection: TajaranHisses
+    CatMeow:
+      collection: TajaranSpeaks
+    MonkeyScreeches:
+      collection: TajaranScreams
+    Purr:
+      collection: TajaranPurrs
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+
+- type: emoteSounds
+  id: FemaleTajaran
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: TajaranScreams
+    Laugh:
+      collection: TajaranSpeaks
+    Sigh:
+      collection: TajaranPurrs
+    Gasp:
+      collection: FemaleGasp
+    Crying:
+      collection: TajaranScreams
+    Growl:
+      collection: TajaranGrowls
+    CatHisses:
+      collection: TajaranHisses
+    CatMeow:
+      collection: TajaranSpeaks
+    MonkeyScreeches:
+      collection: TajaranScreams
+    Purr:
+      collection: TajaranPurrs
+    DefaultDeathgasp:
+      collection: FemaleDeathGasp
+
+- type: speechVerb
+  id: Tajaran
+  name: chat-speech-verb-name-tajaran
+  speechVerbStrings:
+  - chat-speech-verb-tajaran-1
+  - chat-speech-verb-tajaran-2
+  - chat-speech-verb-tajaran-3
+  - chat-speech-verb-tajaran-4
+
+# Exclamation, strong exclamation, and question speech verbs for Tajaran
+- type: speechVerb
+  id: TajaranExclamation
+  name: chat-speech-verb-name-tajaran-exclamation
+  speechVerbStrings:
+  - chat-speech-verb-tajaran-exclamation-1
+  - chat-speech-verb-tajaran-exclamation-2
+
+- type: speechVerb
+  id: TajaranExclamationStrong
+  name: chat-speech-verb-name-tajaran-exclamation-strong
+  bold: true
+  speechVerbStrings:
+  - chat-speech-verb-tajaran-exclamation-strong-1
+  - chat-speech-verb-tajaran-exclamation-strong-2
+  priority: 10
+
+- type: speechVerb
+  id: TajaranQuestion
+  name: chat-speech-verb-name-tajaran-question
+  speechVerbStrings:
+  - chat-speech-verb-tajaran-question-1
+  - chat-speech-verb-tajaran-question-2
