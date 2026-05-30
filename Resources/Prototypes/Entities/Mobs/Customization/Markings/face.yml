@@ -1,0 +1,280 @@
+﻿- type: marking
+  id: FaceBindi
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: bindi
+
+- type: marking
+  id: FaceFullblush
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: fullblush
+
+- type: marking
+  id: FaceCheekspotR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: cheekspot_r
+
+- type: marking
+  id: FaceCheekspotL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: cheekspot_l
+
+- type: marking
+  id: FaceChesireR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: chesire_r
+
+- type: marking
+  id: FaceChesireL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: chesire_l
+
+- type: marking
+  id: FaceCrowR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: crow_r
+
+- type: marking
+  id: FaceCrowL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: crow_l
+
+- type: marking
+  id: FaceEarR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: ear_r
+
+- type: marking
+  id: FaceEarL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: ear_l
+
+- type: marking
+  id: FaceEyebrowR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyebrow_r
+
+- type: marking
+  id: FaceEyebrowL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyebrow_l
+
+- type: marking
+  id: FaceEyebrows
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyebrows
+
+- type: marking
+  id: FaceEyecornerR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyecorner_r
+
+- type: marking
+  id: FaceEyecornerL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyecorner_l
+
+- type: marking
+  id: FaceEyelashR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyelash_r
+
+- type: marking
+  id: FaceEyelashL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyelash_l
+
+- type: marking
+  id: FaceEyestripe
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: eyestripe
+
+- type: marking
+  id: FaceLipcornerR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: lipcorner_r
+
+- type: marking
+  id: FaceLipcornerL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: lipcorner_l
+
+- type: marking
+  id: FaceGlabella
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: glabella
+
+- type: marking
+  id: FaceLowercheekR
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: lowercheek_r
+
+- type: marking
+  id: FaceLowercheekL
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: lowercheek_l
+
+- type: marking
+  id: FaceNeckF
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: neck_f
+
+- type: marking
+  id: FaceNeckM
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: neck_m
+
+- type: marking
+  id: FaceNeckThickF
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: neck_thick_f
+
+- type: marking
+  id: FaceNeckThickM
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: neck_thick_m
+
+- type: marking
+  id: FaceNosetape
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: nosetape
+
+- type: marking
+  id: FaceNosetip
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: nosetip
+
+- type: marking
+  id: FaceNosestripe
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: nosestripe
+
+- type: marking
+  id: FaceUnibrow
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/face.rsi
+    state: unibrow
+
+

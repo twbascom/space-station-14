@@ -54,6 +54,10 @@
     {
         "name": "scar_eye_right_small",
         "directions": 4
+    },
+    {
+        "name": "buff",
+        "directions": 4
     }
   ]
 }

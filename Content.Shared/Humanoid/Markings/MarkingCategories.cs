@@ -48,7 +48,9 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.RLeg => MarkingCategories.Legs,
                 HumanoidVisualLayers.LFoot => MarkingCategories.Legs,
                 HumanoidVisualLayers.RFoot => MarkingCategories.Legs,
-                HumanoidVisualLayers.Tail => MarkingCategories.Wings,
+                HumanoidVisualLayers.Tail => MarkingCategories.Tail,
+                HumanoidVisualLayers.WingsBack => MarkingCategories.Wings,
+                HumanoidVisualLayers.WingsFront => MarkingCategories.Wings,
                 HumanoidVisualLayers.Eyes => MarkingCategories.Eyes,
                 _ => MarkingCategories.Overlay
             };

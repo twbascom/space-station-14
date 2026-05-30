@@ -1,21 +1,32 @@
 - type: marking
-  id: ElikaWings
-  bodyPart: Tail
+  id: ElikaWingsBack
+  bodyPart: WingsBack
   markingCategory: Wings
   speciesRestriction: [Elika]
-  offset: 0, 0
+  offset: 0, -0.1875
   sprites:
-  - sprite: Mobs/Customization/elika_wings.rsi
-    state: wings
+  - sprite: Mobs/Customization/elika_wings_back.rsi
+    state: wings_back
+
+- type: marking
+  id: ElikaWingsFront
+  bodyPart: WingsFront
+  markingCategory: Wings
+  speciesRestriction: [Elika]
+  offset: 0, -0.1875
+  sprites:
+  - sprite: Mobs/Customization/elika_wings_front.rsi
+    state: wings_front
 
 - type: marking
   id: ElikaFloof
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Elika]
-  offset: 0, 0
+  offset: 0, 0.25
   sprites:
   - sprite: Mobs/Customization/elika_floof.rsi
+
     state: floof
 
 - type: marking
@@ -23,8 +34,19 @@
   bodyPart: HeadSide
   markingCategory: HeadSide
   speciesRestriction: [Elika]
-  offset: 0, 0
+  offset: 0, 0.125
   sprites:
   - sprite: Mobs/Customization/elika_ears.rsi
     state: ears
+
+- type: marking
+  id: ElikaTufts
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  speciesRestriction: [Elika]
+  offset: 0, 0.1875
+  sprites:
+  - sprite: Mobs/Customization/elika_tufts.rsi
+    state: tufts
+
 

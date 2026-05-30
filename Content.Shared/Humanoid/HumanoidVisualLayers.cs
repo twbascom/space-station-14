@@ -27,6 +27,8 @@ namespace Content.Shared.Humanoid
         RFoot,
         LFoot,
         Tail,
+        WingsBack,
+        WingsFront,
         Handcuffs,
         StencilMask,
         Ensnare,

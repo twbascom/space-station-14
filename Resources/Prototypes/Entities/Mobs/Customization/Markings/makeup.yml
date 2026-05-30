@@ -1,0 +1,55 @@
+﻿- type: marking
+  id: MakeupLips
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: lips
+
+- type: marking
+  id: MakeupBlush
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: blush
+
+- type: marking
+  id: MakeupNailPolishL
+  bodyPart: LHand
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: nail_polish_l
+
+- type: marking
+  id: MakeupNailPolishR
+  bodyPart: RHand
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: nail_polish_r
+
+- type: marking
+  id: MakeupMothLips
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: moth_lips
+
+- type: marking
+  id: MakeupMothBlush
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/makeup.rsi
+    state: moth_blush
+
+

@@ -157,3 +157,11 @@ public partial record struct FoodSequenceVisualLayer
         LocalOffset = offset;
     }
 }
+
+/// <summary>
+/// A marker component for finished/metamorphosed burgers that contain custom entities.
+/// </summary>
+[RegisterComponent, Robust.Shared.GameStates.NetworkedComponent]
+public sealed partial class BurgerEntitiesComponent : Component
+{
+}

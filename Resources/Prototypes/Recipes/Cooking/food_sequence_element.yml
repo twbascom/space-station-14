@@ -1573,3 +1573,9 @@
 #  name: food-sequence-cotton-burger-content-among-pequeno
 #  sprites:
 #  - sprite: Objects/Fun/pequeno.rsi
+
+- type: foodSequenceElement
+  id: GenericIngredient
+  sprites:
+  - sprite: Objects/Consumable/Food/burger.rsi
+    state: bun

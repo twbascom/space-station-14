@@ -13,11 +13,11 @@
       storagebase: !type:AllSelector
         children:
         - id: OxygenTankFilled
-        - id: BreathMask
+        - id: ClothingMaskBreath
         - id: Flare
         - id: DrinkWaterBottleFull
         - id: SteamgemFuelTank
-        - id: SurvivalMedipen
+        - id: EmergencyMedipen
 
 - type: entity
   parent: BoxCardboard

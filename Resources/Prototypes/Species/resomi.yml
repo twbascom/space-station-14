@@ -30,6 +30,7 @@
     LFoot: MobResomiLFoot
     RFoot: MobResomiRFoot
     Tail: MobResomiTail
+    Eyes: MobResomiEyes
 
 - type: markingPoints
   id: MobResomiMarkingLimits
@@ -142,3 +143,9 @@
   baseSprite:
     sprite: Mobs/Species/Resomi/Resomi/parts.rsi
     state: r_foot
+
+- type: humanoidBaseSprite
+  id: MobResomiEyes
+  baseSprite:
+    sprite: Mobs/Customization/eyes.rsi
+    state: resomi

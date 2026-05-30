@@ -1,0 +1,163 @@
+﻿- type: marking
+  id: WristBraceletR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: bracelet_r
+
+- type: marking
+  id: WristBraceletL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: bracelet_l
+
+- type: marking
+  id: WristBraceletArmR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: bracelet_arm_r
+
+- type: marking
+  id: WristBraceletArmL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: bracelet_arm_l
+
+- type: marking
+  id: WristWatchR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_r
+
+- type: marking
+  id: WristWatchL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_l
+
+- type: marking
+  id: WristWatchSilverR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_silver_r
+
+- type: marking
+  id: WristWatchSilverL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_silver_l
+
+- type: marking
+  id: WristWatchGoldR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_gold_r
+
+- type: marking
+  id: WristWatchGoldL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_gold_l
+
+- type: marking
+  id: WristWatchHoloR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_holo_r
+
+- type: marking
+  id: WristWatchHoloL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_holo_l
+
+- type: marking
+  id: WristWatchLeatherR
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_leather_r
+
+- type: marking
+  id: WristWatchLeatherL
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_leather_l
+
+- type: marking
+  id: WristWatchColorableRTone1
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_colorable_r_tone_1
+
+- type: marking
+  id: WristWatchColorableRTone2
+  bodyPart: RArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_colorable_r_tone_2
+
+- type: marking
+  id: WristWatchColorableLTone1
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_colorable_l_tone_1
+
+- type: marking
+  id: WristWatchColorableLTone2
+  bodyPart: LArm
+  markingCategory: Arms
+  speciesRestriction: [Human, Dwarf, Reptilian, SlimePerson, Moth, Arachnid, Diona, Vulpkanin, Tajaran, Elika]
+  sprites:
+  - sprite: Mobs/Customization/wrist.rsi
+    state: watch_colorable_l_tone_2
+
+

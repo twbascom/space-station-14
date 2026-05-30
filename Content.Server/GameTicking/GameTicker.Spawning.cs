@@ -199,8 +199,8 @@ namespace Content.Server.GameTicking
 
             var isLocal = isLoopback || isHostFlag || isHostUser;
             
-            // Heuristic: If they are the first/only player joining from a private LAN IP, treat them as local.
-            if (!isLocal && sessionCount <= 2 && isPrivate)
+            // Heuristic: If they are joining from a private LAN IP, treat them as local.
+            if (!isLocal && isPrivate)
             {
                 isLocal = true;
             }

@@ -7,9 +7,9 @@
   markingLimits: MobSteamgemMarkingLimits
   dollPrototype: AppearanceSteamgem
   skinColoration: HumanToned
-  maleFirstNames: names_human_male
-  femaleFirstNames: names_human_female
-  lastNames: names_human_last
+  maleFirstNames: names_vulpkanin_male
+  femaleFirstNames: names_vulpkanin_female
+  lastNames: names_vulpkanin_last
 
 - type: speciesBaseSprites
   id: MobSteamgemSprites

@@ -48,7 +48,7 @@
     speechSounds: Tajaran
     speechVerb: Tajaran
     allowedEmotes: [ 'CatMeow', 'Purr', 'Growl', 'CatHisses', 'Scream', 'Sigh', 'Gasp', 'MonkeyScreeches' ]
-    SuffixSpeechVerbs:
+    suffixSpeechVerbs:
       chat-speech-verb-suffix-exclamation-strong: TajaranExclamationStrong
       chat-speech-verb-suffix-exclamation: TajaranExclamation
       chat-speech-verb-suffix-question: TajaranQuestion

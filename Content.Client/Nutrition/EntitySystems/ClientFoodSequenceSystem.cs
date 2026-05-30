@@ -1,6 +1,7 @@
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Client.GameObjects;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Nutrition.EntitySystems;
 
@@ -50,7 +51,17 @@ public sealed class ClientFoodSequenceSystem : SharedFoodSequenceSystem
 
             _sprite.AddBlankLayer((start.Owner, sprite), index);
             _sprite.LayerMapSet((start.Owner, sprite), keyCode, index);
-            _sprite.LayerSetSprite((start.Owner, sprite), index, state.Sprite);
+
+            if (state.Sprite is SpriteSpecifier.EntityPrototype prototypeSpec)
+            {
+                var tex = _sprite.Frame0(prototypeSpec);
+                _sprite.LayerSetTexture((start.Owner, sprite), index, tex);
+            }
+            else
+            {
+                _sprite.LayerSetSprite((start.Owner, sprite), index, state.Sprite);
+            }
+
             _sprite.LayerSetScale((start.Owner, sprite), index, state.Scale);
 
             //Offset the layer

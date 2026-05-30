@@ -1,0 +1,80 @@
+- type: marking
+  id: ResomiTail
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: tail
+
+- type: marking
+  id: ResomiTailFeathers
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: tail_feathers
+
+- type: marking
+  id: ResomiFluff
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: fluff
+
+- type: marking
+  id: ResomiFluffHead
+  bodyPart: Head
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: fluff_head
+
+- type: marking
+  id: ResomiFluffHeadUp
+  bodyPart: Head
+  markingCategory: Hair
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: fluff_head_up
+
+- type: marking
+  id: ResomiFootFeathersLeft
+  bodyPart: LFoot
+  markingCategory: Legs
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: l_foot_feathers
+
+- type: marking
+  id: ResomiFootFeathersRight
+  bodyPart: RFoot
+  markingCategory: Legs
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: r_foot_feathers
+
+- type: marking
+  id: ResomiHandFeathersLeft
+  bodyPart: LHand
+  markingCategory: Arms
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: l_hand_feathers
+
+- type: marking
+  id: ResomiHandFeathersRight
+  bodyPart: RHand
+  markingCategory: Arms
+  speciesRestriction: [Resomi]
+  sprites:
+  - sprite: Mobs/Customization/resomi_parts.rsi
+    state: r_hand_feathers

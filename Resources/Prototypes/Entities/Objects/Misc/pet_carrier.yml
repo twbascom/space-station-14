@@ -36,7 +36,8 @@
     airtight: false
     whitelist:
       tags:
-        - VimPilot # If it can fit in a Vim it can fit in a pet carrier.
+        - VimPilot
+        - CanPilot
   - type: Weldable
   - type: ResistLocker
   - type: PlaceableSurface

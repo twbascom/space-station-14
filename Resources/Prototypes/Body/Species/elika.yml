@@ -48,12 +48,12 @@
   name: Elika
   components:
   - type: JumpAbility
-    Action: ActionElikaFlight
-    JumpDistance: 8
-    JumpThrowSpeed: 12
-    CanCollide: false
-    Unstoppable: true
-    JumpSound:
+    action: ActionElikaFlight
+    jumpDistance: 8
+    jumpThrowSpeed: 12
+    canCollide: false
+    unstoppable: true
+    jumpSound:
       collection: ElikaFlight
   - type: Speech
     speechSounds: Elika
