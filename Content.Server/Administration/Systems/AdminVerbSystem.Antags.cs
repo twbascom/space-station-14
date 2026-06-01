@@ -34,6 +34,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
+    private static readonly EntProtoId DefaultFeralInfectedRule = "FeralInfected";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     // All antag verbs have names so invokeverb works.
@@ -258,6 +259,21 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", malfAiName, Loc.GetString("admin-verb-make-malf-ai")),
         };
         args.Verbs.Add(malfAi);
+
+        var feralInfectedName = Loc.GetString("admin-verb-text-make-feral-infected");
+        Verb feralInfected = new()
+        {
+            Text = feralInfectedName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/Interface/Misc/job_icons.rsi"), "FeralInfected"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<FeralInfectedRuleComponent>(targetPlayer, DefaultFeralInfectedRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", feralInfectedName, Loc.GetString("admin-verb-make-feral-infected")),
+        };
+        args.Verbs.Add(feralInfected);
 
         if (HasComp<HumanoidAppearanceComponent>(target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);

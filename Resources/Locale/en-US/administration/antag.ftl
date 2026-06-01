@@ -11,6 +11,7 @@ admin-verb-make-wizard = Make the target into a Wizard.
 admin-verb-make-space-ninja = Make the target into a Space Ninja.
 admin-verb-make-changeling = Make the target into a Changeling.
 admin-verb-make-malf-ai = Make the target into a Malfunctioning AI.
+admin-verb-make-feral-infected = Make the target into a Feral Infected.
 
 
 admin-verb-text-make-traitor = Make Traitor
@@ -25,5 +26,6 @@ admin-verb-text-make-wizard = Make Wizard
 admin-verb-text-make-space-ninja = Make Ninja
 admin-verb-text-make-changeling = Make Changeling (WIP)
 admin-verb-text-make-malf-ai = Make Malf AI
+admin-verb-text-make-feral-infected = Make Feral Infected
 
 admin-overlay-antag-classic = ANTAG

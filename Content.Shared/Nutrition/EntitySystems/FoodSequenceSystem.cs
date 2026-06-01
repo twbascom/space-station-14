@@ -111,7 +111,7 @@ public sealed class FoodSequenceSystem : SharedFoodSequenceSystem
         if (!_proto.Resolve(args.Proto, out var elementProto))
             return;
 
-        if (!ent.Comp.OnlyFinal || elementProto.Final || start.FoodLayers.Count == start.MaxLayers)
+        if (!ent.Comp.OnlyFinal || elementProto.Final)
         {
             TryMetamorph((ent, start));
         }
@@ -198,7 +198,7 @@ public sealed class FoodSequenceSystem : SharedFoodSequenceSystem
             return false;
 
         //if we run out of space, we can still put in one last, final finishing element.
-        if (start.Comp.FoodLayers.Count >= start.Comp.MaxLayers && !elementIndexed.Final || start.Comp.Finished)
+        if (start.Comp.Finished)
         {
             if (user is not null)
                 _popup.PopupClient(Loc.GetString("food-sequence-no-space"), start, user.Value);
@@ -368,7 +368,7 @@ public sealed class FoodSequenceSystem : SharedFoodSequenceSystem
         if (start.Owner == element)
             return false;
 
-        if (start.Comp.FoodLayers.Count >= start.Comp.MaxLayers || start.Comp.Finished)
+        if (start.Comp.Finished)
         {
             if (user is not null)
                 _popup.PopupClient(Loc.GetString("food-sequence-no-space"), start, user.Value);
@@ -403,13 +403,9 @@ public sealed class FoodSequenceSystem : SharedFoodSequenceSystem
 
     private SpriteSpecifier GetEntitySpriteSpecifier(EntityUid element)
     {
-        if (TryComp<ItemComponent>(element, out var itemComp))
+        if (TryComp<ItemComponent>(element, out var itemComp) && itemComp.StoredSprite is { } storedSprite)
         {
-            if (itemComp.StoredSprite is { } storedSprite)
-                return storedSprite;
-
-            if (!string.IsNullOrEmpty(itemComp.RsiPath))
-                return new SpriteSpecifier.Rsi(new ResPath(itemComp.RsiPath), "icon");
+            return storedSprite;
         }
 
         var meta = MetaData(element);

@@ -169,3 +169,21 @@
   id: HeadRevObjectiveGroupState
   weights:
     EscapeShuttleObjective: 1
+
+# Feral Infected
+- type: weightedRandom
+  id: FeralInfectedObjectiveGroups
+  weights:
+    FeralInfectedObjectiveGroupKill: 2
+    FeralInfectedObjectiveGroupState: 1
+
+- type: weightedRandom
+  id: FeralInfectedObjectiveGroupKill
+  weights:
+    FeralInfectedKillObjective: 1
+    FeralInfectedKillHeadObjective: 0.5
+
+- type: weightedRandom
+  id: FeralInfectedObjectiveGroupState
+  weights:
+    FeralInfectedEscapeObjective: 1

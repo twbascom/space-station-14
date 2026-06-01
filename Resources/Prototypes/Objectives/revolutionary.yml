@@ -22,7 +22,7 @@
   - type: PickRandomPerson
     filters:
     - !type:JobMindFilter
-      Job: Captain
+      job: Captain
       Invert: true
   - type: KillPersonCondition
     requireDead: true
@@ -60,9 +60,10 @@
         components:
         - ConvertPersonCondition
     - !type:BodyMindFilter
-      blacklist:
+      whitelist:
         components:
         - CommandStaff
+      invert: true
   - type: ConvertPersonCondition
 
 - type: entity

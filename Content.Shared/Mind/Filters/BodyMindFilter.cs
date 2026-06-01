@@ -10,12 +10,16 @@ public sealed partial class BodyMindFilter : MindFilter
     [DataField(required: true)]
     public EntityWhitelist Whitelist = new();
 
+    [DataField]
+    public bool Invert = false;
+
     protected override bool ShouldRemove(Entity<MindComponent> ent, EntityUid? exclude, IEntityManager entMan, SharedMindSystem mindSys)
     {
         if (ent.Comp.OwnedEntity is not {} mob)
             return true;
 
         var sys = entMan.System<EntityWhitelistSystem>();
-        return sys.IsWhitelistFail(Whitelist, mob);
+        var fail = sys.IsWhitelistFail(Whitelist, mob);
+        return Invert ? !fail : fail;
     }
 }
