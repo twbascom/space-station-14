@@ -159,6 +159,9 @@
   - type: GibbableOrgan
   - type: Organ
     category: Eyes
+  - type: Tag
+    tags:
+    - Eyes
   - type: Sprite
     layers:
     - state: eyeball-l
@@ -229,6 +232,9 @@
     layers:
     - state: lung-l
     - state: lung-r
+  - type: Tag
+    tags:
+    - Lungs
   - type: Item
     heldPrefix: lungs
 
@@ -250,6 +256,9 @@
     - id: Medicine
     - id: Poison
     - id: Narcotic
+  - type: Tag
+    tags:
+    - Heart
 
 - type: entity
   parent: OrganBase
@@ -273,6 +282,9 @@
   - type: Sprite
     layers:
     - state: stomach
+  - type: Tag
+    tags:
+    - Stomach
   - type: Item
     heldPrefix: stomach
 
@@ -294,6 +306,9 @@
     maxReagents: 1
     groups:
     - id: Alcohol
+  - type: Tag
+    tags:
+    - Liver
 
 - type: entity
   parent: OrganBase

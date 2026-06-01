@@ -212,6 +212,9 @@
   id: CableCoil # Storage whitelist: BaseClothingBeltEngineering, BorgModuleCable
 
 - type: Tag
+  id: CalmAntag # Heretic/Goobstation tag
+
+- type: Tag
   id: Cake # CargoBounty blacklist: BountyFruit, BountyVegetable
 
 - type: Tag
@@ -519,6 +522,9 @@
   id: EmitterBolt # Default value in ContainmentFieldGeneratorComponent for tagged collisions that power the generator.
 
 - type: Tag
+  id: Eyes
+
+- type: Tag
   id: EncryptionCargo # ItemMapper: TelecomServer
 
 - type: Tag
@@ -591,6 +597,9 @@
 
 - type: Tag
   id: Folder # Storage whitelist: Bookshelf, NoticeBoard, MailCart
+
+- type: Tag
+  id: FollowerStayOnPolymorph # Goobstation tag for followers staying on polymorph
 
 - type: Tag
   id: FoodSnack # Storage whitelist: CandyBucket, CandyBowl. ItemMapper: CandyBowl
@@ -688,6 +697,9 @@
   id: HamsterWearable # Used by inventoryTemplate:hamster to whitelist clothes wearable by brown rats
 
 - type: Tag
+  id: Heart
+
+- type: Tag
   id: HamtrCentralControlModule # ConstructionGraph: Hamtr
 
 - type: Tag
@@ -728,6 +740,18 @@
 
 - type: Tag
   id: HelmetEVA # ConstructionGraph: ClownHardsuit, MimeHardsuit. PartAssembly: VimHarness. ItemMapper: VimHarness
+
+- type: Tag
+  id: HereticBlade
+
+- type: Tag
+  id: HereticBladeBlade
+
+- type: Tag
+  id: HereticCarving
+
+- type: Tag
+  id: HereticItem
 
 - type: Tag
   id: HideContextMenu # Used by client VerbSystem to exclude tagged entities from the right click menu.
@@ -866,6 +890,12 @@
 - type: Tag
   id: Lime # CargoBounty: BountyLime
 
+- type: Tag
+  id: Liver
+
+- type: Tag
+  id: Lungs
+
 ## M ##
 
 #region Magazine (Ammo)
@@ -916,6 +946,9 @@
 
 - type: Tag # Used on DungeonRoom prototypes.
   id: Maints # RoomFill spawner whitelist for MaintsRoomMarker.
+
+- type: Tag
+  id: Mask
 
 - type: Tag
   id: Matchstick # Storage whitelist: Ashtray. ConstructionGraph: ImprovisedShotgunShellGraph
@@ -1231,6 +1264,9 @@
   id: RollingPin # Storage whitelist: ClothingBeltChef. ItemMapper: ClothingBeltChef
 
 - type: Tag
+  id: RoundstartAntag # Goobstation tag for roundstart antagonists.
+
+- type: Tag
   id: Ruminant # SpecialDigestible: OrganAnimalRuminantStomach
 
 ## S ##
@@ -1254,6 +1290,9 @@
   id: ScurretWearable
 
 - type: Tag
+  id: Stomach
+
+- type: Tag
   id: SecBeltEquip # Storage whitelist: ClothingBeltSecurity
 
 - type: Tag
@@ -1267,6 +1306,9 @@
 
 - type: Tag
   id: SecurityHelmet # ConstructionGraph: HelmetJustice
+
+- type: Tag
+  id: ShadowCloakAction
 
 - type: Tag
   id: Sheet # MaterialStorage whitelist for many machines and lathes. Storage whitelist: MaterialBag
@@ -1528,6 +1570,9 @@
 
 - type: Tag
   id: WhitelistChameleonPDA # Chameleon key for ChameleonPDA
+
+- type: Tag
+  id: WideSwingIgnore
 
 - type: Tag
   id: Window # Tagged entity is a window. Several systems and several targeting whitelists (XenoArtifactShatterWindows) care about this.

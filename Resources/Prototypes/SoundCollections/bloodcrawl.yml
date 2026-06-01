@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: bloodCrawl
+  files:
+  - /Audio/Effects/Footsteps/blood3.ogg
+  - /Audio/Effects/Fluids/blood1.ogg
+  - /Audio/Effects/Fluids/blood2.ogg

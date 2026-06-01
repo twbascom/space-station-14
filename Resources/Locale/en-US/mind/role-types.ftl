@@ -37,3 +37,4 @@ role-subtype-xenoborg = Xenoborg
 role-subtype-xenoborg-core = Xenoborg Core
 role-subtype-changeling = Changeling
 role-subtype-malf-ai = Malf AI
+role-subtype-heretic = Heretic

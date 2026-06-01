@@ -33,6 +33,10 @@ using Content.Shared.Station.Components;
 using Content.Shared.Roles.Components;
 using Content.Server.Station.Systems;
 using Content.Server._Goobstation.Objectives.Components;
+using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
+using Content.Shared.Physics;
 
 namespace Content.Server.GameTicking.Rules;
 
@@ -45,6 +49,7 @@ public sealed class HereticRuleSystem : GameRuleSystem<HereticRuleComponent>
     [Dependency] private readonly ObjectivesSystem _objective = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
 
     public static readonly SoundSpecifier BriefingSound =
         new SoundPathSpecifier("/Audio/_Goobstation/Heretic/Ambience/Antag/Heretic/heretic_gain.ogg");
@@ -95,15 +100,38 @@ public sealed class HereticRuleSystem : GameRuleSystem<HereticRuleComponent>
         if (!entMan.TryGetComponent<MapGridComponent>(grid, out var gridComp))
             return false;
 
+        var mapSystem = entMan.System<SharedMapSystem>();
+        var physQuery = entMan.GetEntityQuery<PhysicsComponent>();
+
         var gridBounds = gridComp.LocalAABB;
-        for (var i = 0; i < 25; i++)
+        for (var i = 0; i < 250; i++)
         {
             var randomX = _rand.Next((int) gridBounds.Left, (int) gridBounds.Right);
             var randomY = _rand.Next((int) gridBounds.Bottom, (int) gridBounds.Top);
             var pickTile = new Robust.Shared.Maths.Vector2i(randomX, randomY);
 
+            if (!mapSystem.TryGetTileRef(grid, gridComp, pickTile, out var tileRef) || tileRef.Tile.IsEmpty)
+                continue;
+
+            var valid = true;
+            foreach (var ent in mapSystem.GetAnchoredEntities(grid, gridComp, pickTile))
+            {
+                if (!physQuery.TryGetComponent(ent, out var body))
+                    continue;
+                if (body.BodyType == BodyType.Static &&
+                    body.Hard &&
+                    (body.CollisionLayer & (int) CollisionGroup.Impassable) != 0)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+
+            if (!valid)
+                continue;
+
             tile = pickTile;
-            coords = entMan.System<SharedMapSystem>().GridTileToLocal(grid, gridComp, pickTile);
+            coords = mapSystem.GridTileToLocal(grid, gridComp, pickTile);
             return true;
         }
 
@@ -132,6 +160,10 @@ public sealed class HereticRuleSystem : GameRuleSystem<HereticRuleComponent>
         _npcFaction.AddFaction(target, HereticFactionId);
 
         EnsureComp<HereticComponent>(target);
+
+        // register store UI dynamically
+        var userInterfaceComp = EnsureComp<UserInterfaceComponent>(target);
+        _uiSystem.SetUi((target, userInterfaceComp), StoreUiKey.Key, new InterfaceData("StoreBoundUserInterface"));
 
         // add store
         var store = EnsureComp<StoreComponent>(target);

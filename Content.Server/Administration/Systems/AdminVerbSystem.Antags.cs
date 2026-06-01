@@ -35,6 +35,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
     private static readonly EntProtoId DefaultFeralInfectedRule = "FeralInfected";
+    private static readonly EntProtoId DefaultHereticRule = "Heretic";
     private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     // All antag verbs have names so invokeverb works.
@@ -274,6 +275,21 @@ public sealed partial class AdminVerbSystem
             Message = string.Join(": ", feralInfectedName, Loc.GetString("admin-verb-make-feral-infected")),
         };
         args.Verbs.Add(feralInfected);
+
+        var hereticName = Loc.GetString("admin-verb-text-make-heretic");
+        Verb heretic = new()
+        {
+            Text = hereticName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Goobstation/Interface/Misc/job_icons.rsi"), "HereticMaster"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<HereticRuleComponent>(targetPlayer, DefaultHereticRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", hereticName, Loc.GetString("admin-verb-make-heretic")),
+        };
+        args.Verbs.Add(heretic);
 
         if (HasComp<HumanoidAppearanceComponent>(target)) // only humanoids can be cloned
             args.Verbs.Add(paradox);
