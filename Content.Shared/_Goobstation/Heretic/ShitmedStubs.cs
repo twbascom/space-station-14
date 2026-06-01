@@ -138,6 +138,9 @@ namespace Content.Shared._Shitmed.Targeting
         All,
         Vital
     }
+
+    [RegisterComponent]
+    public sealed partial class TargetingComponent : Component {}
 }
 
 // 3. Content.Shared._Shitmed.Medical.Surgery.Wounds.Components
@@ -913,7 +916,8 @@ namespace Content.Goobstation.Shared.Overlays
 
 namespace Content.Goobstation.Common.CCVar
 {
-    public static class GoobCVars
+    [Robust.Shared.Configuration.CVarDefs]
+    public sealed class GoobCVars : Robust.Shared.CVars
     {
         public static readonly Robust.Shared.Configuration.CVarDef<bool> AscensionRequiresObjectives =
             Robust.Shared.Configuration.CVarDef.Create("heretic.ascension_requires_objectives", true, Robust.Shared.Configuration.CVar.SERVERONLY);
@@ -1007,4 +1011,222 @@ namespace Content.Shared.Whitelist
     }
 }
 
+namespace Content.Shared.Heretic.Components
+{
+    [RegisterComponent]
+    public sealed partial class UnholyItemComponent : Component {}
 
+    [RegisterComponent]
+    public sealed partial class CosmicLapseComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class RandomRotationComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class ScalpelComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class BoneSawComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class CauteryComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class HemostatComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class RetractorComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class TweezersComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class DrillComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class BoneSetterComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class BoneGelComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class TendingComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class StitchesComponent : Component
+    {
+        [DataField] public float Speed;
+    }
+
+    [RegisterComponent]
+    public sealed partial class SurgeryToolComponent : Component
+    {
+        [DataField] public Robust.Shared.Audio.SoundSpecifier? StartSound;
+        [DataField] public Robust.Shared.Audio.SoundSpecifier? EndSound;
+    }
+
+    [RegisterComponent]
+    public sealed partial class SurgeryIgnoreClothingComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class SanitizedComponent : Component
+    {
+        [DataField] public bool WorksInHands;
+    }
+
+    [RegisterComponent]
+    public sealed partial class TrailComponent : Component
+    {
+        [DataField] public float Lifetime;
+        [DataField] public float Frequency;
+        [DataField] public float AlphaLerpAmount;
+        [DataField] public dynamic? RenderedEntityRotationStrategy;
+        [DataField] public dynamic? Sprite;
+    }
+
+    [RegisterComponent]
+    public sealed partial class EntityTrailComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class DamageTrapComponent : Component
+    {
+        [DataField] public Content.Shared.Damage.DamageSpecifier? Damage;
+    }
+
+    [RegisterComponent]
+    public sealed partial class SpawnAnimationComponent : Component
+    {
+        [DataField] public float AnimationLength;
+    }
+
+    [RegisterComponent]
+    public sealed partial class FaceHuggerBlockerComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class FlashSoundSuppressionComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class ActionsProviderComponent : Component
+    {
+        [DataField] public List<string> Actions = new();
+    }
+
+    [RegisterComponent]
+    public sealed partial class ModifyDelayedKnockdownComponent : Component
+    {
+        [DataField] public float DelayDelta;
+        [DataField] public float KnockdownTimeDelta;
+    }
+
+    [RegisterComponent]
+    public sealed partial class TriggerImplantActionComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class HideContrabandContentComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class HideClothingLayerClothingComponent : Component
+    {
+        [DataField] public List<string> HiddenSlots = new();
+    }
+
+    [RegisterComponent]
+    public sealed partial class UndetectableContrabandComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class MultihitComponent : Component
+    {
+        [DataField] public float DamageMultiplier;
+        [DataField] public Content.Shared.Whitelist.EntityWhitelist? MultihitWhitelist;
+        [DataField] public List<MultihitUserHereticEvent> Conditions = new();
+    }
+
+    [DataDefinition]
+    public sealed partial class MultihitUserHereticEvent
+    {
+        [DataField] public string RequiredPath = "";
+        [DataField] public int MinPathStage;
+    }
+
+    [RegisterComponent]
+    public sealed partial class ActivatableUiUserWhitelistComponent : Component
+    {
+        [DataField] public Content.Shared.Whitelist.EntityWhitelist? Whitelist;
+    }
+
+    [RegisterComponent]
+    public sealed partial class MadnessMaskComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class LanguageKnowledgeComponent : Component
+    {
+        [DataField] public List<string> Speaks = new();
+        [DataField] public List<string> Understands = new();
+    }
+
+    [RegisterComponent]
+    public sealed partial class UniversalLanguageSpeakerComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class TowerOfBabelComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class LanguageSpeakerComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class SupermatterImmuneComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class EventHorizonIgnoreComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class SpacetimeSpellbladeEnchantmentComponent : Component
+    {
+        [DataField] public string? Effect;
+    }
+
+    [RegisterComponent]
+    public sealed partial class EnchantingToolComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class ThrowableBlockedComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class ChangeTemperatureOnHitComponent : Component
+    {
+        [DataField] public float Heat;
+    }
+
+    [RegisterComponent]
+    public sealed partial class CanEnchantComponent : Component {}
+}
