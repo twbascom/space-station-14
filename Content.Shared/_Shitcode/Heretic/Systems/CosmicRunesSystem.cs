@@ -40,42 +40,6 @@ public sealed class CosmicRunesSystem : EntitySystem
 
         SubscribeLocalEvent<HereticCosmicRuneComponent, InteractHandEvent>(OnInteract);
         SubscribeLocalEvent<HereticCosmicRuneComponent, ActivateInWorldEvent>(OnActivate);
-        SubscribeLocalEvent<HereticCosmicRuneComponent, AfterInteractUsingEvent>(OnInteractUsing);
-    }
-
-    private void OnInteractUsing(Entity<HereticCosmicRuneComponent> ent, ref AfterInteractUsingEvent args)
-    {
-        if (HasComp<FadingTimedDespawnComponent>(ent))
-            return;
-
-        if (TryComp(args.Used, out StarTouchComponent? starTouch))
-        {
-            _heretic.InvokeTouchSpell<StarTouchComponent>((args.Used, starTouch), args.User);
-            EnsureComp<FadingTimedDespawnComponent>(ent).Lifetime = 0f;
-            if (Exists(ent.Comp.LinkedRune))
-                EnsureComp<FadingTimedDespawnComponent>(ent.Comp.LinkedRune.Value).Lifetime = 0f;
-            args.Handled = true;
-            return;
-        }
-
-        if (!_compFactory.TryGetRegistration("Bible", out var bibleReg) ||
-            !_compFactory.TryGetRegistration("BibleUser", out var bibleUserReg))
-            return;
-
-        if (!EntityManager.HasComponent(args.Used, bibleReg.Type) ||
-            !EntityManager.HasComponent(args.User, bibleUserReg.Type) ||
-            !TryComp(args.Used, out UseDelayComponent? useDelay) ||
-            _useDelay.IsDelayed((args.Used, useDelay)))
-            return;
-
-        var bibleComponent = EntityManager.GetComponent(args.Used, bibleReg.Type);
-        dynamic dynBible = bibleComponent;
-        Robust.Shared.Audio.SoundSpecifier? healSound = dynBible.HealSoundPath;
-
-        _useDelay.TryResetDelay(args.Used, false, useDelay);
-        _audio.PlayPredicted(healSound, Transform(ent).Coordinates, args.User);
-        EnsureComp<FadingTimedDespawnComponent>(ent).Lifetime = 0f;
-        args.Handled = true;
     }
 
     private void OnActivate(Entity<HereticCosmicRuneComponent> ent, ref ActivateInWorldEvent args)

@@ -18,7 +18,7 @@
     - state: eldritch_projectile
       shader: unshaded
   - type: Reflective
-    reflective: Magic
+    reflective: Energy
   - type: Projectile
     damage:
       types:

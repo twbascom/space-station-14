@@ -28,7 +28,7 @@
         - Lava
   - type: Sprite
     sprite: Effects/fire.rsi
-    drawdepth: FloorEffects
+    drawdepth: FloorObjects
     layers:
       - state: 1
         shader: unshaded
@@ -125,7 +125,7 @@
   description: Rusty...
   components:
   - type: Sprite
-    drawdepth: FloorEffects
+    drawdepth: FloorObjects
     sprite: _Goobstation/Heretic/Effects/effects.rsi
     layers:
       - state: small_rune_1
@@ -173,7 +173,7 @@
 - type: tile
   id: PlatingRust
   name: tiles-plating-rust
-  sprite: /Textures/_Goobstation/Heretic/tiles.rsi/plating_rust.png
+  sprite: /Textures/_Goobstation/Heretic/plating_rust.png
   baseTurf: Plating
   isSubfloor: true
   deconstructTools: [ Prying ] # This used to be welding but it was annoying to weld plating instead of rust accidentally and space the area

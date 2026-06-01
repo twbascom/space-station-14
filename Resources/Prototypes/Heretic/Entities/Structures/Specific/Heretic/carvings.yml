@@ -14,7 +14,7 @@
   components:
   - type: Clickable
   - type: Sprite
-    drawdepth: FloorEffects
+    drawdepth: FloorObjects
     sprite: _Goobstation/Heretic/carvings.rsi
     color: '#FFFFFF14'
   - type: Fixtures

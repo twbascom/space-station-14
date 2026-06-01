@@ -101,8 +101,8 @@ namespace Content.Shared.Damage.Systems
             bool interruptsDoAfters = true,
             DamageableComponent? damageable = null,
             EntityUid? origin = null,
-            dynamic? targetPart = null,
-            dynamic? splitDamage = null,
+            object? targetPart = null,
+            object? splitDamage = null,
             bool? canMiss = null,
             bool ignoreGlobalModifiers = false
         )
@@ -121,10 +121,9 @@ namespace Content.Shared.Damage.Systems
 
         public static void ExitStamCrit(this SharedStaminaSystem staminaSystem, EntityUid uid, StaminaComponent component)
         {
-            dynamic c = component;
-            c.Critical = false;
-            c.AfterCritical = true;
-            c.StaminaDamage = 0f;
+            component.Critical = false;
+            component.AfterCritical = true;
+            component.StaminaDamage = 0f;
         }
     }
 }
@@ -162,12 +161,21 @@ namespace Content.Shared._Shitmed.Medical.Surgery.Wounds.Components
 // 4. Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components
 namespace Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components
 {
+    using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
+    using Content.Shared._Shitmed.Medical.Surgery.Consciousness;
+
+    public sealed class MockNerveSystem
+    {
+        public NerveComponent Comp { get; set; } = default!;
+        public EntityUid Owner { get; set; }
+    }
+
     [RegisterComponent]
     public sealed partial class ConsciousnessComponent : Component
     {
-        public dynamic? NerveSystem;
-        public Dictionary<dynamic, dynamic> Multipliers = new();
-        public Dictionary<dynamic, dynamic> Modifiers = new();
+        public MockNerveSystem? NerveSystem;
+        public Dictionary<(object, object), ConsciousnessMultiplier> Multipliers = new();
+        public Dictionary<(object, object), ConsciousnessModifier> Modifiers = new();
     }
 }
 
@@ -179,15 +187,27 @@ namespace Content.Shared._Shitmed.Medical.Surgery.Consciousness
         Pain,
         Other
     }
+
+    public sealed class ConsciousnessMultiplier
+    {
+        public ConsciousnessModType Type;
+    }
+
+    public sealed class ConsciousnessModifier
+    {
+        public ConsciousnessModType Type;
+    }
 }
 
 // 6. Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems
 namespace Content.Shared._Shitmed.Medical.Surgery.Consciousness.Systems
 {
+    using Content.Shared._Shitmed.Medical.Surgery.Consciousness.Components;
+
     public sealed class ConsciousnessSystem : EntitySystem
     {
-        public void RemoveConsciousnessMultiplier(EntityUid uid, dynamic val1, dynamic val2, dynamic comp) {}
-        public void RemoveConsciousnessModifier(EntityUid uid, dynamic val1, dynamic val2, dynamic comp) {}
+        public void RemoveConsciousnessMultiplier(EntityUid uid, object val1, object val2, ConsciousnessComponent comp) {}
+        public void RemoveConsciousnessModifier(EntityUid uid, object val1, object val2, ConsciousnessComponent comp) {}
     }
 }
 
@@ -196,10 +216,10 @@ namespace Content.Shared._Shitmed.Medical.Surgery.Pain.Systems
 {
     public sealed class PainSystem : EntitySystem
     {
-        public void TryChangePainModifier(EntityUid uid, dynamic val1, dynamic val2, float val3, dynamic comp) {}
-        public void TryRemovePainModifier(EntityUid uid, dynamic val1, dynamic val2, dynamic comp) {}
-        public void TryRemovePainMultiplier(EntityUid uid, dynamic val1, dynamic comp) {}
-        public void TryRemovePainFeelsModifier(dynamic val1, dynamic val2, dynamic val3, dynamic val4) {}
+        public void TryChangePainModifier(EntityUid uid, object val1, object val2, FixedPoint2 val3, object comp) {}
+        public void TryRemovePainModifier(EntityUid uid, object val1, object val2, object comp) {}
+        public void TryRemovePainMultiplier(EntityUid uid, object val1, object comp) {}
+        public void TryRemovePainFeelsModifier(object val1, object val2, object val3, object val4) {}
     }
 }
 
@@ -212,13 +232,23 @@ namespace Content.Shared._Shitmed.Medical.Surgery.Traumas.Components
         [DataField]
         public float IntegrityCap = 100f;
     }
+
+    public sealed class PainModifier
+    {
+        public FixedPoint2 Change;
+    }
+
+    public sealed class NerveData
+    {
+        public Dictionary<(object, object), object> PainFeelingModifiers = new();
+    }
     
     [RegisterComponent]
     public sealed partial class NerveComponent : Component
     {
-        public Dictionary<dynamic, dynamic> Modifiers = new();
-        public Dictionary<dynamic, dynamic> Multipliers = new();
-        public Dictionary<dynamic, dynamic> Nerves = new();
+        public Dictionary<(object, object), PainModifier> Modifiers = new();
+        public Dictionary<object, object> Multipliers = new();
+        public Dictionary<object, NerveData> Nerves = new();
     }
 }
 
@@ -530,9 +560,14 @@ namespace Content.Shared.Body.Systems
     using Content.Shared.Body.Components;
     using System.Collections.Generic;
 
+    public sealed class MockBodyPart
+    {
+        public EntityUid Id { get; set; }
+    }
+
     public static class BodySystemExtensions
     {
-        public static void GibBody(this Content.Shared.Body.BodySystem bodySystem, EntityUid ent, Content.Shared.Body.BodyComponent? body = null, dynamic? contents = null)
+        public static void GibBody(this Content.Shared.Body.BodySystem bodySystem, EntityUid ent, Content.Shared.Body.BodyComponent? body = null, object? contents = null)
         {
             IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<Content.Shared.Gibbing.GibbingSystem>().Gib(ent);
         }
@@ -550,9 +585,9 @@ namespace Content.Shared.Body.Systems
             return System.Array.Empty<Entity<T>>();
         }
 
-        public static IEnumerable<dynamic> GetBodyChildren(this SharedBodySystem bodySystem, EntityUid uid)
+        public static IEnumerable<MockBodyPart> GetBodyChildren(this SharedBodySystem bodySystem, EntityUid uid)
         {
-            return System.Array.Empty<dynamic>();
+            return System.Array.Empty<MockBodyPart>();
         }
 
         public static List<EntityUid> GetBodyChildrenOfType(this Content.Shared.Body.BodySystem bodySystem, EntityUid uid, Content.Shared.Body.Part.BodyPartType type)
@@ -640,7 +675,7 @@ namespace Content.Shared.Movement.Pulling.Systems
         public static bool TryStartPull(this PullingSystem pullingSystem, EntityUid pullerUid, EntityUid pullableUid,
             Content.Shared.Movement.Pulling.Components.PullerComponent? pullerComp,
             Content.Shared.Movement.Pulling.Components.PullableComponent? pullableComp,
-            dynamic grabStage,
+            object grabStage,
             bool force)
         {
             return pullingSystem.TryStartPull(pullerUid, pullableUid, pullerComp, pullableComp);
@@ -665,7 +700,7 @@ namespace Content.Shared.Weapons.Ranged.Systems
 {
     public static class GunSystemExtensions
     {
-        public static bool SetTarget(this SharedGunSystem gunSystem, EntityUid projectile, EntityUid? target, out dynamic? val)
+        public static bool SetTarget(this SharedGunSystem gunSystem, EntityUid projectile, EntityUid? target, out object? val)
         {
             val = null;
             return false;
@@ -692,7 +727,7 @@ namespace Content.Shared.Stunnable
             return false;
         }
 
-        public static bool TryParalyze(this SharedStunSystem stunSystem, EntityUid uid, TimeSpan time, bool refresh, dynamic? status = null)
+        public static bool TryParalyze(this SharedStunSystem stunSystem, EntityUid uid, TimeSpan time, bool refresh, object? status = null)
         {
             return stunSystem.TryAddStunDuration(uid, time);
         }
@@ -1110,8 +1145,8 @@ namespace Content.Shared.Heretic.Components
         [DataField] public float Lifetime;
         [DataField] public float Frequency;
         [DataField] public float AlphaLerpAmount;
-        [DataField] public dynamic? RenderedEntityRotationStrategy;
-        [DataField] public dynamic? Sprite;
+        [DataField] public string? RenderedEntityRotationStrategy;
+        [DataField] public Robust.Shared.Utility.SpriteSpecifier? Sprite;
     }
 
     [RegisterComponent]
@@ -1127,6 +1162,12 @@ namespace Content.Shared.Heretic.Components
     public sealed partial class SpawnAnimationComponent : Component
     {
         [DataField] public float AnimationLength;
+    }
+
+    [Robust.Shared.Serialization.NetSerializable, Serializable]
+    public enum SpawnAnimationVisuals : byte
+    {
+        Spawned
     }
 
     [RegisterComponent]
@@ -1229,4 +1270,45 @@ namespace Content.Shared.Heretic.Components
 
     [RegisterComponent]
     public sealed partial class CanEnchantComponent : Component {}
+
+    [RegisterComponent]
+    public sealed partial class EnchantingTableComponent : Component {}
+}
+
+namespace Content.Shared.EntityConditions.Conditions
+{
+    using Content.Shared.EntityConditions;
+    using Content.Shared.Heretic;
+    using Robust.Shared.Prototypes;
+    using System.Collections.Generic;
+
+    public sealed partial class HasComponentCondition : EntityConditionBase<HasComponentCondition>
+    {
+        [DataField]
+        public List<string> Components = new();
+
+        public override string EntityConditionGuidebookText(IPrototypeManager prototype) => "";
+    }
+
+    public sealed class HasComponentConditionSystem : EntitySystem
+    {
+        public override void Initialize()
+        {
+            base.Initialize();
+            SubscribeLocalEvent<HereticComponent, EntityConditionEvent<HasComponentCondition>>(OnHereticConditionCheck);
+            SubscribeLocalEvent<GhoulComponent, EntityConditionEvent<HasComponentCondition>>(OnGhoulConditionCheck);
+        }
+
+        private void OnHereticConditionCheck(Entity<HereticComponent> ent, ref EntityConditionEvent<HasComponentCondition> args)
+        {
+            if (args.Condition.Components.Contains("Heretic"))
+                args.Result = true;
+        }
+
+        private void OnGhoulConditionCheck(Entity<GhoulComponent> ent, ref EntityConditionEvent<HasComponentCondition> args)
+        {
+            if (args.Condition.Components.Contains("Ghoul"))
+                args.Result = true;
+        }
+    }
 }

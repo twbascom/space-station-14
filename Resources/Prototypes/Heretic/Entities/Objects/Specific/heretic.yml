@@ -106,7 +106,6 @@
     reflects:
     - Energy
     - NonEnergy
-    - Magic
 
 - type: entity
   parent: BaseBullet
