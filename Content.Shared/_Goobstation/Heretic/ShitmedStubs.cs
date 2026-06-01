@@ -1312,3 +1312,54 @@ namespace Content.Shared.EntityConditions.Conditions
         }
     }
 }
+
+namespace Content.Shared.EntityEffects
+{
+    using Robust.Shared.Prototypes;
+    using Robust.Shared.GameObjects;
+
+    public sealed partial class FlammableReaction : EntityEffectBase<FlammableReaction>
+    {
+        [DataField]
+        public float FireProtectionPenetration = 0f;
+
+        [DataField]
+        public float Multiplier = 1f;
+
+        [DataField]
+        public float MultiplierOnExisting = 1f;
+
+        public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) => null;
+    }
+
+    public sealed partial class TakeStaminaDamage : EntityEffectBase<TakeStaminaDamage>
+    {
+        [DataField]
+        public float Amount;
+
+        [DataField]
+        public bool Immediate;
+
+        public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) => null;
+    }
+}
+
+namespace Content.Shared.Chemistry.Reaction
+{
+    using Content.Shared.Chemistry.Reagent;
+    using Content.Shared.FixedPoint;
+    using Robust.Shared.Map;
+
+    public sealed partial class ChangeTileReaction : ITileReaction
+    {
+        public FixedPoint2 TileReact(TileRef tile,
+            ReagentPrototype reagent,
+            FixedPoint2 reactVolume,
+            IEntityManager entityManager,
+            List<ReagentData>? data = null)
+        {
+            return reactVolume;
+        }
+    }
+}
+
