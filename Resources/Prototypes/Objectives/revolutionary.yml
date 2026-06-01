@@ -1,0 +1,150 @@
+- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseHeadRevObjective
+  components:
+  - type: Objective
+    issuer: objective-issuer-revolutionary
+  - type: RoleRequirement
+    roles:
+    - RevolutionaryRole
+
+- type: entity
+  parent: [BaseHeadRevObjective, BaseKillObjective]
+  id: KillCaptainObjective
+  description: Ensure the Captain of the station is eliminated.
+  components:
+  - type: Objective
+    difficulty: 3.5
+    unique: true
+  - type: TargetObjective
+    title: objective-condition-kill-maroon-title
+  - type: PickRandomPerson
+    filters:
+    - !type:JobMindFilter
+      Job: Captain
+      Invert: true
+  - type: KillPersonCondition
+    requireDead: true
+    requireMaroon: true
+
+- type: entity
+  parent: BaseObjective
+  id: HeadRevProgressObjective
+  description: Assist the Head Revolutionary who converted you. Ensure all their objectives are completed.
+  components:
+  - type: Objective
+    difficulty: 1.0
+    issuer: objective-issuer-revolutionary
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-head-rev-progress-title
+  - type: HelpProgressCondition
+
+- type: entity
+  parent: [BaseHeadRevObjective, BaseKillObjective]
+  id: ConvertRandomPersonObjective
+  description: Find a way to bring them to our side. Show them the light of the revolution.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    unique: false
+  - type: TargetObjective
+    title: objective-condition-convert-person-title
+  - type: PickRandomPerson
+    filters:
+    - !type:TargetObjectiveMindFilter
+      blacklist:
+        components:
+        - ConvertPersonCondition
+    - !type:BodyMindFilter
+      blacklist:
+        components:
+        - CommandStaff
+  - type: ConvertPersonCondition
+
+- type: entity
+  parent: BaseHeadRevObjective
+  id: ConvertStationObjective
+  description: Spread the word of the revolution to the crew. Convert at least 30% of them.
+  components:
+  - type: Objective
+    difficulty: 2.5
+    unique: true
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-convert-station-title
+  - type: ConvertPercentageCondition
+    percentage: 0.3
+
+- type: entity
+  parent: BaseHeadRevObjective
+  id: ConvertMedicalDepartmentObjective
+  description: Bring the medical staff under our banner. Convert at least 30% of them.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    unique: true
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-convert-medical-title
+  - type: ConvertPercentageCondition
+    percentage: 0.3
+    department: Medical
+
+- type: entity
+  parent: BaseHeadRevObjective
+  id: ConvertEngineeringDepartmentObjective
+  description: Bring the engineers under our banner. Convert at least 30% of them.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    unique: true
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-convert-engineering-title
+  - type: ConvertPercentageCondition
+    percentage: 0.3
+    department: Engineering
+
+- type: entity
+  parent: BaseHeadRevObjective
+  id: ConvertScienceDepartmentObjective
+  description: Bring the scientists under our banner. Convert at least 30% of them.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    unique: true
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-convert-science-title
+  - type: ConvertPercentageCondition
+    percentage: 0.3
+    department: Science
+
+- type: entity
+  parent: BaseHeadRevObjective
+  id: ConvertCargoDepartmentObjective
+  description: Bring the cargo crew under our banner. Convert at least 30% of them.
+  components:
+  - type: Objective
+    difficulty: 2.0
+    unique: true
+    icon:
+      sprite: Objects/Misc/folders.rsi
+      state: folder-colormap
+  - type: TargetObjective
+    title: objective-condition-convert-cargo-title
+  - type: ConvertPercentageCondition
+    percentage: 0.3
+    department: Cargo

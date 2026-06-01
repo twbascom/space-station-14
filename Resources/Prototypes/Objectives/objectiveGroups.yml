@@ -121,3 +121,51 @@
   weights:
     EscapeThiefShuttleObjective: 1
 #Changeling, crew, wizard, when you code it...
+
+# Revolutionary / Head Rev
+- type: weightedRandom
+  id: HeadRevObjectiveGroups
+  weights:
+    HeadRevObjectiveGroupKill: 1
+    HeadRevObjectiveGroupSteal: 1
+    HeadRevObjectiveGroupConvert: 1
+    HeadRevObjectiveGroupState: 1
+
+- type: weightedRandom
+  id: HeadRevObjectiveGroupKill
+  weights:
+    KillRandomPersonObjective: 1
+    KillRandomHeadObjective: 0.5
+    KillCaptainObjective: 0.25
+
+- type: weightedRandom
+  id: HeadRevObjectiveGroupSteal
+  weights:
+    CaptainIDStealObjective: 1
+    CMOHyposprayStealObjective: 1
+    CMOCrewMonitorStealObjective: 1
+    RDHardsuitStealObjective: 1
+    NukeDiskStealObjective: 1
+    MagbootsStealObjective: 1
+    CorgiMeatStealObjective: 1
+    ClipboardStealObjective: 1
+    KnuckleDustersStealObjective: 1
+    CaptainGunStealObjective: 0.5
+    CaptainJetpackStealObjective: 0.5
+    HandTeleporterStealObjective: 0.5
+    EnergyMagnumStealObjective: 0.5
+
+- type: weightedRandom
+  id: HeadRevObjectiveGroupConvert
+  weights:
+    ConvertRandomPersonObjective: 1
+    ConvertStationObjective: 0.5
+    ConvertMedicalDepartmentObjective: 0.5
+    ConvertEngineeringDepartmentObjective: 0.5
+    ConvertScienceDepartmentObjective: 0.5
+    ConvertCargoDepartmentObjective: 0.5
+
+- type: weightedRandom
+  id: HeadRevObjectiveGroupState
+  weights:
+    EscapeShuttleObjective: 1

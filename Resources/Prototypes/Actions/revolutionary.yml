@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseAction
+  id: ActionSpreadPropaganda
+  name: Spread Propaganda
+  description: Spread revolutionary propaganda to all nearby players in a four-tile radius.
+  components:
+  - type: Action
+    useDelay: 10
+    icon: { sprite: Interface/Actions/voice-mask.rsi, state: icon }
+  - type: InstantAction
+    event: !type:SpreadPropagandaActionEvent

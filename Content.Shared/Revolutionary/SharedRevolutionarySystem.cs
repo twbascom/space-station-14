@@ -37,6 +37,11 @@ public abstract class SharedRevolutionarySystem : EntitySystem
             return;
         }
 
+        if (HasComp<RevolutionaryConversionComponent>(uid))
+        {
+            RemComp<RevolutionaryConversionComponent>(uid);
+        }
+
         if (HasComp<RevolutionaryComponent>(uid))
         {
             var stunTime = TimeSpan.FromSeconds(4);

@@ -304,6 +304,10 @@
   - type: GameRule
     minPlayers: 15
   - type: RevolutionaryRule
+  - type: AntagRandomObjectives
+    sets:
+    - groups: HeadRevObjectiveGroups
+    maxDifficulty: 5
   - type: AntagSelection
     selectionTime: IntraPlayerSpawn
     definitions:
@@ -318,6 +322,9 @@
       components:
       - type: Revolutionary
       - type: HeadRevolutionary
+      - type: ActionGrant
+        actions:
+        - ActionSpreadPropaganda
       mindRoles:
       - MindRoleHeadRevolutionary
   - type: DynamicRuleCost

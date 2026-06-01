@@ -1,4 +1,5 @@
 using Content.Server.Administration.Logs;
+using Content.Server.Objectives.Systems;
 using Content.Server.Antag;
 using Content.Server.EUI;
 using Content.Server.GameTicking.Rules.Components;
@@ -52,6 +53,7 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private readonly TargetObjectiveSystem _target = default!;
 
     //Used in OnPostFlash, no reference to the rule component is available
     public readonly ProtoId<NpcFactionPrototype> RevolutionaryNpcFaction = "Revolutionary";
@@ -62,8 +64,9 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
         base.Initialize();
         SubscribeLocalEvent<CommandStaffComponent, MobStateChangedEvent>(OnCommandMobStateChanged);
 
-        SubscribeLocalEvent<HeadRevolutionaryComponent, AfterFlashedEvent>(OnPostFlash);
+        SubscribeLocalEvent<RevolutionaryConvertEvent>(OnConvertEvent);
         SubscribeLocalEvent<HeadRevolutionaryComponent, MobStateChangedEvent>(OnHeadRevMobStateChanged);
+        SubscribeLocalEvent<RevolutionaryComponent, MobStateChangedEvent>(OnRevMobStateChanged);
 
         SubscribeLocalEvent<RevolutionaryRoleComponent, GetBriefingEvent>(OnGetBriefing);
 
@@ -129,43 +132,48 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
     }
 
     /// <summary>
-    /// Called when a Head Rev uses a flash in melee to convert somebody else.
+    /// Called when a Head Rev converts somebody else via propaganda.
     /// </summary>
-    private void OnPostFlash(EntityUid uid, HeadRevolutionaryComponent comp, ref AfterFlashedEvent ev)
+    private void OnConvertEvent(RevolutionaryConvertEvent ev)
     {
-        if (uid != ev.User || !ev.Melee)
+        var target = ev.Target;
+        var alwaysConvertible = HasComp<AlwaysRevolutionaryConvertibleComponent>(target);
+
+        if (!_mind.TryGetMind(target, out var mindId, out var mind) && !alwaysConvertible)
             return;
 
-        var alwaysConvertible = HasComp<AlwaysRevolutionaryConvertibleComponent>(ev.Target);
-
-        if (!_mind.TryGetMind(ev.Target, out var mindId, out var mind) && !alwaysConvertible)
-            return;
-
-        if (HasComp<RevolutionaryComponent>(ev.Target) ||
-            HasComp<MindShieldComponent>(ev.Target) ||
-            !HasComp<HumanoidAppearanceComponent>(ev.Target) &&
-            !alwaysConvertible ||
-            !_mobState.IsAlive(ev.Target) ||
-            HasComp<ZombieComponent>(ev.Target))
+        if (HasComp<RevolutionaryComponent>(target) ||
+            HasComp<HeadRevolutionaryComponent>(target) ||
+            (!HasComp<HumanoidAppearanceComponent>(target) && !alwaysConvertible) ||
+            !_mobState.IsAlive(target) ||
+            HasComp<ZombieComponent>(target))
         {
             return;
         }
 
-        _npcFaction.AddFaction(ev.Target, RevolutionaryNpcFaction);
-        var revComp = EnsureComp<RevolutionaryComponent>(ev.Target);
+        _npcFaction.AddFaction(target, RevolutionaryNpcFaction);
+        var revComp = EnsureComp<RevolutionaryComponent>(target);
+        revComp.ConvertedBy = ev.Converter;
 
-        if (ev.User != null)
+        if (ev.Converter != null)
         {
             _adminLogManager.Add(LogType.Mind,
                 LogImpact.Medium,
-                $"{ToPrettyString(ev.User.Value)} converted {ToPrettyString(ev.Target)} into a Revolutionary");
+                $"{ToPrettyString(ev.Converter.Value)} converted {ToPrettyString(target)} into a Revolutionary");
 
-            if (_mind.TryGetMind(ev.User.Value, out var revMindId, out _))
+            if (_mind.TryGetMind(ev.Converter.Value, out var revMindId, out _))
             {
                 if (_role.MindHasRole<RevolutionaryRoleComponent>(revMindId, out var role))
                 {
                     role.Value.Comp2.ConvertedCount++;
                     Dirty(role.Value.Owner, role.Value.Comp2);
+                }
+
+                if (mindId != default && mind != null)
+                {
+                    var helpObj = Spawn("HeadRevProgressObjective");
+                    _target.SetTarget(helpObj, revMindId);
+                    _mind.AddObjective(mindId, mind, helpObj);
                 }
             }
         }
@@ -208,47 +216,34 @@ public sealed class RevolutionaryRuleSystem : GameRuleSystem<RevolutionaryRuleCo
             CheckRevsLose();
     }
 
+    private void OnRevMobStateChanged(EntityUid uid, RevolutionaryComponent comp, MobStateChangedEvent ev)
+    {
+        if (ev.NewMobState == MobState.Dead || ev.NewMobState == MobState.Invalid)
+            CheckRevsLose();
+    }
+
     /// <summary>
-    /// Checks if all the Head Revs are dead and if so will deconvert all regular revs.
+    /// Checks if all the Revs are dead/detained/deconverted.
     /// </summary>
     private bool CheckRevsLose()
     {
-        var stunTime = TimeSpan.FromSeconds(4);
-        var headRevList = new List<EntityUid>();
+        var revList = new List<EntityUid>();
 
         var headRevs = AllEntityQuery<HeadRevolutionaryComponent, MobStateComponent>();
         while (headRevs.MoveNext(out var uid, out _, out _))
         {
-            headRevList.Add(uid);
+            revList.Add(uid);
         }
 
-        // If no Head Revs are alive all normal Revs will lose their Rev status and rejoin Nanotrasen
-        // Cuffing Head Revs is not enough - they must be killed.
-        if (IsGroupDetainedOrDead(headRevList, false, false, false))
+        var normalRevs = AllEntityQuery<RevolutionaryComponent, MobStateComponent>();
+        while (normalRevs.MoveNext(out var uid, out _, out _))
         {
-            var rev = AllEntityQuery<RevolutionaryComponent, MindContainerComponent>();
-            while (rev.MoveNext(out var uid, out _, out var mc))
-            {
-                if (HasComp<HeadRevolutionaryComponent>(uid))
-                    continue;
+            if (!HasComp<HeadRevolutionaryComponent>(uid))
+                revList.Add(uid);
+        }
 
-                _npcFaction.RemoveFaction(uid, RevolutionaryNpcFaction);
-                _stun.TryUpdateParalyzeDuration(uid, stunTime);
-                RemCompDeferred<RevolutionaryComponent>(uid);
-                _popup.PopupEntity(Loc.GetString("rev-break-control", ("name", Identity.Entity(uid, EntityManager))), uid);
-                _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} was deconverted due to all Head Revolutionaries dying.");
-
-                if (!_mind.TryGetMind(uid, out var mindId, out var mind, mc))
-                    continue;
-
-                // remove their antag role
-                _role.MindRemoveRole<RevolutionaryRoleComponent>(mindId);
-
-                // make it very obvious to the rev they've been deconverted since
-                // they may not see the popup due to antag and/or new player tunnel vision
-                if (_player.TryGetSessionById(mind.UserId, out var session))
-                    _euiMan.OpenEui(new DeconvertedEui(), session);
-            }
+        if (IsGroupDetainedOrDead(revList, false, false, false))
+        {
             return true;
         }
 
