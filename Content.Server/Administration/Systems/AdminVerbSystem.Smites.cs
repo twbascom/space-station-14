@@ -449,7 +449,7 @@ public sealed partial class AdminVerbSystem
                     var xform = Transform(args.Target);
                     var fixtures = Comp<FixturesComponent>(args.Target);
                     _transformSystem.Unanchor(args.Target, xform); // Just in case.
-                    _physics.SetBodyType(args.Target, BodyType.Dynamic, manager: fixtures, body: physics);
+                    _physics.SetBodyType(args.Target, Robust.Shared.Physics.BodyType.Dynamic, manager: fixtures, body: physics);
                     _physics.SetBodyStatus(args.Target, physics, BodyStatus.InAir);
                     _physics.WakeBody(args.Target, manager: fixtures, body: physics);
 
@@ -485,7 +485,7 @@ public sealed partial class AdminVerbSystem
                     var fixtures = Comp<FixturesComponent>(args.Target);
                     _transformSystem.Unanchor(args.Target); // Just in case.
 
-                    _physics.SetBodyType(args.Target, BodyType.Dynamic, body: physics);
+                    _physics.SetBodyType(args.Target, Robust.Shared.Physics.BodyType.Dynamic, body: physics);
                     _physics.SetBodyStatus(args.Target, physics, BodyStatus.InAir);
                     _physics.WakeBody(args.Target, manager: fixtures, body: physics);
 
@@ -813,7 +813,7 @@ public sealed partial class AdminVerbSystem
                     var fixtures = Comp<FixturesComponent>(args.Target);
                     _transformSystem.Unanchor(args.Target, xform);
 
-                    var bodyType = HasComp<InputMoverComponent>(args.Target) ? BodyType.KinematicController : BodyType.Dynamic;
+                    var bodyType = HasComp<InputMoverComponent>(args.Target) ? Robust.Shared.Physics.BodyType.KinematicController : Robust.Shared.Physics.BodyType.Dynamic;
                     _physics.SetBodyType(args.Target, bodyType, manager: fixtures, body: superSpinPhysics);
                     _physics.SetBodyStatus(args.Target, superSpinPhysics, BodyStatus.InAir);
                     _physics.WakeBody(args.Target, manager: fixtures, body: superSpinPhysics);

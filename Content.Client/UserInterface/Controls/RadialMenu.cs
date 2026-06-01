@@ -685,3 +685,8 @@ public class RadialMenuButtonWithSector : RadialMenuButton, IRadialMenuItemWithS
         return new Angle(angleSectorFrom).EqualsApprox(new Angle(angleSectorTo));
     }
 }
+
+[Virtual]
+public class RadialMenuTextureButtonWithSector : RadialMenuButtonWithSector
+{
+}

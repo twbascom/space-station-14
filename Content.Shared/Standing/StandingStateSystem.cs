@@ -204,7 +204,10 @@ public sealed class StandingStateSystem : EntitySystem
 }
 
 [ByRefEvent]
-public record struct DropHandItemsEvent();
+public record struct DropHandItemsEvent
+{
+    public bool Handled;
+}
 
 /// <summary>
 /// Subscribe if you can potentially block a down attempt.
