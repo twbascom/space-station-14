@@ -592,10 +592,11 @@ public sealed class AristocratSystem : EntitySystem
             var newTile = _prot.Index(SnowTilePrototype);
             _tile.ReplaceTile(tile.Value, newTile);
 
-            var condition = _lookup.GetEntitiesInRange(pos, .1f, LookupFlags.Static | LookupFlags.Sensors)
+            var tileCoords = _turf.GetTileCenter(tile.Value);
+            var condition = _lookup.GetEntitiesInRange(tileCoords, .1f, LookupFlags.Static | LookupFlags.Sensors)
                 .All(e => Prototype(e)?.ID != IceTilePrototype.Id);
             if (condition)
-                Spawn(IceTilePrototype, pos);
+                Spawn(IceTilePrototype, tileCoords);
         }
     }
 }

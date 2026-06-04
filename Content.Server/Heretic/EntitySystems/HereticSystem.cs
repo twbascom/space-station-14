@@ -130,19 +130,42 @@ public sealed class HereticSystem : EntitySystem
 
     public bool ObjectivesAllowAscension(Entity<HereticComponent> ent)
     {
+        Robust.Shared.Log.Logger.Info($"[ObjectivesAllowAscension] Checking for performer: {ToPrettyString(ent)}");
+
         if (!_ascensionRequiresObjectives)
+        {
+            Robust.Shared.Log.Logger.Info("[ObjectivesAllowAscension] _ascensionRequiresObjectives is false. Allowing ascension.");
             return true;
+        }
 
         if (!_mind.TryGetMind(ent, out var mindId, out var mind))
+        {
+            Robust.Shared.Log.Logger.Info("[ObjectivesAllowAscension] Failed to get mind for performer. Denying ascension.");
             return false;
+        }
+
+        Robust.Shared.Log.Logger.Info($"[ObjectivesAllowAscension] Mind found: {mindId}. Checking objectives...");
 
         foreach (var objId in ent.Comp.AllObjectives)
         {
-            if (_mind.TryFindObjective((mindId, mind), objId, out var obj) &&
-                !_objectives.IsCompleted(obj.Value, (mindId, mind)))
-                return false;
+            if (_mind.TryFindObjective((mindId, mind), objId, out var obj))
+            {
+                var progress = _objectives.GetProgress(obj.Value, (mindId, mind));
+                var isCompleted = _objectives.IsCompleted(obj.Value, (mindId, mind));
+                Robust.Shared.Log.Logger.Info($"[ObjectivesAllowAscension] Objective {objId} found. Progress: {progress ?? 0f}, IsCompleted: {isCompleted}");
+                if (!isCompleted)
+                {
+                    Robust.Shared.Log.Logger.Info($"[ObjectivesAllowAscension] Objective {objId} is not complete. Denying ascension.");
+                    return false;
+                }
+            }
+            else
+            {
+                Robust.Shared.Log.Logger.Info($"[ObjectivesAllowAscension] Objective {objId} NOT found on mind. Skipping.");
+            }
         }
 
+        Robust.Shared.Log.Logger.Info("[ObjectivesAllowAscension] All present objectives completed! Allowing ascension.");
         return true;
     }
 

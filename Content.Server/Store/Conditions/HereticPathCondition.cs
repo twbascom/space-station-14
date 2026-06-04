@@ -32,10 +32,21 @@ public sealed partial class HereticPathCondition : ListingCondition
         var ent = args.EntityManager;
         var minds = ent.System<SharedMindSystem>();
 
-        if (!ent.TryGetComponent<MindComponent>(args.Buyer, out var mind))
-            return false;
+        EntityUid? mob = null;
+        if (ent.HasComponent<HereticComponent>(args.Buyer))
+        {
+            mob = args.Buyer;
+        }
+        else if (ent.TryGetComponent<MindComponent>(args.Buyer, out var mind))
+        {
+            mob = mind.OwnedEntity;
+        }
+        else if (minds.TryGetMind(args.Buyer, out _, out var mindComp))
+        {
+            mob = mindComp.OwnedEntity;
+        }
 
-        if (mind.OwnedEntity == null || !ent.TryGetComponent<HereticComponent>(mind.OwnedEntity.Value, out var hereticComp))
+        if (mob == null || !ent.TryGetComponent<HereticComponent>(mob.Value, out var hereticComp))
             return false;
 
         if (RequiresCanAscend && !hereticComp.CanAscend)

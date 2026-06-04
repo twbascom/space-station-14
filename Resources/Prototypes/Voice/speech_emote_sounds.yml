@@ -558,47 +558,89 @@
   id: MaleResomi
   params:
     variation: 0.125
-    pitch: 1.5 # High pitched
   sounds:
     Scream:
-      collection: MaleScreams
+      collection: ResomiScream
     Laugh:
       collection: MaleLaugh
+      params:
+        pitch: 1.5
+    Chirp:
+      collection: ResomiChirp
+    Trill:
+      collection: ResomiTrill
+    Whistle:
+      collection: ResomiTrill
+    Warble:
+      collection: ResomiWarble
+    Wurble:
+      collection: ResomiWurble
     Sneeze:
       collection: MaleSneezes
+      params:
+        pitch: 1.5
     Cough:
       collection: MaleCoughs
+      params:
+        pitch: 1.5
     Sigh:
       collection: MaleSigh
+      params:
+        pitch: 1.5
     Honk:
       collection: BikeHorn
     Gasp:
       collection: MaleGasp
+      params:
+        pitch: 1.5
     DefaultDeathgasp:
       collection: MaleDeathGasp
+      params:
+        pitch: 1.5
 
 - type: emoteSounds
   id: FemaleResomi
   params:
     variation: 0.125
-    pitch: 1.5 # High pitched
   sounds:
     Scream:
-      collection: FemaleScreams
+      collection: ResomiScream
     Laugh:
       collection: FemaleLaugh
+      params:
+        pitch: 1.5
+    Chirp:
+      collection: ResomiChirp
+    Trill:
+      collection: ResomiTrill
+    Whistle:
+      collection: ResomiTrill
+    Warble:
+      collection: ResomiWarble
+    Wurble:
+      collection: ResomiWurble
     Sneeze:
       collection: FemaleSneezes
+      params:
+        pitch: 1.5
     Cough:
       collection: FemaleCoughs
+      params:
+        pitch: 1.5
     Sigh:
       collection: FemaleSigh
+      params:
+        pitch: 1.5
     Honk:
       collection: BikeHorn
     Gasp:
       collection: FemaleGasp
+      params:
+        pitch: 1.5
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+      params:
+        pitch: 1.5
 
 - type: emoteSounds
   id: MaleNamiod

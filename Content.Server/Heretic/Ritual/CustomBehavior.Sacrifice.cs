@@ -26,6 +26,11 @@ using Content.Shared.Heretic;
 using Content.Server.Heretic.EntitySystems;
 using Content.Shared.Gibbing;
 using Content.Shared.Silicons.Borgs.Components;
+using Content.Shared.Roles.Jobs;
+using Content.Shared.Access.Systems;
+using Content.Server.Access.Components;
+using Content.Shared.PDA;
+using Robust.Shared.Containers;
 
 namespace Content.Server.Heretic.Ritual;
 
@@ -113,7 +118,14 @@ namespace Content.Server.Heretic.Ritual;
 
         if (uids.Count < Min)
         {
-            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-ineligible");
+            if (Min > 1)
+            {
+                outstr = Loc.GetString("heretic-ritual-fail-sacrifice-ineligible-count", ("min", Min), ("actual", uids.Count));
+            }
+            else
+            {
+                outstr = Loc.GetString("heretic-ritual-fail-sacrifice-ineligible");
+            }
             return false;
         }
 
@@ -129,6 +141,9 @@ namespace Content.Server.Heretic.Ritual;
             return;
         }
 
+        var jobSystem = args.EntityManager.System<SharedJobSystem>();
+        var accessReader = args.EntityManager.System<AccessReaderSystem>();
+
         var knowledgeGain = 0f;
         for (var i = 0; i < Max && i < uids.Count; i++)
         {
@@ -138,13 +153,79 @@ namespace Content.Server.Heretic.Ritual;
             var uid = uids[i];
 
             var isCommand = args.EntityManager.HasComponent<CommandStaffComponent>(uid);
+            Robust.Shared.Log.Logger.Info($"[HereticSacrifice] Finalizing sacrifice of victim: {args.EntityManager.ToPrettyString(uid)}. Has CommandStaffComponent: {isCommand}");
+
+            if (!isCommand)
+            {
+                if (_mind.TryGetMind(uid, out var victimMindId, out _) && jobSystem.MindTryGetJobId(victimMindId, out var jobId) && jobId != null)
+                {
+                    var jobProto = jobId.Value.Id;
+                    Robust.Shared.Log.Logger.Info($"[HereticSacrifice] Victim has mind {victimMindId} and job ID {jobProto}");
+                    if (jobProto == "Captain" || jobProto == "HeadOfPersonnel" || jobProto == "HeadOfSecurity" ||
+                        jobProto == "ChiefEngineer" || jobProto == "ChiefMedicalOfficer" || jobProto == "ResearchDirector" ||
+                        jobProto == "Quartermaster")
+                    {
+                        isCommand = true;
+                    }
+                }
+
+                if (!isCommand)
+                {
+                    var containerSys = args.EntityManager.System<SharedContainerSystem>();
+                    var visited = new HashSet<EntityUid>();
+                    if (CheckIsCommandRecursively(uid, containerSys, accessReader, args.EntityManager, visited))
+                    {
+                        isCommand = true;
+                    }
+                }
+
+                if (!isCommand)
+                {
+                    // Check if there is any command ID card or PDA lying on the ground on/near the rune (within 1.5m)
+                    var lookup = args.EntityManager.System<EntityLookupSystem>().GetEntitiesInRange(args.Platform, 1.5f);
+                    foreach (var entity in lookup)
+                    {
+                        if (IsCommandIdCardOrPda(entity, accessReader, args.EntityManager))
+                        {
+                            Robust.Shared.Log.Logger.Info($"[HereticSacrifice] Found command ID card/PDA on the ground: {args.EntityManager.ToPrettyString(entity)}");
+                            isCommand = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            Robust.Shared.Log.Logger.Info($"[HereticSacrifice] Final isCommand value: {isCommand}");
+
             var isSec = args.EntityManager.HasComponent<SecurityStaffComponent>(uid);
+            if (!isSec)
+            {
+                if (_mind.TryGetMind(uid, out var victimMindIdSec, out _) && jobSystem.MindTryGetJobId(victimMindIdSec, out var jobIdSec) && jobIdSec != null)
+                {
+                    var jobProto = jobIdSec.Value.Id;
+                    if (jobProto == "HeadOfSecurity" || jobProto == "Warden" || jobProto == "Detective" ||
+                        jobProto == "SecurityOfficer" || jobProto == "SecurityCadet")
+                    {
+                        isSec = true;
+                    }
+                }
+
+                if (!isSec)
+                {
+                    var accessTags = accessReader.FindAccessTags(uid);
+                    if (accessTags.Any(x => x.Id == "Security"))
+                    {
+                        isSec = true;
+                    }
+                }
+            }
+
             var isHeretic = args.EntityManager.HasComponent<HereticComponent>(uid);
             knowledgeGain +=
                 isHeretic ||
                 heretic.SacrificeTargets.Any(x => x.Entity == args.EntityManager.GetNetEntity(uid))
                     ? isCommand || isSec || isHeretic ? 3f : 2f
-                    : 0f;
+                    : 1f;
 
             try
             {
@@ -181,5 +262,60 @@ namespace Content.Server.Heretic.Ritual;
         // reset it because it refuses to work otherwise.
         uids = new();
         args.EntityManager.EventBus.RaiseLocalEvent(args.Performer, new EventHereticUpdateTargets());
+    }
+
+    private bool IsCommandIdCardOrPda(EntityUid uid, AccessReaderSystem accessReader, IEntityManager entMan)
+    {
+        // Check PresetIdCardComponent
+        if (entMan.TryGetComponent<PresetIdCardComponent>(uid, out var presetId) && presetId.JobName != null)
+        {
+            var job = presetId.JobName;
+            if (job == "Captain" || job == "HeadOfPersonnel" || job == "HeadOfSecurity" ||
+                job == "ChiefEngineer" || job == "ChiefMedicalOfficer" || job == "ResearchDirector" ||
+                job == "Quartermaster")
+            {
+                return true;
+            }
+        }
+
+        // Check PDA's contained ID card
+        if (entMan.TryGetComponent<PdaComponent>(uid, out var pda) && pda.ContainedId != null)
+        {
+            if (IsCommandIdCardOrPda(pda.ContainedId.Value, accessReader, entMan))
+                return true;
+        }
+
+        // Check access tags on the entity itself
+        var accessTags = accessReader.FindAccessTags(uid);
+        if (accessTags.Any(x => x.Id == "Command"))
+            return true;
+
+        return false;
+    }
+
+    private bool CheckIsCommandRecursively(EntityUid parent, SharedContainerSystem containerSys, AccessReaderSystem accessReader, IEntityManager entMan, HashSet<EntityUid> visited)
+    {
+        if (!visited.Add(parent))
+            return false;
+
+        if (IsCommandIdCardOrPda(parent, accessReader, entMan))
+            return true;
+
+        if (entMan.TryGetComponent<ContainerManagerComponent>(parent, out var containerManager) && containerManager.Containers != null)
+        {
+            foreach (var container in containerManager.Containers.Values)
+            {
+                if (container?.ContainedEntities == null)
+                    continue;
+
+                foreach (var child in container.ContainedEntities)
+                {
+                    if (CheckIsCommandRecursively(child, containerSys, accessReader, entMan, visited))
+                        return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

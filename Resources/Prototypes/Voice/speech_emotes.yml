@@ -554,3 +554,45 @@
     - pings
     - pinged
     - pinging
+
+- type: emote
+  id: Trill
+  name: chat-emote-name-trill
+  category: Vocal
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-trill"]
+  chatTriggers:
+    - trill
+    - trills
+    - trilled
+    - trilling
+
+- type: emote
+  id: Warble
+  name: chat-emote-name-warble
+  category: Vocal
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-warble"]
+  chatTriggers:
+    - warble
+    - warbles
+    - warbled
+    - warbling
+
+- type: emote
+  id: Wurble
+  name: chat-emote-name-wurble
+  category: Vocal
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-wurble"]
+  chatTriggers:
+    - wurble
+    - wurbles
+    - wurbled
+    - wurbling

@@ -95,7 +95,7 @@
   - type: Speech
     speechSounds: Tenor # High pitched
     speechVerb: Resomi
-    allowedEmotes: [ 'Chirp', 'Click', 'Whistle' ]
+    allowedEmotes: [ 'Chirp', 'Trill', 'Whistle', 'Warble', 'Wurble' ]
   - type: Vocal
     sounds:
       Male: MaleResomi

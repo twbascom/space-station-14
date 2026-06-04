@@ -5,6 +5,7 @@ using Content.Shared.StoreDiscount.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Heretic.Prototypes;
 
 namespace Content.Shared.Store;
 
@@ -44,7 +45,7 @@ public partial class ListingData : IEquatable<ListingData>
         other.ApplyToMob
     )
     {
-
+        ProductHereticKnowledge = other.ProductHereticKnowledge;
     }
 
     public ListingData(
@@ -212,6 +213,12 @@ public partial class ListingData : IEquatable<ListingData>
     [DataField]
     public bool ApplyToMob = false;
 
+    /// <summary>
+    /// The heretic knowledge given when this listing is purchased.
+    /// </summary>
+    [DataField]
+    public ProtoId<HereticKnowledgePrototype>? ProductHereticKnowledge;
+
     public bool Equals(ListingData? listing)
     {
         if (listing == null)
@@ -226,7 +233,8 @@ public partial class ListingData : IEquatable<ListingData>
             ProductEvent?.GetType() != listing.ProductEvent?.GetType() ||
             RestockTime != listing.RestockTime ||
             DisableRefund != listing.DisableRefund ||
-            ApplyToMob != listing.ApplyToMob)
+            ApplyToMob != listing.ApplyToMob ||
+            ProductHereticKnowledge != listing.ProductHereticKnowledge)
             return false;
 
         if (Icon != null && !Icon.Equals(listing.Icon))
@@ -311,6 +319,7 @@ public sealed partial class ListingDataWithCostModifiers : ListingData
             listingData.ApplyToMob
         )
     {
+        ProductHereticKnowledge = listingData.ProductHereticKnowledge;
     }
 
     /// <summary> Marker, if cost of listing item have any modifiers. </summary>

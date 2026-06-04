@@ -13,6 +13,9 @@ using Content.Shared.Heretic.Prototypes;
 using Content.Shared.Heretic;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
+using Content.Server.Store.Systems;
+using Content.Shared.Store;
+using Content.Shared.Store.Components;
 
 namespace Content.Server.Heretic.EntitySystems;
 
@@ -22,6 +25,7 @@ public sealed partial class HereticKnowledgeSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _action = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly HereticRitualSystem _ritual = default!;
+    [Dependency] private readonly StoreSystem _storeSystem = default!;
 
     public HereticKnowledgePrototype GetKnowledge(ProtoId<HereticKnowledgePrototype> id)
         => _proto.Index(id);
@@ -54,7 +58,10 @@ public sealed partial class HereticKnowledgeSystem : EntitySystem
         if (string.IsNullOrWhiteSpace(comp.CurrentPath))
         {
             if (!data.SideKnowledge && comp.CurrentPath != data.Path)
+            {
                 comp.CurrentPath = data.Path;
+                UpdateStoreCategories(uid, comp);
+            }
         }
 
         // make sure we only progress when buying current path knowledge
@@ -63,6 +70,20 @@ public sealed partial class HereticKnowledgeSystem : EntitySystem
 
         if (!silent) _popup.PopupEntity(Loc.GetString("heretic-knowledge-gain"), uid, uid);
         if (research) comp.ResearchedKnowledge.Add(id);
+    }
+
+    private void UpdateStoreCategories(EntityUid uid, HereticComponent comp)
+    {
+        if (string.IsNullOrWhiteSpace(comp.CurrentPath))
+            return;
+
+        if (TryComp<StoreComponent>(uid, out var store))
+        {
+            store.Categories.Clear();
+            store.Categories.Add(new ProtoId<StoreCategoryPrototype>($"HereticPath{comp.CurrentPath}"));
+            store.Categories.Add("HereticPathSide");
+            _storeSystem.UpdateUserInterface(uid, uid, store);
+        }
     }
     public void RemoveKnowledge(EntityUid uid, HereticComponent comp, ProtoId<HereticKnowledgePrototype> id, bool silent = false)
     {

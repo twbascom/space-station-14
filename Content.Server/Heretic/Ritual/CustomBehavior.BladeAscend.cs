@@ -32,7 +32,7 @@ public sealed partial class RitualBladeAscendBehavior : RitualSacrificeBehavior
 
         if (beheadedBodies.Count < Min)
         {
-            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-blade");
+            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-blade-count", ("min", Min), ("actual", beheadedBodies.Count));
             return false;
         }
 

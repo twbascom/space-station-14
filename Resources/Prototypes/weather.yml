@@ -127,6 +127,17 @@
       volume: -6
 
 - type: weather
+  id: SnowfallMagic
+  sprite:
+    sprite: /Textures/Effects/weather.rsi
+    state: snowfall_heavy
+  sound:
+    path: /Audio/Effects/Weather/snowstorm.ogg
+    params:
+      loop: true
+      volume: -6
+
+- type: weather
   id: Storm
   sprite:
     sprite: /Textures/Effects/weather.rsi

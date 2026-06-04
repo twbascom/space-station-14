@@ -23,9 +23,19 @@ public sealed class SurveillanceCameraMicrophoneSystem : EntitySystem
 
     private void OnExpandRecipients(ExpandICChatRecipientsEvent ev)
     {
+        if (!TryComp<TransformComponent>(ev.Source, out var sourceXform))
+            return;
+
         var xformQuery = GetEntityQuery<TransformComponent>();
-        var sourceXform = Transform(ev.Source);
-        var sourcePos = _xforms.GetWorldPosition(sourceXform, xformQuery);
+        System.Numerics.Vector2 sourcePos;
+        try
+        {
+            sourcePos = _xforms.GetWorldPosition(sourceXform, xformQuery);
+        }
+        catch (KeyNotFoundException)
+        {
+            return;
+        }
 
         // This function ensures that chat popups appear on camera views that have connected microphones.
         foreach (var (_, __, camera, xform) in EntityQuery<SurveillanceCameraMicrophoneComponent, ActiveListenerComponent, SurveillanceCameraComponent, TransformComponent>())
@@ -34,9 +44,17 @@ public sealed class SurveillanceCameraMicrophoneSystem : EntitySystem
                 continue;
 
             // get range to camera. This way wispers will still appear as obfuscated if they are too far from the camera's microphone
-            var range = (xform.MapID != sourceXform.MapID)
-                ? -1
-                : (sourcePos - _xforms.GetWorldPosition(xform, xformQuery)).Length();
+            float range;
+            try
+            {
+                range = (xform.MapID != sourceXform.MapID)
+                    ? -1
+                    : (sourcePos - _xforms.GetWorldPosition(xform, xformQuery)).Length();
+            }
+            catch (KeyNotFoundException)
+            {
+                continue;
+            }
 
             if (range < 0 || range > ev.VoiceRange)
                 continue;

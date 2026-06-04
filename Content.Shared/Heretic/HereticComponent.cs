@@ -114,7 +114,7 @@ public sealed partial class HereticComponent : Component
     };
 
     [DataField]
-    public SoundSpecifier? InfluenceGainSound = new SoundCollectionSpecifier("bloodCrawl");
+    public SoundSpecifier? InfluenceGainSound = new SoundCollectionSpecifier("HereticHiss");
 
     [DataField]
     public LocId InfluenceGainBaseMessage = "influence-base-message";
@@ -142,6 +142,7 @@ public sealed partial class HereticComponent : Component
         "influence-gain-message-14",
         "influence-gain-message-15",
         "influence-gain-message-16",
+        "influence-gain-message-17",
     };
 
     [DataField]

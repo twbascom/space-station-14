@@ -16,6 +16,8 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Server.Heretic.EntitySystems;
+using Content.Shared.Heretic;
 
 namespace Content.Server.Store.Systems;
 
@@ -23,6 +25,7 @@ public sealed partial class StoreSystem
 {
     [Dependency] private readonly IAdminLogManager _admin = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly HereticKnowledgeSystem _hereticKnowledge = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly ActionUpgradeSystem _actionUpgrade = default!;
@@ -254,6 +257,29 @@ public sealed partial class StoreSystem
                 RaiseLocalEvent(listing.ProductEvent);
             else
                 RaiseLocalEvent(buyer, listing.ProductEvent);
+        }
+
+        // Give heretic knowledge
+        if (listing.ProductHereticKnowledge is { } hereticKnowledge)
+        {
+            EntityUid? hereticMob = null;
+            if (HasComp<HereticComponent>(buyer))
+            {
+                hereticMob = buyer;
+            }
+            else if (TryComp<MindComponent>(buyer, out var mind))
+            {
+                hereticMob = mind.OwnedEntity;
+            }
+            else if (_mind.TryGetMind(buyer, out _, out var mindComp))
+            {
+                hereticMob = mindComp.OwnedEntity;
+            }
+
+            if (hereticMob != null && TryComp<HereticComponent>(hereticMob.Value, out var heretic))
+            {
+                _hereticKnowledge.AddKnowledge(hereticMob.Value, heretic, hereticKnowledge, silent: false);
+            }
         }
 
         if (listing.DisableRefund)

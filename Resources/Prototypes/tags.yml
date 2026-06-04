@@ -45,6 +45,9 @@
 - type: Tag
   id: ArtifactFragment # Storage whitelist: OreBag. CargoBounty: BountyArtifactFragment. ConstructionGraph: Artifact
 
+- type: Tag
+  id: Ash
+
 ## B ##
 
 - type: Tag
@@ -177,6 +180,12 @@
   id: Bread # CargoBounty: BountyBread. Blacklisted in BountyFruit and BountyVegetable
 
 - type: Tag
+  id: BreathMask
+
+- type: Tag
+  id: Briefcase
+
+- type: Tag
   id: BrimFlatcapBrown # ConstructionGraph: BladedFlatcapBrown
 
 - type: Tag
@@ -292,10 +301,16 @@
   id: Catwalk # If a tagged entity is intersecting a hazard tile entity such as lava or chasms, step triggers on those hazards are cancelled.
 
 - type: Tag
+  id: CD
+
+- type: Tag
   id: CentrifugeCompatible # Storage whitelist: MachineCentrifuge
 
 - type: Tag
   id: Cheese # MetamorphRecipe: FoodBurgerCheese, FoodBurgerDuck
+
+- type: Tag
+  id: Chair
 
 - type: Tag
   id: ChefPilot # Tagged entity can control someone wearing a Chef's hat if inside their hat.
@@ -326,6 +341,9 @@
 
 - type: Tag
   id: ClothMade # SpecialDigestible: OrganMothStomach. Storage whitelist: FoodBoxCloth
+
+- type: Tag
+  id: ClownEmergencyOxygenTank
 
 - type: Tag
   id: ClownMask # CargoBounty: BountyClownCostume. ConstructionGraph: Honker, BananaClownMask
@@ -516,6 +534,15 @@
   id: Egg # Storage whitelist: FoodContainerEgg. ItemCounter: FoodContainerEgg
 
 - type: Tag
+  id: EmergencyMedipen
+
+- type: Tag
+  id: EmergencyNitrogenTank
+
+- type: Tag
+  id: EmergencyOxygenTank
+
+- type: Tag
   id: EmagImmune # Default value in EmagComponent. Marks tagged entity as immune to EmagUnlimited.
 
 - type: Tag
@@ -550,6 +577,9 @@
 
 - type: Tag
   id: Enzyme # Storage whitelist: ClothingBeltChef. ItemMapper: ClothingBeltChef
+
+- type: Tag
+  id: ExtendedEmergencyOxygenTank
 
 - type: Tag
   id: ExCable # Placement blacklist on CableDetStack. Placement whitelist on WiredDetonator
@@ -628,7 +658,13 @@
   id: Galaxythistle # CargoBounty: BountyGalaxyThistle
 
 - type: Tag
+  id: GasMask
+
+- type: Tag
   id: GasScrubber # Used by AtmosAlarmableComponent for syncing devices.
+
+- type: Tag
+  id: GasTank
 
 - type: Tag
   id: GasVent # Used by AtmosAlarmableComponent for syncing devices.
@@ -888,6 +924,9 @@
   id: LightBulb # Storage whitelist: BoxLightbulb. ConstructionGraph: HelmetJustice
 
 - type: Tag
+  id: Lighter
+
+- type: Tag
   id: Lime # CargoBounty: BountyLime
 
 - type: Tag
@@ -963,6 +1002,9 @@
   id: Medal # Storage whitelist: MedalCase
 
 - type: Tag
+  id: MedicalPatch
+
+- type: Tag
   id: Medkit # CargoBounty: BountyMedkitBox. ConstructionGraph: MediBot
 
 - type: Tag
@@ -1025,6 +1067,9 @@
 - type: Tag
   id: Mushroom  # ConstructionGraph: Soil
 
+- type: Tag
+  id: Muzzle
+
 ## N ##
 - type: Tag
   id: NinjaBombingTargetBlocker # Ninjas will not target this warp point
@@ -1066,6 +1111,9 @@
 
 - type: Tag
   id: OreUranium # CargoBounty: BountySalvageOreUranium
+
+- type: Tag
+  id: Organ
 
 ## P ##
 
@@ -1305,6 +1353,9 @@
   id: SecureWindoor # Used in ConstructionGraph "Windoor" to navigate between Windoor, PlasmaWindoor, and UraniumWindoor airlocks.
 
 - type: Tag
+  id: SecurityBreathMask
+
+- type: Tag
   id: SecurityHelmet # ConstructionGraph: HelmetJustice
 
 - type: Tag
@@ -1312,6 +1363,12 @@
 
 - type: Tag
   id: Sheet # MaterialStorage whitelist for many machines and lathes. Storage whitelist: MaterialBag
+
+- type: Tag
+  id: SheetGlass
+
+- type: Tag
+  id: SheetPlasma
 
 - type: Tag
   id: ShellShotgun # Ammo: AmmoProviderShotgunShell, ClothingBeltBandolier, BaseMagazineShotgun, BaseWeaponShotgun, WeaponFlareGunSecurity
@@ -1359,6 +1416,9 @@
   id: Soap # Storage whitelist: BorgModuleCustodial, ClothingBeltJanitor. CargoBounty: BountySoap
 
 - type: Tag
+  id: SpaceMedipen
+
+- type: Tag
   id: SolarTrackerElectronics # ConstructionGraph: SolarPanel
 
 - type: Tag
@@ -1402,10 +1462,16 @@
   id: Steak # CargoBounty: BountySteak
 
 - type: Tag
+  id: Steel
+
+- type: Tag
   id: StringInstrument # MachineBoard construction: DawInstrumentMachineCircuitboard
 
 - type: Tag
   id: Structure # # Targeting whitelist: HandLabeler
+
+- type: Tag
+  id: Stunbaton
 
 - type: Tag
   id: StunImmune # Tagged mob entity cannot gain the stunned status effect. Blacklist on StatusEffectStunned.
@@ -1438,6 +1504,9 @@
   id: Spellbook # Storage whitelist: Bookshelf
 
 ## T ##
+
+- type: Tag
+  id: Table
 
 - type: Tag
   id: TabletopBoard # Storage whitelist: BooksBag, BorgModuleService
@@ -1545,6 +1614,9 @@
   id: WallmountSubstationElectronics # ConstructionGraph: WallmountSubstation
 
 - type: Tag
+  id: WaterTank
+
+- type: Tag
   id: WeaponAntiqueLaser # Storage whitelist: GlassBoxLaser
 
 - type: Tag
@@ -1580,6 +1652,9 @@
 
 - type: Tag
   id: Wine # CargoBounty: BountyWine
+
+- type: Tag
+  id: WinterCoat
 
 - type: Tag
   id: WireBrush # Storage whitelist: ClothingBeltJanitor

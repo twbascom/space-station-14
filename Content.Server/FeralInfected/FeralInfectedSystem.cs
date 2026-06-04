@@ -114,7 +114,7 @@ public sealed class FeralInfectedSystem : EntitySystem
         }
     }
 
-    private void AscendHost(EntityUid host, FeralInfectedComponent infected)
+    public void AscendHost(EntityUid host, FeralInfectedComponent infected)
     {
         infected.Ascended = true;
 

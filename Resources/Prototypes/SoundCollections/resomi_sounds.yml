@@ -1,0 +1,28 @@
+- type: soundCollection
+  id: ResomiChirp
+  files:
+  - /Textures/Mobs/Species/Resomi/resomi_chirp1.ogg
+  - /Textures/Mobs/Species/Resomi/resomi_chirp2.ogg
+  - /Textures/Mobs/Species/Resomi/resomi_chirp3.ogg
+  - /Textures/Mobs/Species/Resomi/resomi_chirp4.ogg
+  - /Textures/Mobs/Species/Resomi/resomi_chirp5.ogg
+
+- type: soundCollection
+  id: ResomiTrill
+  files:
+  - /Textures/Mobs/Species/Resomi/trill.ogg
+
+- type: soundCollection
+  id: ResomiWarble
+  files:
+  - /Textures/Mobs/Species/Resomi/warble.ogg
+
+- type: soundCollection
+  id: ResomiWurble
+  files:
+  - /Textures/Mobs/Species/Resomi/wurble.ogg
+
+- type: soundCollection
+  id: ResomiScream
+  files:
+  - /Audio/Mobs/Species/Resomi/resomi_scream.ogg

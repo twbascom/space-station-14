@@ -35,7 +35,7 @@ public sealed partial class RitualRustAscendBehavior : RitualSacrificeBehavior
 
         if (targets.Count < Min)
         {
-            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-rust");
+            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-rust-count", ("min", Min), ("actual", targets.Count));
             return false;
         }
 

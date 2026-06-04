@@ -416,6 +416,9 @@ public sealed class SharedKitchenSpikeSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var kitchenSpike))
         {
+            if (kitchenSpike.BodyContainer == null)
+                continue;
+
             var contained = kitchenSpike.BodyContainer.ContainedEntity;
 
             if (!contained.HasValue)

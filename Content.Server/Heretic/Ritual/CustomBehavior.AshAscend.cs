@@ -36,7 +36,7 @@ public sealed partial class RitualAshAscendBehavior : RitualSacrificeBehavior
 
         if (burningUids.Count < Min)
         {
-            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-ash");
+            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-ash-count", ("min", Min), ("actual", burningUids.Count));
             return false;
         }
 

@@ -140,7 +140,7 @@ public sealed class EldritchInfluenceSystem : EntitySystem
 
         _heretic.UpdateKnowledge(args.User, heretic, knowledge);
 
-        Spawn("EldritchInfluenceIntermediate", Transform(args.Target.Value).Coordinates);
+        Spawn("EldritchInfluenceSpent", Transform(args.Target.Value).Coordinates);
         QueueDel(args.Target);
     }
 }

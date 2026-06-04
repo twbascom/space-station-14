@@ -1,0 +1,11 @@
+- type: soundCollection
+  id: HereticHiss
+  files:
+  - /Audio/_Goobstation/Heretic/hiss/hiss1.ogg
+  - /Audio/_Goobstation/Heretic/hiss/hiss2.ogg
+  - /Audio/_Goobstation/Heretic/hiss/hiss3.ogg
+  - /Audio/_Goobstation/Heretic/hiss/hiss4.ogg
+  - /Audio/_Goobstation/Heretic/hiss/hiss5.ogg
+  - /Audio/_Goobstation/Heretic/hiss/lowHiss1.ogg
+  - /Audio/_Goobstation/Heretic/hiss/lowHiss2.ogg
+  - /Audio/_Goobstation/Heretic/hiss/lowHiss3.ogg

@@ -1,50 +1,46 @@
 # influence gain and fracture examine messages must have newlimes because otherwise they wouldn't fit
 
-influence-base-message = [textshader="{$text}" font="DefaultBold" size={$size} shader="Eldritch"]
+influence-base-message = [textshader="{$text}" font="DefaultBold" size={$size} shader="Rainbow"]
 
 influence-gain-message-1 =
     A SHIMMER...
     POTENTIAL...
     POWER.
 influence-gain-message-2 =
-    A WHISPER.
+    The whispers in your skull are not your own...
 influence-gain-message-3 =
     COVERED AND FORGOTTEN.
 influence-gain-message-4 =
-    CURSED LAND,
-    CURSED MAN,
-    CURSED MIND.
+    The shadows of the mind grow longer...
 influence-gain-message-5 =
     GREATER HEIGHTS.
 influence-gain-message-6 =
-    I AM BEING WATCHED...
-    FROM WHERE? FROM WHAT?
+    They watch from the corners of your consciousness...
 influence-gain-message-7 =
     I AM LATE FOR MY DESTINY.
 influence-gain-message-8 =
-    LIFE IS FLEETING,
-    BUT WHAT YET STAYS?
+    A mind is a fragile cage for the dark...
 influence-gain-message-9 =
     RAIN OF BLOOD.
     REIGN OF BLOOD.
 influence-gain-message-10 =
-    STRENGTH...
-    UNPARALLELED. UNNATURAL.
+    Their footsteps echo in your thoughts...
 influence-gain-message-11 =
     THE GATES OF THE MANSUS
     IS HERE, IS OPEN.
 influence-gain-message-12 =
-    THE HIGHER I RISE,
-    THE MORE I SEE.
+    The dark between thoughts is where they live...
 influence-gain-message-13 =
     THE VEIL IS SHATTERED.
 influence-gain-message-14 =
-    THEIR HAND IS AT MY SIDE.
+    In the silent spaces of your mind, they whisper...
 influence-gain-message-15 =
     THEY WALK THE WORLD.
     UNNOTICED.
 influence-gain-message-16 =
     TO WALK BETWEEN PLANES
+influence-gain-message-17 =
+    They walk in shadows of mind...
 
 fracture-examine-message-1 =
     Is our reality so fragile?

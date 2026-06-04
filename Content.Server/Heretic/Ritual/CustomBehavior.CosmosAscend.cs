@@ -28,7 +28,7 @@ public sealed partial class RitualCosmosAscendBehavior : RitualSacrificeBehavior
 
         if (targets.Count < Min)
         {
-            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-cosmos");
+            outstr = Loc.GetString("heretic-ritual-fail-sacrifice-cosmos-count", ("min", Min), ("actual", targets.Count));
             return false;
         }
 
