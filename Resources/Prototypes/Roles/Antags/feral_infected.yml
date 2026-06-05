@@ -1,9 +1,0 @@
-- type: antag
-  id: FeralInfected
-  name: feral-infected-role-name
-  antagonist: true
-  setPreference: true
-  objective: feral-infected-role-objective
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 1h

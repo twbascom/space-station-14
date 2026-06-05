@@ -1,0 +1,22 @@
+- type: entity
+  parent: BaseComputer
+  id: ComputerEvacuation
+  name: evacuation console
+  description: Handles launching the evacuation escape pods.
+  components:
+  - type: AccessReader
+    access:
+    - [ Command ]
+  - type: EvacuationConsole
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: emergency
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open

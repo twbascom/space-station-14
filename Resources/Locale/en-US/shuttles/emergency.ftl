@@ -41,3 +41,10 @@ emergency-shuttle-ui-remaining = Remaining: {$remaining}
 # Map Misc.
 map-name-centcomm = Central Command
 map-name-terminal = Arrivals Terminal
+
+# Evacuation Console
+evack-console-already-active = Evacuation sequence is already active!
+evac-console-denied = Access denied.
+evac-console-activated-announcement = EVACUATION PROTOCOL INITIATED. Escape pods are launching immediately. All personnel must proceed to the pods and prepare for FTL transit to Central Command!
+evac-console-sender = Evacuation System
+

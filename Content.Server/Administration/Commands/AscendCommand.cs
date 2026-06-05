@@ -1,7 +1,5 @@
 using Content.Server.Heretic.Components;
 using Content.Server.Heretic.EntitySystems;
-using Content.Server.FeralInfected;
-using Content.Shared.FeralInfected.Components;
 using Content.Shared.Administration;
 using Content.Shared.Heretic;
 using Content.Shared.Heretic.Prototypes;
@@ -17,8 +15,8 @@ public sealed class AscendCommand : IConsoleCommand
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     public string Command => "ascend";
-    public string Description => "Instantly ascends a player as a Heretic or Feral Infected.";
-    public string Help => "ascend <playername> [path] (paths: Void, Ash, Blade, Flesh, Rust, Cosmos, Feral)";
+    public string Description => "Instantly ascends a player as a Heretic.";
+    public string Help => "ascend <playername> [path] (paths: Void, Ash, Blade, Flesh, Rust, Cosmos)";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -49,30 +47,6 @@ public sealed class AscendCommand : IConsoleCommand
         if (args.Length >= 2)
         {
             path = args[1];
-        }
-
-        // If path is specified as feral/parasite, or if no path is specified but player is already feral infected, trigger Feral Ascension
-        bool isFeral = false;
-        if (path != null)
-        {
-            if (path.Equals("feral", StringComparison.OrdinalIgnoreCase) ||
-                path.Equals("parasite", StringComparison.OrdinalIgnoreCase))
-            {
-                isFeral = true;
-            }
-        }
-        else if (entMan.HasComponent<FeralInfectedComponent>(target))
-        {
-            isFeral = true;
-        }
-
-        if (isFeral)
-        {
-            var feralInfectedComp = entMan.EnsureComponent<FeralInfectedComponent>(target);
-            var feralSystem = entMan.System<FeralInfectedSystem>();
-            feralSystem.AscendHost(target, feralInfectedComp);
-            shell.WriteLine($"Successfully triggered Feral Ascension for {name}!");
-            return;
         }
 
         // Heretic Ascension
@@ -117,7 +91,7 @@ public sealed class AscendCommand : IConsoleCommand
                 knowledgeId = "CreatorsGift";
                 break;
             default:
-                shell.WriteError($"Unknown path: {hereticPath}. Valid paths: Void, Ash, Blade, Flesh, Rust, Cosmos, Feral");
+                shell.WriteError($"Unknown path: {hereticPath}. Valid paths: Void, Ash, Blade, Flesh, Rust, Cosmos");
                 return;
         }
 
@@ -146,8 +120,8 @@ public sealed class AscendCommand : IConsoleCommand
         if (args.Length == 2)
         {
             return CompletionResult.FromHintOptions(
-                new[] { "Void", "Ash", "Blade", "Flesh", "Rust", "Cosmos", "Feral" },
-                "Ascension Path / Antagonist");
+                new[] { "Void", "Ash", "Blade", "Flesh", "Rust", "Cosmos" },
+                "Ascension Path");
         }
         return CompletionResult.Empty;
     }
