@@ -1,0 +1,294 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBlueshieldOfficer
+  name: Blueshield Officer suit
+  description: A snazzy blue uniform denoting command bodyguard status.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Under/blueshield_officer.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Under/blueshield_officer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtBlueshieldOfficer
+  name: Blueshield Officer skirt
+  description: A snazzy blue jumpskirt denoting command bodyguard status.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Under/blueshield_officering.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Under/blueshield_officering.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpsuitBlueshieldShirt
+  name: Blueshield Officer shirt
+  description: A snappy blue shirt for relaxed guard duties.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Under/blueshield_shirt.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Under/blueshield_shirt.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformEnvirosuitBlueshield
+  name: Blueshield environmental suit
+  description: An environmental suit tailored for Blueshield Officers.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Under/blueshield_officer.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Under/blueshield_officer.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadEnvirohelmBlueshield
+  name: Blueshield environmental helmet
+  description: An environmental helmet tailored for Blueshield Officers.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatBeretBlueshield
+  name: Blueshield beret
+  description: A blue beret denoting command bodyguard status.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCowboyBlueshield
+  name: Blueshield cowboy hat
+  description: A blue cowboy hat for rootin' tootin' VIP protection.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/blueshield_beret.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatUshankaBlueshield
+  name: Blueshield ushanka
+  description: A warm ushanka with a command star. Goida!
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Head/blueshield_ushanka.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Head/blueshield_ushanka.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingBlueshieldArmourVest
+  name: Blueshield armor vest
+  description: Standard armor vest issued to Blueshield bodyguards.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingBlueshieldArmoredJacket
+  name: Blueshield armored jacket
+  description: An armored jacket for colder environments and extra protection.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingBlueshieldArmoredCowboyJacket
+  name: Blueshield cowboy jacket
+  description: An armored cowboy vest/jacket for protection.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_cowboy_jacket.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_cowboy_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterWinterBlueshield
+  name: Blueshield winter coat
+  description: A blue winter coat for cold station operations.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/OuterClothing/blueshield_jacket.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckMantleBlueshield
+  name: Blueshield mantle
+  description: A ceremonial mantle worn by Senior Blueshield Officers.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckEnsembleBlueshield
+  name: Blueshield ensemble mantle
+  description: A grand mantle worn by the Grand Master BSO.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+
+- type: entity
+  parent: ClothingBackpack
+  id: ClothingBackpackBlueshield
+  name: Blueshield backpack
+  description: A sturdy backpack for storing bodyguard supplies.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Back/blueshield_backpack.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Back/blueshield_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelBlueshield
+  name: Blueshield satchel
+  description: A sturdy satchel for storing bodyguard supplies.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Back/blueshield_satchel.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Back/blueshield_satchel.rsi
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelBlueshield
+  name: Blueshield duffel bag
+  description: A large duffel bag for bodyguard gear.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Back/blueshield_backpack.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Back/blueshield_backpack.rsi
+
+- type: entity
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackMessengerBlueshield
+  name: Blueshield messenger bag
+  description: A messenger bag for easy access.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Back/blueshield_satchel.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Back/blueshield_satchel.rsi
+
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesBootsWinterSnowjackBso
+  name: Blueshield winter boots
+  description: Warm boots with extra grip.
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/boots_snow.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/boots_snow.rsi
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesBSO
+  name: Blueshield sunglasses
+  description: Tactical eyewear for checking potential threats.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/sunglasses.rsi
+  - type: Clothing
+    sprite: Clothing/Eyes/sunglasses.rsi
+
+- type: entity
+  parent: BasePDA
+  id: BlueshieldPDA
+  name: Blueshield PDA
+  description: A command-blue personal digital assistant.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Devices/blueshieldundetermined.rsi
+    state: icon
+  - type: Pda
+    id: BlueshieldPDA
+    defaultCartridge: NotekeeperCartridge
+
+- type: entity
+  parent: ClothingHeadsetAlt
+  id: ClothingHeadsetAltBlueshield
+  name: Blueshield over-ear headset
+  description: A command-grade headset to stay in touch with security and command.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Ears/blueshielding.rsi
+    state: icon_alt
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Ears/blueshielding.rsi
+
+- type: entity
+  parent: TelescopicShield
+  id: BlueShieldShield
+  name: Blueshield shield
+  description: An advanced collapsible shield issued to Blueshield Officers.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Weapons/Melee/blueshieldshield.rsi
+  - type: Item
+    sprite: _Goobstation/Objects/Weapons/Melee/blueshieldshield.rsi
+    heldPrefix: teleriot
+  - type: ToggleableVisuals
+    inhandVisuals:
+      left:
+        - state: inhand-left
+      right:
+        - state: inhand-right
+
+- type: entity
+  parent: BlueShieldShield
+  id: BlueShieldShieldEvil
+  name: evil Blueshield shield
+  suffix: Evil
+  description: An advanced collapsible shield in Syndicate colors.
+
+- type: entity
+  parent: BaseItem
+  id: UniqueBlueshieldOfficerLockerTeleporter
+  name: Blueshield locker teleporter
+  description: Pocket device that allows quick access to your locker items.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+    state: closed
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesEnviroglovesCombat
+  name: combat environmental gloves
+  description: Combat gloves designed for use in hazardous environments.
+
+- type: entity
+  parent: FoodSnackSwirlLollipop
+  id: FoodSnackLollypopBlueshield
+  name: Blueshield lollypop
+  description: A sweet blue lollypop to keep you calm during guards.
+
+

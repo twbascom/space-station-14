@@ -85,11 +85,6 @@
     size: Normal
   - type: DisarmMalus
     malus: 0.225
-  - type: DelayedKnockdownOnHit
-    useDelay: stunbaton
-  - type: UseDelayBlockMelee
-    delays:
-    - stunbaton
   - type: Appearance
   - type: GenericVisualizer
     visuals:

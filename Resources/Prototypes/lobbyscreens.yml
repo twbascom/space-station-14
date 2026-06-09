@@ -69,3 +69,10 @@
   background: /Textures/LobbyScreens/reclaimer-nuke.webp
   title: lobby-state-background-reclaimernuke-title
   artist: lobby-state-background-reclaimernuke-artist
+
+- type: lobbyBackground
+  id: Heretic
+  background: /Textures/LobbyScreens/heretic.webp
+  title: lobby-state-background-heretic-title
+  artist: lobby-state-background-heretic-artist
+

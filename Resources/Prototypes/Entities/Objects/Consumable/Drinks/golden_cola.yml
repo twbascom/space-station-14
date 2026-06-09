@@ -1,0 +1,28 @@
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkGoldenColaCan
+  name: Golden Cola can
+  description: A legendary, gold-plated can of Space Cola. It feels extremely heavy and premium.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Cola
+          Quantity: 30
+      grindable:
+        reagents:
+        - ReagentId: Aluminium
+          Quantity: 4
+        - ReagentId: Gold
+          Quantity: 1
+  - type: Tag
+    tags:
+    - Cola
+    - DrinkCan
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/cola.rsi
+    color: "#ffd700"
+  - type: Item
+    sprite: Objects/Consumable/Drinks/cola.rsi
