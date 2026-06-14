@@ -137,9 +137,9 @@
   description: A ceremonial mantle worn by Senior Blueshield Officers.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+    sprite: _Goobstation/Clothing/Neck/bsomantle.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+    sprite: _Goobstation/Clothing/Neck/bsomantle.rsi
 
 - type: entity
   parent: ClothingNeckBase
@@ -148,9 +148,9 @@
   description: A grand mantle worn by the Grand Master BSO.
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+    sprite: _Goobstation/Clothing/Neck/bsomantle.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/Belt/blueshield.rsi
+    sprite: _Goobstation/Clothing/Neck/bsomantle.rsi
 
 - type: entity
   parent: ClothingBackpack

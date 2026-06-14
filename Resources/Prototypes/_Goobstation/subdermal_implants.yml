@@ -5,6 +5,19 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
+  id: BluespaceLifelineSpawnCore
+  name: bluespace lifeline effect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: _Goobstation/Effects/bluespace_lifeline.rsi
+    state: bluespace_lifeline
+  - type: TimedDespawn
+    lifetime: 2.4
+
+- type: entity
   parent: BaseSubdermalImplant
   id: BluespaceLifelineImplant
   name: bluespace lifeline implant
@@ -13,6 +26,25 @@
   components:
   - type: SubdermalImplant
     permanent: true
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Critical
+  - type: TimerTrigger
+    delay: 5
+  - type: DeleteOnTrigger
+    targetUser: true
+    keysIn:
+    - timer
+  - type: SpawnOnTrigger
+    proto: BluespaceLifelineSpawnCore
+    targetUser: true
+    useMapCoords: true
+    keysIn:
+    - timer
+  - type: Tag
+    tags:
+    - SubdermalImplant
+    - HideContextMenu
 
 - type: entity
   parent: BaseSubdermalImplant
