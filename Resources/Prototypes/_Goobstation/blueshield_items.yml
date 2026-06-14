@@ -340,7 +340,7 @@
       color: "#002F4D"
     - sprite: Interface/Misc/job_icons.rsi
       offset: -0.09375, 0.0625
-      state: SecurityOfficer
+      state: BlueshieldOfficer
   - type: PresetIdCard
     job: BlueshieldOfficer
 
