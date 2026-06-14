@@ -62,4 +62,5 @@
 
 - type: statusEffect
   id: ShadowCloak
+  alwaysAllowed: true
 

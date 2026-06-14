@@ -3,6 +3,9 @@
   parent: BaseItem
   id: GasTankBase
   components:
+  - type: Tag
+    tags:
+    - GasTank
   - type: Sprite
     sprite: Objects/Tanks/generic.rsi
     state: icon
@@ -89,6 +92,9 @@
   name: emergency oxygen tank
   description: An easily portable tank for emergencies. Contains very little oxygen, rated for survival use only. It can hold 0.66 L of gas.
   components:
+  - type: Tag
+    tags:
+    - EmergencyOxygenTank
   - type: Sprite
     sprite: Objects/Tanks/emergency.rsi
   - type: Item
@@ -121,6 +127,9 @@
   name: emergency nitrogen tank
   description: An easily portable tank for emergencies. Contains very little nitrogen, rated for survival use only. It can hold 0.66 L of gas.
   components:
+  - type: Tag
+    tags:
+    - EmergencyNitrogenTank
   - type: Sprite
     sprite: Objects/Tanks/emergency_red.rsi
   - type: Item
@@ -137,6 +146,9 @@
   name: extended-capacity emergency oxygen tank
   description: An emergency tank with extended capacity. Technically rated for prolonged use. It can hold 1.5 L of gas.
   components:
+  - type: Tag
+    tags:
+    - ExtendedEmergencyOxygenTank
   - type: Sprite
     sprite: Objects/Tanks/emergency_extended.rsi
   - type: Item
@@ -214,6 +226,9 @@
   name: funny emergency oxygen tank
   description: An easily portable tank for emergencies. Contains very little oxygen with an extra of funny gas, rated for survival use only. It can hold 0.66 L of gas.
   components:
+  - type: Tag
+    tags:
+    - ClownEmergencyOxygenTank
   - type: Sprite
     sprite: Objects/Tanks/emergency_clown.rsi
   - type: Item

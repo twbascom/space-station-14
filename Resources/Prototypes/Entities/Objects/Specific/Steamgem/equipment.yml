@@ -9,7 +9,7 @@
     state: icon
   - type: Item
     sprite: Mobs/Species/Steamgem/fueltanks/fueltank.rsi
-    size: Normal
+    size: Small
   - type: Clothing
     slots: [belt]
     quickEquip: true

@@ -61,27 +61,36 @@
   canBeAntag: false
   access:
   - Security
+  - Detective
   - Brig
+  - Maintenance
   - External
   - Cryogenics
-  - Maintenance
   - Engineering
+  - Atmospherics
   - Medical
+  - Chemistry
+  - Paramedic
   - Research
+  - Cargo
+  - Salvage
+  - Service
+  - Bar
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Theatre
+  - Chapel
+  - Lawyer
   - Command
   - CentralCommand
   - BlueshieldOfficer
-  - Service
-  - Hydroponics
-  - Cargo
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # Go big, or go home.
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
-      - type: Condemned
-        soulOwnedNotDevil: true
 
 - type: startingGear
   id: BlueshieldOfficerGear
@@ -90,8 +99,9 @@
     #gloves: ClothingHandsGlovesCombat - Goobstation, moved to loadouts
     id: BlueshieldPDA
     ears: ClothingHeadsetAltBlueshield
-    belt: ClothingBeltAssaultFilled
+    belt: ClothingBeltSecurityFilled
     pocket1: UniqueBlueshieldOfficerLockerTeleporter
+    pocket2: HandheldCrewMonitorBSO
   storage:
     back:
     - Flash
@@ -113,3 +123,12 @@
     id: BlueshieldPDA
     back: ClothingBackpackBlueshield
     shoes: ClothingShoesBootsJack
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconBlueshield
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: BlueshieldOfficer
+  jobName: job-name-blueshieldofficer
+

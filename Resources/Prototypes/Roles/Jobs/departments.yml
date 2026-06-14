@@ -46,7 +46,7 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
-  editorHidden: true
+  - BlueshieldOfficer
   weight: 120
 
 - type: department

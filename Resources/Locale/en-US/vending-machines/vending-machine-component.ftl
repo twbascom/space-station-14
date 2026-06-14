@@ -8,5 +8,6 @@ vending-machine-component-search-filter = Search...
 trapped-vending-machine-drag = The {$machine} grabs {$victim} and starts dragging them in!
 trapped-vending-machine-rescue-pull = {$rescuer} grabs {$victim} and pulls them free from the {$machine}!
 trapped-vending-machine-rescue-damage = The {$machine} screeches as it is damaged and releases {$victim}!
+trapped-vending-machine-rescue-obstructed = The {$machine} is blocked by an obstacle and releases {$victim}!
 trapped-vending-machine-capture = The {$machine} opens wide and swallows {$victim} whole!
 

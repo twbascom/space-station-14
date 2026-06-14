@@ -3,6 +3,7 @@ job-name-bartender = Bartender
 job-name-borg = Cyborg
 job-name-botanist = Botanist
 job-name-brigmedic = Brigmedic
+job-name-blueshieldofficer = Blueshield Officer
 job-name-cadet = Security Cadet
 job-name-captain = Captain
 job-name-cargotech = Cargo Technician
@@ -79,6 +80,7 @@ job-title-visitor = Visitor
 # Role timers - Make these alphabetical or I cut you
 JobAtmosphericTechnician = Atmospheric Technician
 JobBartender = Bartender
+JobBlueshieldOfficer = Blueshield Officer
 JobBorg = Borg
 JobBotanist = Botanist
 JobCaptain = Captain

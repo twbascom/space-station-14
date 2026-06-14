@@ -122,6 +122,7 @@
   - type: Tag
     tags:
     - Brutepack
+    - MedicalPatch
   - type: Sprite
     state: brutepack
   - type: Item

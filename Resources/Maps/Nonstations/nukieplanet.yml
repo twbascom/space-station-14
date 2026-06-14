@@ -1717,6 +1717,7 @@ entities:
       pos: -29.5,0.5
       parent: 104
     - type: GridFill
+      ignoreCVar: true
       addComponents:
       - type: NukeOpsShuttle
       path: /Maps/Shuttles/infiltrator.yml

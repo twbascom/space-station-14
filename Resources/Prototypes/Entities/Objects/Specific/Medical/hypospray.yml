@@ -239,6 +239,9 @@
   name: emergency medipen
   description: A single-dose, non-refillable medipen containing epinephrine and tranexamic acid, used to temporarily stabilize patients in critical condition and buy time for them to recieve proper medical treatment. Beware of overdose.
   components:
+  - type: Tag
+    tags:
+    - EmergencyMedipen
   - type: Sprite
     sprite: Objects/Specific/Medical/medipen.rsi
     layers:
@@ -523,6 +526,9 @@
   name: space medipen
   description: A single-dose, non-refillable medipen containing barozine and leporazine, used to protect exposed flesh from the deadly effects of space.
   components:
+  - type: Tag
+    tags:
+    - SpaceMedipen
   - type: Item
     inhandVisuals:
       left:

@@ -205,3 +205,14 @@ loadout-group-paramedic-shoes = Paramedic shoes
 loadout-group-reporter-jumpsuit = Reporter jumpsuit
 
 loadout-group-psychologist-jumpsuit = Psychologist jumpsuit
+
+# Blueshield Officer
+loadout-group-bso-head = Blueshield Officer head
+loadout-group-bso-jumpsuit = Blueshield Officer jumpsuit
+loadout-group-bso-gloves = Blueshield Officer gloves
+loadout-group-bso-outerclothing = Blueshield Officer outer clothing
+loadout-group-bso-neck = Blueshield Officer neck
+loadout-group-bso-mask = Blueshield Officer mask
+loadout-group-bso-backpack = Blueshield Officer backpack
+loadout-group-bso-shoes = Blueshield Officer shoes
+

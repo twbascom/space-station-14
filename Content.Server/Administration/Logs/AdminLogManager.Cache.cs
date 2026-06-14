@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Database;
 using Content.Shared.Administration.Logs;
@@ -29,6 +29,12 @@ public sealed partial class AdminLogManager
     // TODO ADMIN LOGS cache previous {MaxRoundsCached} rounds on startup
     public void CacheNewRound()
     {
+        if (_roundsLogCache.ContainsKey(_currentRoundId))
+        {
+            _roundsLogCache[_currentRoundId].Clear();
+            return;
+        }
+
         List<SharedAdminLog>? list = null;
 
         _roundsLogCacheQueue.Enqueue(_currentRoundId);
@@ -44,7 +50,7 @@ public sealed partial class AdminLogManager
 
         list ??= new List<SharedAdminLog>(LogListInitialSize);
 
-        _roundsLogCache.Add(_currentRoundId, list);
+        _roundsLogCache[_currentRoundId] = list;
         CacheRoundCount.Set(_roundsLogCache.Count);
     }
 

@@ -5,7 +5,7 @@ namespace Content.Shared.Pinpointer;
 /// <summary>
 /// Will show a marker on a NavMap.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedNavMapSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedNavMapSystem), Other = AccessPermissions.ReadExecute)]
 [AutoGenerateComponentState]
 public sealed partial class NavMapBeaconComponent : Component
 {

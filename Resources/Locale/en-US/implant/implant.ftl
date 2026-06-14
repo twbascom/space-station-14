@@ -6,6 +6,7 @@ implanter-draw-failed-permanent = The {$implant} in {$target} is fused with { OB
 implanter-draw-failed = You tried to remove an implant but found nothing.
 implanter-draw-failed-catastrophically = The implanter finds nothing and catastrophically fails, shunting genetic material into {$user}'s hand!
 implanter-component-implant-already = {$target} already has the {$implant}!
+injector-component-injecting-user = You start injecting.
 
 ## UI
 implanter-set-draw-verb = Set Implant Draw
@@ -25,3 +26,12 @@ implanter-label-draw = [color=red]{$implantName}[/color]
     Mode: [color=white]{$modeString}[/color]
 
 implanter-contained-implant-text = [color=green]{$desc}[/color]
+
+## Implant Popups
+
+scramble-implant-activated-popup = Your appearance shifts and changes!
+
+## Implant Messages
+
+deathrattle-implant-dead-message = {$user} has died {$position}.
+deathrattle-implant-critical-message = {$user} life signs critical, immediate assistance required {$position}.

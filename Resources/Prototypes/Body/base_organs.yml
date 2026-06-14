@@ -4,6 +4,9 @@
   abstract: true
   parent: BaseItem
   components:
+  - type: Tag
+    tags:
+    - Organ
   - type: Organ
 
 - type: entity
@@ -130,6 +133,10 @@
   name: brain
   abstract: true
   components:
+  - type: Tag
+    tags:
+    - Brain
+    - Organ
   - type: GibbableOrgan
   - type: Organ
     category: Brain

@@ -204,20 +204,25 @@
   description: Warm boots with extra grip.
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/boots_snow.rsi
+    sprite: _Goobstation/Clothing/Shoes/blueshield_boots.rsi
   - type: Clothing
-    sprite: Clothing/Shoes/boots_snow.rsi
+    sprite: _Goobstation/Clothing/Shoes/blueshield_boots.rsi
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ClothingEyesBase, ShowSecurityIcons]
   id: ClothingEyesGlassesBSO
-  name: Blueshield sunglasses
+  name: Blueshield officer glasses
   description: Tactical eyewear for checking potential threats.
   components:
   - type: Sprite
-    sprite: Clothing/Eyes/sunglasses.rsi
+    sprite: _Goobstation/Clothing/Eyes/blueshield_glasses.rsi
   - type: Clothing
-    sprite: Clothing/Eyes/sunglasses.rsi
+    sprite: _Goobstation/Clothing/Eyes/blueshield_glasses.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: IdentityBlocker
+    coverage: EYES
 
 - type: entity
   parent: BasePDA
@@ -227,9 +232,29 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Devices/blueshieldundetermined.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: icon
+    - sprite: Objects/Devices/pda.rsi
+      state: light_overlay
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - sprite: Objects/Devices/pda.rsi
+      state: id_overlay
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Icon
+    sprite: _Goobstation/Objects/Devices/blueshieldundetermined.rsi
     state: icon
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        icon
   - type: Pda
-    id: BlueshieldPDA
+    id: BlueshieldIDCard
     defaultCartridge: NotekeeperCartridge
 
 - type: entity
@@ -243,6 +268,11 @@
     state: icon_alt
   - type: Clothing
     sprite: _Goobstation/Clothing/Ears/blueshielding.rsi
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyStationMaster
+      - EncryptionKeyCentCom
 
 - type: entity
   parent: TelescopicShield
@@ -252,15 +282,20 @@
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Weapons/Melee/blueshieldshield.rsi
+    layers:
+      - state: icon
+      - state: icon-on
+        visible: false
+        map: [ "shield" ]
   - type: Item
     sprite: _Goobstation/Objects/Weapons/Melee/blueshieldshield.rsi
-    heldPrefix: teleriot
+    heldPrefix: ""
   - type: ToggleableVisuals
     inhandVisuals:
       left:
-        - state: inhand-left
+        - state: inhand-left-on
       right:
-        - state: inhand-right
+        - state: inhand-right-on
 
 - type: entity
   parent: BlueShieldShield
@@ -290,5 +325,221 @@
   id: FoodSnackLollypopBlueshield
   name: Blueshield lollypop
   description: A sweet blue lollypop to keep you calm during guards.
+
+- type: entity
+  parent: IDCardStandard
+  id: BlueshieldIDCard
+  name: Blueshield Officer ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: gold
+    - state: stripe_top
+      color: "#004B7A"
+    - state: stripe_bottom
+      color: "#002F4D"
+    - sprite: Interface/Misc/job_icons.rsi
+      offset: -0.09375, 0.0625
+      state: SecurityOfficer
+  - type: PresetIdCard
+    job: BlueshieldOfficer
+
+- type: entity
+  parent: BaseHypospray
+  id: ParamedHypo
+  name: paramedic hypospray
+  description: A sterile injector for rapid administration of drugs to patients. Specialized for paramedic use.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/hypospray.rsi
+    layers:
+    - state: hypo
+      map: ["enum.SolutionContainerLayers.Base"]
+    - state: hypo_fill1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+  - type: Item
+    sprite: Objects/Specific/Medical/hypospray.rsi
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 30
+  - type: RefillableSolution
+    solution: hypospray
+  - type: SolutionContainerVisuals
+    maxFillLevels: 6
+    fillBaseName: hypo_fill
+    solutionName: hypospray
+  - type: UseDelay
+    delay: 0.5
+
+- type: entity
+  parent: MedkitCombat
+  id: MedkitBSOFilled
+  name: Blueshield Officer medical kit
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: Brutepack
+          amount: 2
+        - id: Ointment
+          amount: 2
+        - id: Gauze
+          amount: 2
+        - id: EmergencyMedipen
+          amount: 2
+
+- type: entity
+  parent: Medkit
+  id: MedkitBSOIPCFilled
+  name: Blueshield Officer IPC repair kit
+  suffix: Filled
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/medkits.rsi
+    state: combat
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeldingGoggles
+        - id: WelderExperimental
+        - id: Screwdriver
+        - id: Wirecutter
+        - id: Multitool
+
+- type: entity
+  parent: Lighter
+  id: FlippoLighterBlueshield
+  name: Blueshield lighter
+  description: A snazzy engraved lighter for Blueshield Officers.
+
+- type: entity
+  parent: CigPackGreen
+  id: CigPackBlueshield
+  name: Blueshield cigarettes
+  description: A pack of premium blue-wrapped cigarettes.
+
+- type: entity
+  parent: HandheldHealthAnalyzer
+  id: OmnimedTool
+  name: omnimed analyzer
+  description: An advanced diagnostic device that can analyze patient health and status.
+
+- type: entity
+  parent: BaseItem
+  id: BlueshieldUndeterminedWeapon
+  name: Blueshield weapon package
+  description: A package containing the standard issue Blueshield mace and combat injector.
+  components:
+  - type: Sprite
+    sprite: Objects/Storage/penbox.rsi
+    state: hypopen
+  - type: SpawnItemsOnUse
+    items:
+    - id: BlueshieldMace
+    - id: CombatInjector
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BlueshieldUndeterminedHardsuit
+  name: Blueshield hardsuit package
+  description: A package containing the standard issue Blueshield heavy and light hardsuits.
+  components:
+  - type: Sprite
+    sprite: Objects/Storage/penbox.rsi
+    state: hypopen
+  - type: SpawnItemsOnUse
+    items:
+    - id: ClothingOuterHardsuitBSOHeavy
+    - id: ClothingOuterHardsuitBSOLight
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseCentcommContraband]
+  id: ClothingOuterHardsuitBSOHeavy
+  name: Blueshield Officer heavy hardsuit (Human/Vox)
+  description: A heavy-duty environmental hardsuit tailored for Blueshield Officers. Offers supreme armor protection at the cost of mobility.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Hardsuits/BSO heavy.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Hardsuits/BSO heavy.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.1
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.6
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEnvirohelmBlueshield
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
+  - type: SpeciesRestrictClothing
+    allowedSpecies:
+    - Human
+    - Vox
+
+- type: entity
+  parent: [ClothingOuterHardsuitBase, BaseCentcommContraband]
+  id: ClothingOuterHardsuitBSOLight
+  name: Blueshield Officer light hardsuit (Human/Vox/Reptilian/Resomi)
+  description: A lightweight environmental hardsuit tailored for Blueshield Officers. Offers good armor protection and excellent mobility.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Clothing/Hardsuits/BSO light.rsi
+  - type: Clothing
+    sprite: _Goobstation/Clothing/Hardsuits/BSO light.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.8
+        Caustic: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: HeldSpeedModifier
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadEnvirohelmBlueshield
+  - type: Tag
+    tags:
+    - CorgiWearable
+    - Hardsuit
+    - WhitelistChameleon
+  - type: SpeciesRestrictClothing
+    allowedSpecies:
+    - Human
+    - Vox
+    - Reptilian
+    - Resomi
+
 
 

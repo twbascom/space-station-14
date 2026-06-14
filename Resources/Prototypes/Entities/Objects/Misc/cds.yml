@@ -12,6 +12,7 @@
   - type: Tag
     tags:
     - CoordinatesDisk
+    - CD
   - type: DamageOtherOnHit
     damage:
       types:

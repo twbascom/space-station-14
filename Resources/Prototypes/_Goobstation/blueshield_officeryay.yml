@@ -15,6 +15,92 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+- type: roleLoadout
+  id: JobBlueshieldOfficer
+  groups:
+  - GroupTankHarness
+  - BSOHead
+  - BSOJumpsuit
+  - BSOGloves
+  - BSOOuterClothing
+  - BSONeck
+  - BSOMask
+  - BSOBackpack
+  - BSOShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+
+- type: loadoutGroup
+  id: BSOHead
+  name: loadout-group-bso-head
+  minLimit: 0
+  loadouts:
+  - BlueshieldOfficerHeadSwatHelmet
+  - BlueshieldOfficerBeret
+  - BlueshieldOfficerHeadCowboy
+  - BlueshieldOfficerGoidaHelmet
+  - BlueshieldOfficerEnvirohelm
+
+- type: loadoutGroup
+  id: BSOJumpsuit
+  name: loadout-group-bso-jumpsuit
+  loadouts:
+  - BlueshieldOfficerInnerBlueshieldSuit
+  - BlueshieldOfficerInnerBlueshieldSkirt
+  - BlueshieldOfficerInnerBlueshieldShirt
+  - BlueshieldOfficerEnvirosuit
+
+- type: loadoutGroup
+  id: BSOGloves
+  name: loadout-group-bso-gloves
+  minLimit: 0
+  loadouts:
+  - CombatGloves
+  - CombatEnvirogloves
+
+- type: loadoutGroup
+  id: BSOOuterClothing
+  name: loadout-group-bso-outerclothing
+  minLimit: 0
+  loadouts:
+  - BlueshieldOfficerOuterBlueshieldArmorVest
+  - BlueshieldOfficerOuterBlueshieldArmoredJacket
+  - BlueshieldOfficerOuterBlueshieldCowboyVest
+  - BlueshieldOfficerOuterWinterBlueshield
+
+- type: loadoutGroup
+  id: BSONeck
+  name: loadout-group-bso-neck
+  minLimit: 0
+  loadouts:
+  - BlueshieldOfficerOuterBlueshieldMantle
+  - BlueshieldOfficerEnsemble
+
+- type: loadoutGroup
+  id: BSOMask
+  name: loadout-group-bso-mask
+  minLimit: 0
+  loadouts:
+  - BlueshieldOfficerMaskLollypop
+
+- type: loadoutGroup
+  id: BSOBackpack
+  name: loadout-group-bso-backpack
+  loadouts:
+  - BlueshieldOfficerBackpack
+  - BlueshieldOfficerSatchel
+  - BlueshieldOfficerDuffel
+  - BlueshieldOfficerMessenger
+
+- type: loadoutGroup
+  id: BSOShoes
+  name: loadout-group-bso-shoes
+  loadouts:
+  - BlackCowboyBoots
+  - SnowjacksBso
+
 - type: loadoutEffectGroup
   id: SeniorBlueshieldOfficer
   effects:

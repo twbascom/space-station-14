@@ -59,11 +59,23 @@ public sealed partial class TrappedVendingMachineComponent : Component
     [ViewVariables]
     public float DamageSinceCapture = 0f;
 
+    [DataField("damageToRescue")]
+    public float DamageToRescue = 50f;
+
     [DataField("dispenseSound")]
-    public SoundSpecifier DispenseSound = new SoundPathSpecifier("/Audio/Machines/vending_dispense.ogg");
+    public SoundSpecifier DispenseSound = new SoundPathSpecifier("/Audio/Machines/machine_vend.ogg");
 
     [DataField("captureSound")]
-    public SoundSpecifier CaptureSound = new SoundPathSpecifier("/Audio/Effects/spit.ogg");
+    public SoundSpecifier CaptureSound = new SoundPathSpecifier("/Audio/Effects/demon_consume.ogg");
+
+    [DataField("sleepDuration")]
+    public TimeSpan SleepDuration = TimeSpan.FromSeconds(20);
+
+    [DataField("dragSpeed")]
+    public float DragSpeed = 0.25f;
+
+    [DataField("grenadeDelay")]
+    public TimeSpan GrenadeDelay = TimeSpan.FromSeconds(3.0);
 }
 
 public enum TrappedVendingMachineState

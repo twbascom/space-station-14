@@ -115,6 +115,9 @@
     maxTransferAmount: 5
     minTransferAmount: 3
     injectOnly: false
+    activeModeProtoId: HyposprayDynamicMode
+    allowedModes:
+    - HyposprayDynamicMode
   - type: MeleeChemicalInjector
     transferAmount: 5
     solution: injector

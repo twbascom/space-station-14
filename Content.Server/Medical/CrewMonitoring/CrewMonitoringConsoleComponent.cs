@@ -16,4 +16,10 @@ public sealed partial class CrewMonitoringConsoleComponent : Component
     /// </summary>
     [DataField("sensorTimeout"), ViewVariables(VVAccess.ReadWrite)]
     public float SensorTimeout = 10f;
+
+    /// <summary>
+    ///     If true, only sensors that have the CommandTrackingImplantComponent will be displayed on this console.
+    /// </summary>
+    [DataField("commandOnly")]
+    public bool CommandOnly = false;
 }

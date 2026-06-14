@@ -6,6 +6,7 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
 using System.Linq;
 using System.Numerics;
+using Content.Shared.Pinpointer;
 
 namespace Content.Server.Spawners.EntitySystems;
 
@@ -46,6 +47,74 @@ public sealed class SpawnPointSystem : EntitySystem
                 (args.Job == null || spawnPoint.Job == null || spawnPoint.Job == args.Job))
             {
                 possiblePositions.Add(xform.Coordinates);
+            }
+        }
+
+        if (possiblePositions.Count == 0 && args.Job?.Id == "BlueshieldOfficer")
+        {
+            var beacons = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>();
+            while (beacons.MoveNext(out var uid, out var beacon, out var xform))
+            {
+                var owningStation = _stationSystem.GetOwningStation(uid, xform);
+                var proto = MetaData(uid).EntityPrototype?.ID;
+
+                if (args.Station != null && owningStation != args.Station)
+                    continue;
+
+                var isBridge = beacon.DefaultText?.Id == "station-beacon-bridge" ||
+                               (beacon.DefaultText?.Id != null && beacon.DefaultText.Value.Id.Contains("bridge", StringComparison.OrdinalIgnoreCase)) ||
+                               (beacon.Text != null && beacon.Text.Contains("bridge", StringComparison.OrdinalIgnoreCase)) ||
+                               (proto != null && proto.Contains("bridge", StringComparison.OrdinalIgnoreCase));
+
+                if (isBridge)
+                {
+                    possiblePositions.Add(xform.Coordinates);
+                }
+            }
+
+            if (possiblePositions.Count == 0)
+            {
+                var fallbackPoints = EntityQueryEnumerator<SpawnPointComponent, TransformComponent>();
+                var fallbackJobs = new[] { "Captain", "HeadOfSecurity", "HeadOfPersonnel" };
+                var fallbackPositions = new Dictionary<string, List<EntityCoordinates>>();
+                foreach (var job in fallbackJobs)
+                {
+                    fallbackPositions[job] = new List<EntityCoordinates>();
+                }
+
+                while (fallbackPoints.MoveNext(out var uid, out var spawnPoint, out var xform))
+                {
+                    if (args.Station != null && _stationSystem.GetOwningStation(uid, xform) != args.Station)
+                        continue;
+
+                    if (_gameTicker.RunLevel == GameRunLevel.InRound && spawnPoint.SpawnType == SpawnPointType.LateJoin)
+                    {
+                        possiblePositions.Add(xform.Coordinates);
+                    }
+
+                    if (_gameTicker.RunLevel != GameRunLevel.InRound &&
+                        spawnPoint.SpawnType == SpawnPointType.Job &&
+                        spawnPoint.Job != null)
+                    {
+                        var jobId = spawnPoint.Job.Value.Id;
+                        if (fallbackPositions.ContainsKey(jobId))
+                        {
+                            fallbackPositions[jobId].Add(xform.Coordinates);
+                        }
+                    }
+                }
+
+                if (_gameTicker.RunLevel != GameRunLevel.InRound)
+                {
+                    foreach (var job in fallbackJobs)
+                    {
+                        if (fallbackPositions[job].Count > 0)
+                        {
+                            possiblePositions.AddRange(fallbackPositions[job]);
+                            break;
+                        }
+                    }
+                }
             }
         }
 

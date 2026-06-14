@@ -385,7 +385,10 @@ public abstract class SharedSuitSensorSystem : EntitySystem
             totalDamageThreshold = critThreshold.Value.Int();
 
         // finally, form suit sensor status
-        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(ent.Owner), userName, userJob, userJobIcon, userJobDepartments);
+        var status = new SuitSensorStatus(GetNetEntity(sensor.User.Value), GetNetEntity(ent.Owner), userName, userJob, userJobIcon, userJobDepartments)
+        {
+            IsCommandTracker = sensor.CommandTracker
+        };
         switch (sensor.Mode)
         {
             case SuitSensorMode.SensorBinary:
@@ -441,6 +444,7 @@ public abstract class SharedSuitSensorSystem : EntitySystem
             [SuitSensorConstants.NET_IS_ALIVE] = status.IsAlive,
             [SuitSensorConstants.NET_SUIT_SENSOR_UID] = status.SuitSensorUid,
             [SuitSensorConstants.NET_OWNER_UID] = status.OwnerUid,
+            [SuitSensorConstants.NET_IS_COMMAND] = status.IsCommandTracker,
         };
 
         if (status.TotalDamage != null)
@@ -477,6 +481,7 @@ public abstract class SharedSuitSensorSystem : EntitySystem
         payload.TryGetValue(SuitSensorConstants.NET_TOTAL_DAMAGE, out int? totalDamage);
         payload.TryGetValue(SuitSensorConstants.NET_TOTAL_DAMAGE_THRESHOLD, out int? totalDamageThreshold);
         payload.TryGetValue(SuitSensorConstants.NET_COORDINATES, out NetCoordinates? coords);
+        payload.TryGetValue(SuitSensorConstants.NET_IS_COMMAND, out bool? isCommandTracker);
 
         var status = new SuitSensorStatus(ownerUid, suitSensorUid, name, job, jobIcon, jobDepartments)
         {
@@ -484,6 +489,7 @@ public abstract class SharedSuitSensorSystem : EntitySystem
             TotalDamage = totalDamage,
             TotalDamageThreshold = totalDamageThreshold,
             Coordinates = coords,
+            IsCommandTracker = isCommandTracker ?? false,
         };
         return status;
     }

@@ -8,4 +8,4 @@
 - type: guideEntry
   id: Heretics
   name: guide-entry-heretics
-  text: "/ServerInfo/_Goobstation/Guidebook/Antagonist/Heretics.xml"
+  text: "/Guidebook/Heretic/Heretics.xml"

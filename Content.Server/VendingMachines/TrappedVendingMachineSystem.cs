@@ -10,6 +10,7 @@ using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Trigger.Systems;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.VendingMachines;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -28,6 +29,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly TriggerSystem _triggerSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -80,7 +82,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         if (component.TrapState == TrappedVendingMachineState.Dragging && component.Victim != null)
         {
             component.DamageSinceDrag += damageTotal;
-            if (component.DamageSinceDrag >= 10f)
+            if (component.DamageSinceDrag >= component.DamageToRescue)
             {
                 ReleaseVictim(uid, component, rescueByDamage: true);
             }
@@ -137,7 +139,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         }
     }
 
-    private void ReleaseVictim(EntityUid uid, TrappedVendingMachineComponent component, bool rescueByDamage = false, bool rescueByPull = false, EntityUid? rescuer = null)
+    private void ReleaseVictim(EntityUid uid, TrappedVendingMachineComponent component, bool rescueByDamage = false, bool rescueByPull = false, EntityUid? rescuer = null, bool rescueByObstruction = false)
     {
         if (component.Victim == null)
             return;
@@ -148,6 +150,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         component.ExtraItemStock = 1; // Refill
         component.Dispensed = false;
 
+        _statusEffects.TryRemoveStatusEffect(victim, SleepingSystem.StatusEffectForcedSleeping);
         _sleepingSystem.TryWaking(victim, force: true);
 
         var machineName = Name(uid);
@@ -156,6 +159,11 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         if (rescueByDamage)
         {
             var msg = Loc.GetString("trapped-vending-machine-rescue-damage", ("machine", machineName), ("victim", victimName));
+            _popup.PopupEntity(msg, uid, PopupType.Medium);
+        }
+        else if (rescueByObstruction)
+        {
+            var msg = Loc.GetString("trapped-vending-machine-rescue-obstructed", ("machine", machineName), ("victim", victimName));
             _popup.PopupEntity(msg, uid, PopupType.Medium);
         }
         else if (rescueByPull && rescuer != null)
@@ -180,6 +188,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         var container = _container.EnsureContainer<Container>(uid, "trapped_victim_container");
         _container.Remove(victim, container);
 
+        _statusEffects.TryRemoveStatusEffect(victim, SleepingSystem.StatusEffectForcedSleeping);
         _sleepingSystem.TryWaking(victim, force: true);
 
         var machineName = Name(uid);
@@ -223,7 +232,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
                             component.TrapState = TrappedVendingMachineState.Dragging;
                             component.DamageSinceDrag = 0f;
 
-                            _sleepingSystem.TrySleeping(victim.Value);
+                            _statusEffects.TryAddStatusEffectDuration(victim.Value, SleepingSystem.StatusEffectForcedSleeping, component.SleepDuration);
 
                             var machineName = Name(uid);
                             var victimName = Name(victim.Value);
@@ -253,25 +262,33 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
                     var machineXform = Transform(uid);
                     var victimXform = Transform(victimUid);
 
-                    var dir = machineXform.MapPosition.Position - victimXform.MapPosition.Position;
+                    var victimWorldPos = _transformSystem.GetWorldPosition(victimXform);
+                    var machineWorldPos = _transformSystem.GetWorldPosition(machineXform);
+                    var dir = machineWorldPos - victimWorldPos;
                     var distance = dir.Length();
 
-                    if (distance <= 0.5f)
+                    if (!_interactionSystem.InRangeUnobstructed(uid, victimUid, distance + 0.5f))
                     {
-                        if (_interactionSystem.InRangeUnobstructed(uid, victimUid, 0.5f))
+                        ReleaseVictim(uid, component, rescueByObstruction: true);
+                        break;
+                    }
+
+                    if (distance <= 1.0f)
+                    {
+                        if (_interactionSystem.InRangeUnobstructed(uid, victimUid, 1.0f))
                         {
                             CaptureVictim(uid, component, victimUid);
                         }
                         else
                         {
-                            ReleaseVictim(uid, component, rescueByDamage: true);
+                            ReleaseVictim(uid, component, rescueByObstruction: true);
                         }
                     }
                     else
                     {
-                        var step = MathF.Min(distance, 1.5f * frameTime);
-                        var newPos = victimXform.LocalPosition + dir.Normalized() * step;
-                        _transformSystem.SetLocalPosition(victimUid, newPos, victimXform);
+                        var step = MathF.Min(distance, component.DragSpeed * frameTime);
+                        var newWorldPos = victimWorldPos + dir.Normalized() * step;
+                        _transformSystem.SetWorldPosition(victimUid, newWorldPos);
                     }
                     break;
 
@@ -302,7 +319,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
         _audio.PlayPvs(component.DispenseSound, uid);
 
         component.TrapState = TrappedVendingMachineState.GrenadeExploding;
-        component.DragEndTime = _timing.CurTime + TimeSpan.FromSeconds(1);
+        component.DragEndTime = _timing.CurTime + component.GrenadeDelay;
 
         var grenade = Spawn("SmokeGrenade", xform.Coordinates);
         _triggerSystem.Trigger(grenade, component.ActiveUser, "timer");
@@ -329,7 +346,7 @@ public sealed class TrappedVendingMachineSystem : EntitySystem
             if (!_interactionSystem.InRangeUnobstructed(uid, entity, 2.0f))
                 continue;
 
-            var dist = (Transform(entity).MapPosition.Position - xform.MapPosition.Position).Length();
+            var dist = (_transformSystem.GetMapCoordinates(entity).Position - _transformSystem.GetMapCoordinates(uid, xform).Position).Length();
             if (dist < bestDistance)
             {
                 bestDistance = dist;

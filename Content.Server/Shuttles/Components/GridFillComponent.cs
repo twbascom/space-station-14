@@ -18,4 +18,10 @@ public sealed partial class GridFillComponent : Component
     /// </summary>
     [DataField]
     public ComponentRegistry AddComponents = new();
+
+    /// <summary>
+    /// Whether to ignore the shuttle.grid_fill CVar and load the grid regardless.
+    /// </summary>
+    [DataField]
+    public bool IgnoreCVar = false;
 }

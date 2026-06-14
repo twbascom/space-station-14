@@ -5,14 +5,15 @@
   components:
   - type: Sprite
     sprite: Mobs/Species/Steamgem/fueltanks/emergency.rsi
-    state: icon
+    layers:
+    - state: icon
   - type: Item
     sprite: Mobs/Species/Steamgem/fueltanks/emergency.rsi
   - type: EntityTableContainerFill
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: OxygenTankFilled
+        - id: EmergencyOxygenTankFilled
         - id: ClothingMaskBreath
         - id: Flare
         - id: DrinkWaterBottleFull

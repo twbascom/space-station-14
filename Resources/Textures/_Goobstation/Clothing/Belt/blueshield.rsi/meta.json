@@ -8,6 +8,9 @@
   },
   "states": [
     {
+      "name": "icon"
+    },
+    {
       "name": "closed"
     },
     {
@@ -26,6 +29,10 @@
     },
     {
       "name": "equipped-BELT",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK",
       "directions": 4
     }
   ]

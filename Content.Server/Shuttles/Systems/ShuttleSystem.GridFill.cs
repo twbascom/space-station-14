@@ -218,7 +218,7 @@ public sealed partial class ShuttleSystem
 
     private void OnGridFillMapInit(EntityUid uid, GridFillComponent component, MapInitEvent args)
     {
-        if (!_cfg.GetCVar(CCVars.GridFill))
+        if (!_cfg.GetCVar(CCVars.GridFill) && !component.IgnoreCVar)
             return;
 
         if (!TryComp<DockingComponent>(uid, out var dock) ||

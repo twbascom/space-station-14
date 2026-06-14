@@ -4,6 +4,9 @@
   description: Useful for carrying items in your hands.
   abstract: true
   components:
+  - type: Tag
+    tags:
+    - Briefcase
   - type: Item
     size: Ginormous
   - type: Storage

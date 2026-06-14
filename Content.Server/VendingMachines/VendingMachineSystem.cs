@@ -64,6 +64,20 @@ namespace Content.Server.VendingMachines
             {
                 TryUpdateVisualState((uid, component));
             }
+
+            var prototype = Prototype(uid);
+            if (prototype != null && (prototype.ID == "VendingMachineCola" || prototype.ID == "VendingMachineColaBlack" || prototype.ID == "VendingMachineColaRed"))
+            {
+                if (_random.Prob(0.15f))
+                {
+                    var xform = Transform(uid);
+                    var newEntity = Spawn("VendingMachineColaTrapped", xform.Coordinates);
+                    var newXform = Transform(newEntity);
+                    newXform.LocalRotation = xform.LocalRotation;
+
+                    QueueDel(uid);
+                }
+            }
         }
 
         private void OnPowerChanged(EntityUid uid, VendingMachineComponent component, ref PowerChangedEvent args)

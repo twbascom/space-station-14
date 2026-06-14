@@ -140,3 +140,14 @@
     interfaces:
       enum.HereticShapeshiftUiKey.Key:
         type: HereticShapeshiftBoundUserInterface
+
+- type: soundCollection
+  id: Curse
+  files:
+    - /Audio/_Goobstation/Heretic/curse.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse1.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse2.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse3.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse4.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse5.ogg
+    - /Audio/_Goobstation/Heretic/curse/curse6.ogg

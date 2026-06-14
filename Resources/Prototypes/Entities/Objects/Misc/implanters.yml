@@ -33,6 +33,7 @@
     - LightImplant
     - BikeHornImplant
     - TrackingImplant
+    - CommandTrackingImplant
     - StorageImplant
     - FreedomImplant
     - UplinkImplant

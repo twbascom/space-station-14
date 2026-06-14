@@ -14,6 +14,11 @@ namespace Content.Shared.Medical.SuitSensors;
 public sealed partial class SuitSensorComponent : Component
 {
     /// <summary>
+    ///     Is this suit sensor for commands, BSO use only
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool CommandTracker = false;
+    /// <summary>
     ///     Choose a random sensor mode when item is spawned.
     /// </summary>
     [DataField]
