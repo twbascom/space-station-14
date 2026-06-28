@@ -30,6 +30,9 @@ namespace Content.Shared.PDA
         [ViewVariables] public EntityUid? ContainedId;
         [ViewVariables] public bool FlashlightOn;
 
+        [DataField("defaultCartridge")]
+        public string? DefaultCartridge;
+
         [ViewVariables(VVAccess.ReadWrite)] public string? OwnerName;
         // The Entity that "owns" the PDA, usually a player's character.
         // This is useful when we are doing stuff like renaming a player and want to find their PDA to change the name

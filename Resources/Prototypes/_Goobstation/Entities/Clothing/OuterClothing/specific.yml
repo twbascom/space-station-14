@@ -92,7 +92,7 @@
       quickEquip: true
 
 - type: entity
-  parent: ClothingOuterWizardCentCommReal
+  parent: ClothingOuterBase
   id: WhiteRobes
   name: robes of the chosen one
   description: theses white robes are worn by only the finest of Nanotrasen's special operations department.
@@ -143,9 +143,6 @@
   name: occult robes
   description: A ragged, dusty set of robes. Strange smudgy eyes line the inside.
   components:
-  - type: Construction
-    graph: HereticCostume
-    node: start
   - type: Sprite
     sprite: _Goobstation/Heretic/Clothing/OuterClothing/eldritch_armor.rsi
     state: icon

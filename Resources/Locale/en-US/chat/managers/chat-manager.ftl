@@ -175,3 +175,10 @@ chat-speech-verb-resomi-1 = chirps
 chat-speech-verb-resomi-2 = clicks
 chat-speech-verb-resomi-3 = whistles
 chat-speech-verb-resomi-4 = trills
+
+chat-speech-verb-VoiceModulator-name = Voice Modulator
+chat-speech-verb-VoiceModulator-1 = modulates
+chat-speech-verb-VoiceModulator-2 = buzzes
+chat-speech-verb-VoiceModulator-3 = drones
+chat-speech-verb-VoiceModulator-4 = hums
+chat-speech-verb-VoiceModulator-5 = crackles

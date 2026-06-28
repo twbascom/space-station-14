@@ -26,12 +26,14 @@
   parent: LockerBaseSecure
   components:
   - type: Appearance
+  - type: Sprite
+    sprite: _Goobstation/Structures/Storage/closet.rsi
   - type: AccessReader
-    access: [["BlueshieldOfficer"]]
+    access: [["Command"]]
   - type: EntityStorageVisuals
-    stateBaseClosed: secure
-    stateDoorOpen: secure_open
-    stateDoorClosed: secure_door
+    stateBaseClosed: bso
+    stateDoorOpen: bso_open
+    stateDoorClosed: bso_door
 
 - type: entity
   id: LockerNanorep
@@ -39,12 +41,14 @@
   parent: LockerBaseSecure
   components:
   - type: Appearance
+  - type: Sprite
+    sprite: _Goobstation/Structures/Storage/closet.rsi
   - type: AccessReader
     access: [["Command"]] # Nanorep has command access
   - type: EntityStorageVisuals
-    stateBaseClosed: secure
-    stateDoorOpen: secure_open
-    stateDoorClosed: secure_door
+    stateBaseClosed: ntr
+    stateDoorOpen: ntr_open
+    stateDoorClosed: ntr_door
 
 # Locker Fill and Filled Entities
 - type: entityTable
@@ -52,18 +56,32 @@
   table: !type:AllSelector
     children:
     - id: BoxFolderCentCom
-    # - id: BriefcaseBrownFilled
-    - id: WeaponDisablerAdvanced
+    # - id: WeaponDisablerAdvanced
     - id: BedsheetCentcom
-    - id: CaneSheathFilledNanotrasen
-    - id: HandheldFaxOfficial
-    - id: RubberStampNanorep
-    - id: ExecutiveBriefcaseEmpty # nanorep update
-    - id: ComputerNTRTasksFlatpack # nanorep update
+    # - id: CaneSheathFilledNanotrasen
+    # - id: HandheldFaxOfficial
+    # - id: RubberStampNanorep
+    # - id: ExecutiveBriefcaseEmpty # nanorep update
+    # - id: ComputerNTRTasksFlatpack # nanorep update
     - id: Paper
       amount: !type:ConstantNumberSelector
         value: 5
-    - id: NanoRepStationReport # Goobstation
+    # - id: NanoRepStationReport # Goobstation
+    - id: DefibrillatorCompact
+    - id: ParamedHypo
+    - id: MedkitBSOFilled
+    - id: MedkitBSOIPCFilled
+    - id: FlippoLighterBlueshield
+    - id: CigPackBlueshield
+    - id: BoxZiptie
+    - id: OxygenTankFilled
+    - id: NitrogenTankFilled
+    - id: OmnimedTool
+    - id: ClothingBackpackDuffelSurgeryFilled
+    - id: HandheldCrewMonitorBSO
+    - id: BlueshieldUndeterminedWeapon
+    - id: BlueshieldUndeterminedHardsuit
+    - id: FlashlightSeclite
 
 - type: entity
   id: LockerNanorepFilled
@@ -89,8 +107,13 @@
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
     - id: OmnimedTool
+    - id: ClothingBackpackDuffelSurgeryFilled
     - id: HandheldCrewMonitorBSO
     - id: BlueshieldUndeterminedWeapon
+    - id: WeaponSubMachineGunBSO
+    - id: MagazinePistolSubMachineGun
+      amount: !type:ConstantNumberSelector
+        value: 5
     - id: BlueshieldUndeterminedHardsuit
     - id: FlashlightSeclite
 

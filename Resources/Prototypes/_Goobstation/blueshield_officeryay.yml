@@ -149,10 +149,6 @@
   id: BlueshieldOfficerEnvirohelm
   equipment:
     head: ClothingHeadEnvirohelmBlueshield
-  effects:
-  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
-    species:
-    - Plasmaman
 
 # Jumpsuits
 - type: loadout
@@ -177,20 +173,12 @@
   id: BlueshieldOfficerEnvirosuit
   equipment:
     jumpsuit: ClothingUniformEnvirosuitBlueshield
-  effects:
-  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
-    species:
-    - Plasmaman
 
 # Gloves
 - type: loadout
   id: CombatEnvirogloves
   equipment:
     gloves: ClothingHandsGlovesEnviroglovesCombat
-  effects:
-  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
-    species:
-    - Plasmaman
 
 - type: loadout
   id: CombatGloves

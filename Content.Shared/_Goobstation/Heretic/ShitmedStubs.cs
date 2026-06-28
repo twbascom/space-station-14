@@ -322,7 +322,26 @@ namespace Content.Shared._Shitmed.DoAfter
 namespace Content.Shared._EinsteinEngines.Silicon.Components
 {
     [RegisterComponent]
-    public sealed partial class SiliconComponent : Component {}
+    public sealed partial class SiliconComponent : Component
+    {
+        [DataField("chargeThresholdLow")]
+        public float? ChargeThresholdLow;
+
+        [DataField("chargeThresholdCritical")]
+        public float? ChargeThresholdCritical;
+
+        [DataField("speedModifierThresholds")]
+        public System.Collections.Generic.Dictionary<int, float>? SpeedModifierThresholds;
+
+        [DataField("entityType")]
+        public string? EntityType;
+
+        [DataField("batteryPowered")]
+        public bool BatteryPowered;
+
+        [DataField("chargeThresholdMid")]
+        public float? ChargeThresholdMid;
+    }
 }
 
 // 15. Content.Shared._White.Xenomorphs.Xenomorph
@@ -1174,7 +1193,11 @@ namespace Content.Shared.Heretic.Components
     public sealed partial class FaceHuggerBlockerComponent : Component {}
 
     [RegisterComponent]
-    public sealed partial class FlashSoundSuppressionComponent : Component {}
+    public sealed partial class FlashSoundSuppressionComponent : Component
+    {
+        [DataField("protectionRange")]
+        public float ProtectionRange;
+    }
 
     [RegisterComponent]
     public sealed partial class ActionsProviderComponent : Component
@@ -1187,6 +1210,7 @@ namespace Content.Shared.Heretic.Components
     {
         [DataField] public float DelayDelta;
         [DataField] public float KnockdownTimeDelta;
+        [DataField] public bool Cancel;
     }
 
     [RegisterComponent]
@@ -1248,7 +1272,10 @@ namespace Content.Shared.Heretic.Components
     public sealed partial class SupermatterImmuneComponent : Component {}
 
     [RegisterComponent]
-    public sealed partial class EventHorizonIgnoreComponent : Component {}
+    public sealed partial class EventHorizonIgnoreComponent : Component
+    {
+        [DataField] public Content.Shared.Whitelist.EntityWhitelist? HorizonWhitelist;
+    }
 
     [RegisterComponent]
     public sealed partial class SpacetimeSpellbladeEnchantmentComponent : Component
@@ -1350,6 +1377,7 @@ namespace Content.Shared.Chemistry.Reaction
     using Content.Shared.FixedPoint;
     using Robust.Shared.Map;
 
+    [Robust.Shared.Serialization.Manager.Attributes.DataDefinition]
     public sealed partial class ChangeTileReaction : ITileReaction
     {
         public FixedPoint2 TileReact(TileRef tile,

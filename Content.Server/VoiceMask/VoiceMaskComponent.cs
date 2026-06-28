@@ -38,6 +38,9 @@ public sealed partial class VoiceMaskComponent : Component
     [DataField]
     public EntProtoId Action = "ActionChangeVoiceMask";
 
+    [DataField("enableAction")]
+    public bool EnableAction = true;
+
     /// <summary>
     ///     Reference to the action.
     /// </summary>

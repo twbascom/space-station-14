@@ -46,6 +46,9 @@ public sealed partial class SurveillanceCameraComponent : Component
     [DataField, AutoNetworkedField]
     public bool NetworkSet;
 
+    [DataField("mobile"), AutoNetworkedField]
+    public bool Mobile;
+
     // This has to be device network frequency prototypes.
     [DataField("setupAvailableNetworks")]
     public List<ProtoId<DeviceFrequencyPrototype>> AvailableNetworks { get; private set; } = new();

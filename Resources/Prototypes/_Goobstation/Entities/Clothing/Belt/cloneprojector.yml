@@ -66,7 +66,7 @@
         0: Alive
         42: Dead # The Answer to the Ultimate Question of Life, the Universe, and Everything
     - type: Damageable
-      damageContainer: SiliconRadiation
+      damageContainer: Silicon
     - type: StatusEffects
       allowed:
       - Stun
@@ -139,8 +139,8 @@
     sprite: _Goobstation/Clothing/Belt/geminiprojector.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Belt/geminiprojector.rsi
-  - type: StealTarget
-    stealGroup: ClothingBeltGeminiHoloProjector
+  # - type: StealTarget
+  #   stealGroup: ClothingBeltGeminiHoloProjector
   - type: CloneProjector
     clonedItemBlacklist:
       components:

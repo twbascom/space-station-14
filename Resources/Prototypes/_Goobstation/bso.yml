@@ -24,9 +24,9 @@
   - type: StaticPrice
     price: 3000
   # - type: GrantKungFuDragon
-  - type: GuideHelp
-    guides:
-    - DragonKungFu
+  # - type: GuideHelp
+  #   guides:
+  #   - DragonKungFu
 
 - type: entity
   parent: [BaseItem, BaseCentcommContraband]
@@ -62,5 +62,4 @@
   - type: Speech
     speechSounds: Borg
 
-- type: Tag
-  id: HandheldCrewMonitor
+

@@ -25,6 +25,9 @@ public sealed partial class MagazineVisualsComponent : Component
     /// </summary>
     [DataField]
     public bool ZeroVisible;
+
+    [DataField("zeroNoAmmo")]
+    public bool ZeroNoAmmo;
 }
 
 public enum GunVisualLayers : byte

@@ -76,9 +76,6 @@
     - type: Tag
       tags:
       - IPCMaskWearable # EE - IPCs
-    - type: Construction
-      graph: VoiceMaskCraftable
-      node: end
 
 - type: entity
   parent: ClothingMaskGas
@@ -102,10 +99,6 @@
     slots:
     - Snout
     hideOnToggle: true
-  - type: Construction
-    graph: GasMaskHalf
-    node: end
-    deconstructionTarget: null
 
 - type: entity # TODO: Whenever vampirism is ported, make this block it.
   parent: ClothingMaskBase

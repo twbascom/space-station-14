@@ -39,7 +39,7 @@
     - WhitelistChameleon
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepHeavySuit
+      collection: FootstepHeavy
 
 - type: entity
   parent: ClothingShoesBootsChrono
@@ -110,7 +110,7 @@
     sprintModifier: 1.10
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepHeavySuit
+      collection: FootstepHeavy
   - type: GasTank
     outputPressure: 42.6
     air:
@@ -205,7 +205,7 @@
     sprite: _Goobstation/Clothing/Shoes/Boots/advanced_jackboots.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: StepHeavyBoots
+      collection: FootstepHeavy
 
 - type: entity
   parent: [ClothingShoesBootsMagBase, BaseMajorContraband]
@@ -321,7 +321,7 @@
     sprite: _Goobstation/Clothing/Shoes/Boots/jackgaloshes.rsi
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: StepHeavyBoots #trol
+      collection: FootstepHeavy #trol
   - type: Matchbox #stole component from jackboots
   - type: ContainerContainer
     containers:

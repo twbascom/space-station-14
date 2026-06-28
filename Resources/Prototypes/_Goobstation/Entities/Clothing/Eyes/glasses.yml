@@ -30,9 +30,9 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/medsecglasses.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Eyes/Glasses/medsecglasses.rsi
-  - type: Construction
-    graph: GlassesMedSecHUD
-    node: glassesMedSec
+#  - type: Construction
+#    graph: GlassesMedSecHUD
+#    node: glassesMedSec
 
 - type: entity
   parent: ClothingEyesBase
@@ -103,14 +103,14 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/diagglasses.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Eyes/Glasses/diagglasses.rsi
-  - type: Construction
-    graph: GlassesDiagHUD
-    node: glassesDiag
+#  - type: Construction
+#    graph: GlassesDiagHUD
+#    node: glassesDiag
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
     - Silicon
-    - SiliconRadiation
+#    - SiliconRadiation
 
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons, ClothingEyesGlassesSunglasses]
@@ -122,9 +122,9 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/medglasses.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Eyes/Glasses/medglasses.rsi
-  - type: Construction
-    graph: GlassesMedHUD
-    node: glassesMed
+#  - type: Construction
+#    graph: GlassesMedHUD
+#    node: glassesMed
 
 - type: entity
   parent: [ClothingEyesHudOmni, BaseCentcommContraband]
@@ -143,7 +143,7 @@
   - type: IdentityBlocker
     coverage: EYES
   - type: ThermalVision
-    isEquipment: true
+#    isEquipment: true
     color: "#98EEFB"
     lightRadius: 15
   - type: ChameleonClothing
@@ -153,9 +153,9 @@
     interfaces:
       enum.ChameleonUiKey.Key:
         type: ChameleonBoundUserInterface
-  - type: ClothingGrantComponent
-    component:
-    - type: KravMaga # Silly
+#  - type: ClothingGrantComponent
+#    component:
+#    - type: KravMaga # Silly
   - type: Tag
     tags: [] # ignore "WhitelistChameleon" tag
 
@@ -179,7 +179,7 @@
   - type: IdentityBlocker
     coverage: EYES
   - type: ThermalVision
-    isEquipment: true
+#    isEquipment: true
     color: "#2ebf40"
     lightRadius: 15
 
@@ -233,9 +233,9 @@
     sprite: _Goobstation/Clothing/Eyes/Glasses/meddiagglasses.rsi
   - type: Clothing
     sprite: _Goobstation/Clothing/Eyes/Glasses/meddiagglasses.rsi
-  - type: Construction
-    graph: GlassesMedDiagHUD
-    node: glassesMedDiag
+#  - type: Construction
+#    graph: GlassesMedDiagHUD
+#    node: glassesMedDiag
 
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityCommandContraband]
@@ -259,9 +259,9 @@
     - Antagonists
   - type: ThermalVision
     flashDurationMultiplier: 2
-    pulseTime: 2
-    isEquipment: true
-    toggleAction: PulseThermalVision
+#    pulseTime: 2
+#    isEquipment: true
+#    toggleAction: PulseThermalVision
   - type: IdentityBlocker
     coverage: EYES
 

@@ -25,11 +25,14 @@ public sealed partial class ToggleableClothingComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? ActionEntity;
 
+    [DataField("clothingPrototypes"), AutoNetworkedField]
+    public Dictionary<string, EntProtoId>? ClothingPrototypes;
+
     /// <summary>
     ///     Default clothing entity prototype to spawn into the clothing container.
     /// </summary>
-    [DataField(required: true), AutoNetworkedField]
-    public EntProtoId ClothingPrototype = default!;
+    [DataField, AutoNetworkedField]
+    public EntProtoId? ClothingPrototype;
 
     /// <summary>
     ///     The inventory slot that the clothing is equipped to.

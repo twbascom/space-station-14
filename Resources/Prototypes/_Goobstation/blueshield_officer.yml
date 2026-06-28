@@ -44,15 +44,8 @@
       time: 90000 # 25 hours
     - !type:AgeRequirement
       requiredAge: 21
-    - !type:SpeciesRequirement # Goob - None Felinid
-      inverted: true
-      species:
-      - Felinid
   guides:
-  - BlueshieldOfficer SOP
   - Command
-  - Succession
-  goobcoins: 45
   weight: 20
   startingGear: BlueshieldOfficerGear
   icon: "JobIconBlueshield"
@@ -84,7 +77,6 @@
   - Lawyer
   - Command
   - CentralCommand
-  - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, BluespaceLifelineImplant ] # Go big, or go home.
@@ -101,7 +93,6 @@
     ears: ClothingHeadsetAltBlueshield
     belt: ClothingBeltSecurityFilled
     pocket1: UniqueBlueshieldOfficerLockerTeleporter
-    pocket2: HandheldCrewMonitorBSO
   storage:
     back:
     - Flash

@@ -38,7 +38,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyFuture
+      - EncryptionKeyStationMaster
   - type: Sprite
     sprite: _Goobstation/Clothing/Ears/Headsets/chronolegioneer.rsi
   - type: Clothing

@@ -80,6 +80,18 @@ public sealed partial class InjectorComponent : Component
     [DataField]
     public List<ProtoId<ReagentPrototype>>? ReagentWhitelist;
 
+    [DataField("delay")]
+    public float Delay;
+
+    [DataField("maxTransferAmount")]
+    public FixedPoint2 MaxTransferAmount;
+
+    [DataField("minTransferAmount")]
+    public FixedPoint2 MinTransferAmount;
+
+    [DataField("injectOnly")]
+    public bool InjectOnly;
+
     #region Arguments for injection doafter
 
     /// <inheritdoc cref="DoAfterArgs.NeedHand"/>

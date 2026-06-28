@@ -64,6 +64,9 @@ namespace Content.Server.Heretic.Components
 
         [DataField]
         public bool IgnoreResistances;
+
+        [DataField]
+        public float Interval;
     }
 }
 

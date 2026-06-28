@@ -17,6 +17,12 @@ public sealed partial class BatterySelfRechargerComponent : Component
     [DataField, AutoNetworkedField, ViewVariables]
     public float AutoRechargeRate;
 
+    [DataField("autoRecharge")]
+    public bool AutoRecharge = true;
+
+    [DataField("autoRechargePause")]
+    public bool AutoRechargePause = false;
+
     /// <summary>
     /// How long should the entity stop automatically recharging if a charge is used?
     /// </summary>

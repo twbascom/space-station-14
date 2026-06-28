@@ -25,6 +25,12 @@ public sealed partial class StealthComponent : Component
     [DataField("enabledOnDeath")]
     public bool EnabledOnDeath = true;
 
+    [DataField("enabledOnCrit")]
+    public bool EnabledOnCrit = true;
+
+    [DataField("thermalsImmune")]
+    public bool ThermalsImmune = false;
+
     /// <summary>
     /// Whether or not the entity previously had an interaction outline prior to cloaking.
     /// </summary>

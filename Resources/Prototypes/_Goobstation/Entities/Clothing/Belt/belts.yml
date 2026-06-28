@@ -53,13 +53,13 @@
         - HandheldCrewMonitor # Goobstation
         - SyringeCase # Goobstation
       components:
-        - Hypospray
+        # - Hypospray
         - Injector
         - Pill
         - HandLabeler
         - SurgeryTool # Shitmed Change
         - Defibrillator # Goobstation
-        - GunApplySolution # Goobstation - Syndicate dart gun
+        # - GunApplySolution # Goobstation - Syndicate dart gun
   - type: ExplosionResistance
     damageCoefficient: 0.25
 
@@ -133,9 +133,9 @@
       - Whistle
       - BalloonPopper
       - ScatteringGrenade
-  - type: GuideHelp
-    guides:
-    - CorporateJudo
+  # - type: GuideHelp
+  #   guides:
+  #   - CorporateJudo
 
 - type: entity
   parent: [ ChemBag, BaseSyndicateContraband ]
@@ -164,12 +164,12 @@
         - Cigarette
       components:
         - Pill
-        - Hypospray
-        - SyringeGun
+        # - Hypospray
+        # - SyringeGun
         - SurgeryTool
         - Defibrillator
         - SolutionTransfer
-        - GunApplySolution # Dart gun
+        # - GunApplySolution # Dart gun
 
 
 - type: entity
@@ -221,7 +221,7 @@
       - 0,0,7,3
     whitelist:
       components:
-      - OnUseTimerTrigger # Basically all and only grenades use this
+      # - OnUseTimerTrigger # Basically all and only grenades use this
       tags:
         - Grenade # China lake ammo
         - MagazinePistol
@@ -258,10 +258,10 @@
       - Syringe
       - Dropper
       components:
-      - SyringeGun
+      # - SyringeGun
       - SurgeryTool
       - SolutionTransfer
-      - SlimeExtract
+      # - SlimeExtract
       
 - type: entity
   parent: ClothingBeltChemBagXenobiology
@@ -292,16 +292,6 @@
   - type: StorageFill
     contents:
     - id: CombatInjector
-      amount: 1
-    - id: TirimolChemistryVial
-      amount: 1
-    - id: OmnizineChemistryVial
-      amount: 1
-    - id: SyriniverChemistryVial
-      amount: 1
-    - id: ProcenylLazideChemistryVial
-      amount: 1
-    - id: EbifinlLazideChemistryVial
       amount: 1
 
 - type: entity

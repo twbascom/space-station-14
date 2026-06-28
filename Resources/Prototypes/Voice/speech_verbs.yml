@@ -199,3 +199,13 @@
   - chat-speech-verb-resomi-2
   - chat-speech-verb-resomi-3
   - chat-speech-verb-resomi-4
+
+- type: speechVerb
+  id: VoiceModulator
+  name: chat-speech-verb-VoiceModulator-name
+  speechVerbStrings:
+  - chat-speech-verb-VoiceModulator-1
+  - chat-speech-verb-VoiceModulator-2
+  - chat-speech-verb-VoiceModulator-3
+  - chat-speech-verb-VoiceModulator-4
+  - chat-speech-verb-VoiceModulator-5

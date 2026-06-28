@@ -1,4 +1,4 @@
-﻿using Content.Shared.Damage;
+using Content.Shared.Damage;
 using Content.Shared.Inventory;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
@@ -29,6 +29,12 @@ public sealed partial class ArmorComponent : Component
     /// </summary>
     [DataField]
     public bool ShowArmorOnExamine = true;
+
+    [DataField("traumaDeductions")]
+    public Dictionary<string, float>? TraumaDeductions;
+
+    [DataField("coverage")]
+    public List<string>? Coverage;
 }
 
 /// <summary>
