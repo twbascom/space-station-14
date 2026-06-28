@@ -123,3 +123,90 @@ marking-LizardSnoutVisageSharp-visage_sharp = Lizard Visage (Sharp)
 
 marking-LizardSnoutVisageRound = Lizard Visage (Round)
 marking-LizardSnoutVisageRound-visage_round = Lizard Visage (Round)
+
+# Snouts
+marking-LizardSnoutEasternDragon = Lizard Snout (Eastern Dragon)
+marking-LizardSnoutEasternDragon-eastern_dragon = Muzzle
+marking-LizardSnoutEasternDragon-eastern_dragon_overlay = Nose
+marking-LizardSnoutEasternDragon-eastern_dragon_usiki = Whiskers
+
+marking-LizardSnoutGuilmon = Lizard Snout (Guilmon)
+marking-LizardSnoutGuilmon-guilmon = Muzzle
+
+# Tails
+marking-LizardTailSnakeLarge = Lizard Tail (Snake Large)
+marking-LizardTailSnakeLarge-snake_large = Tail
+marking-LizardTailSnakeLarge-snake_large_overlay = Overlay
+
+marking-LizardTailSnakeLargeAnimated = Lizard Tail (Snake Large, Wagging)
+marking-LizardTailSnakeLargeAnimated-snake_large_wagging = Tail
+marking-LizardTailSnakeLargeAnimated-snake_large_wagging_overlay = Overlay
+
+# Spines
+marking-LizardTailSpinesAquatic = Lizard Spines (Aquatic)
+marking-LizardTailSpinesAquatic-spines_aquatic = Spines
+marking-LizardTailSpinesAquatic-spines_aquatic_alt = Secondary Tone
+
+marking-LizardTailSpinesAquaticAnimated = Lizard Spines (Aquatic, Wagging)
+marking-LizardTailSpinesAquaticAnimated-spineswag_aquatic = Spines
+
+marking-LizardTailSpinesLong = Lizard Spines (Long)
+marking-LizardTailSpinesLong-spines_long = Spines
+marking-LizardTailSpinesLong-spines_long_alt = Secondary Tone
+
+marking-LizardTailSpinesLongAnimated = Lizard Spines (Long, Wagging)
+marking-LizardTailSpinesLongAnimated-spineswag_long = Spines
+
+marking-LizardTailSpinesLongMembrane = Lizard Spines (Long Membrane)
+marking-LizardTailSpinesLongMembrane-spines_longmembrane = Spines
+marking-LizardTailSpinesLongMembrane-spines_longmembrane_alt = Secondary Tone
+
+marking-LizardTailSpinesLongMembraneAnimated = Lizard Spines (Long Membrane, Wagging)
+marking-LizardTailSpinesLongMembraneAnimated-spineswag_longmembrane = Spines
+
+marking-LizardTailSpinesShort = Lizard Spines (Short)
+marking-LizardTailSpinesShort-spines_short = Spines
+marking-LizardTailSpinesShort-spines_short_alt = Secondary Tone
+
+marking-LizardTailSpinesShortAnimated = Lizard Spines (Short, Wagging)
+marking-LizardTailSpinesShortAnimated-spineswag_short = Spines
+
+marking-LizardTailSpinesShortMembrane = Lizard Spines (Short Membrane)
+marking-LizardTailSpinesShortMembrane-spines_shortmembrane = Spines
+marking-LizardTailSpinesShortMembrane-spines_shortmembrane_alt = Secondary Tone
+
+marking-LizardTailSpinesShortMembraneAnimated = Lizard Spines (Short Membrane, Wagging)
+marking-LizardTailSpinesShortMembraneAnimated-spineswag_shortmembrane = Spines
+
+# Cobra Hood with Ears
+marking-LizardFrillsCobraHoodWithEars = Lizard Frills (Cobra Hood with Ears)
+marking-LizardFrillsCobraHoodWithEars-cobra_hood_with_ears = Outer Hood
+marking-LizardFrillsCobraHoodWithEars-cobra_hood_with_ears_overlay = Inner Hood
+
+# Combined Horns Layers
+marking-LizardHornsCurled-horns_curled_l = Left Horn
+marking-LizardHornsCurled-horns_curled_r = Right Horn
+
+marking-LizardHornsRam-horns_ram_l = Left Horn
+marking-LizardHornsRam-horns_ram_r = Right Horn
+
+marking-LizardHornsShort-horns_short_l = Left Horn
+marking-LizardHornsShort-horns_short_r = Right Horn
+
+marking-LizardHornsSimple-horns_simple_l = Left Horn
+marking-LizardHornsSimple-horns_simple_r = Right Horn
+
+marking-LizardHornsDouble-horns_double_l = Left Horn
+marking-LizardHornsDouble-horns_double_r = Right Horn
+
+marking-LizardHornsArgali-horns_argali_l = Left Horn
+marking-LizardHornsArgali-horns_argali_r = Right Horn
+
+marking-LizardHornsAyrshire-horns_ayrshire_l = Left Horn
+marking-LizardHornsAyrshire-horns_ayrshire_r = Right Horn
+
+marking-LizardHornsMyrsore-horns_myrsore_l = Left Horn
+marking-LizardHornsMyrsore-horns_myrsore_r = Right Horn
+
+marking-LizardHornsBighorn-horns_bighorn_l = Left Horn
+marking-LizardHornsBighorn-horns_bighorn_r = Right Horn

@@ -87,8 +87,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_curled
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_curled_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_curled_r
 
 - type: marking
   id: LizardHornsRam
@@ -96,8 +98,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_ram
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_ram_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_ram_r
 
 - type: marking
   id: LizardHornsShort
@@ -105,8 +109,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_short
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_short_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_short_r
 
 - type: marking
   id: LizardHornsSimple
@@ -114,8 +120,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_simple
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_simple_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_simple_r
 
 - type: marking
   id: LizardHornsDouble
@@ -123,8 +131,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_double
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_double_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_double_r
 
 - type: marking
   id: LizardTailSmooth
@@ -291,8 +301,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_argali
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_argali_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_argali_r
 
 - type: marking
   id: LizardHornsAyrshire
@@ -300,8 +312,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_ayrshire
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_ayrshire_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_ayrshire_r
 
 - type: marking
   id: LizardHornsMyrsore
@@ -309,8 +323,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_myrsore
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_myrsore_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_myrsore_r
 
 - type: marking
   id: LizardHornsBighorn
@@ -318,8 +334,10 @@
   markingCategory: HeadTop
   speciesRestriction: [Reptilian]
   sprites:
-  - sprite: Mobs/Customization/reptilian_parts.rsi
-    state: horns_bighorn
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_bighorn_l
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: horns_bighorn_r
 
 - type: marking
   id: LizardHornsDemonic
@@ -431,3 +449,160 @@
   sprites:
     - sprite: Mobs/Customization/reptilian_parts.rsi
       state: tail_aquatic_wagging
+
+- type: marking
+  id: LizardSnoutEasternDragon
+  bodyPart: SnoutCover
+  markingCategory: Snout
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/snouts.rsi
+    state: eastern_dragon
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/snouts.rsi
+    state: eastern_dragon_overlay
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/snouts.rsi
+    state: eastern_dragon_usiki
+
+- type: marking
+  id: LizardSnoutGuilmon
+  bodyPart: Snout
+  markingCategory: Snout
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/snouts.rsi
+    state: guilmon
+
+- type: marking
+  id: LizardTailSnakeLarge
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_64x32.rsi
+    state: snake_large
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_64x32.rsi
+    state: snake_large_overlay
+
+- type: marking
+  id: LizardTailSnakeLargeAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_64x32.rsi
+    state: snake_large_wagging
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_64x32.rsi
+    state: snake_large_wagging_overlay
+
+- type: marking
+  id: LizardTailSpinesAquatic
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_aquatic
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_aquatic_alt
+
+- type: marking
+  id: LizardTailSpinesAquaticAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spineswag_aquatic
+
+- type: marking
+  id: LizardTailSpinesLong
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_long
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_long_alt
+
+- type: marking
+  id: LizardTailSpinesLongAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spineswag_long
+
+- type: marking
+  id: LizardTailSpinesLongMembrane
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_longmembrane
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_longmembrane_alt
+
+- type: marking
+  id: LizardTailSpinesLongMembraneAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spineswag_longmembrane
+
+- type: marking
+  id: LizardTailSpinesShort
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_short
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_short_alt
+
+- type: marking
+  id: LizardTailSpinesShortAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spineswag_short
+
+- type: marking
+  id: LizardTailSpinesShortMembrane
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_shortmembrane
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spines_shortmembrane_alt
+
+- type: marking
+  id: LizardTailSpinesShortMembraneAnimated
+  bodyPart: Tail
+  markingCategory: Tail
+  speciesRestriction: []
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi
+    state: spineswag_shortmembrane
+
+- type: marking
+  id: LizardFrillsCobraHoodWithEars
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: cobra_hood_with_ears
+  - sprite: _Goobstation/Mobs/Customization/reptilian.rsi/reptilian_parts.rsi
+    state: cobra_hood_with_ears_overlay
+
+

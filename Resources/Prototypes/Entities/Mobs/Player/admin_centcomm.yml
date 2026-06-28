@@ -1,0 +1,26 @@
+- type: entity
+  parent: MobReptilian
+  id: MobReptilianEuteiNeeusCentcomm
+  name: Eutei-Neeus (CentComm)
+  suffix: Admin, Eutei-Neeus
+  components:
+  - type: Loadout
+    prototypes: [ CentcommGear ]
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanSupercellCentcomm
+  name: Supercell (CentComm)
+  suffix: Admin, Supercell
+  components:
+  - type: Loadout
+    prototypes: [ CentcommGear ]
+
+- type: entity
+  parent: MobHuman
+  id: MobHumanBfox2Centcomm
+  name: Bfox2 (CentComm)
+  suffix: Admin, Bfox2
+  components:
+  - type: Loadout
+    prototypes: [ CentcommGear ]

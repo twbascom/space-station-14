@@ -17,6 +17,7 @@
   sprites:
     Head: MobReptilianHead
     Snout: MobHumanoidAnyMarking
+    SnoutCover: MobHumanoidAnyMarking
     UndergarmentTop: MobHumanoidAnyMarking
     UndergarmentBottom: MobHumanoidAnyMarking
     Chest: MobReptilianTorso
