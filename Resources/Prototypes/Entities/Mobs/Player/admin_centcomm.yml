@@ -6,6 +6,8 @@
   components:
   - type: Loadout
     prototypes: [ CentcommGear ]
+  - type: AdminCentcomm
+    username: APuddleDuck
 
 - type: entity
   parent: MobHuman
@@ -15,6 +17,8 @@
   components:
   - type: Loadout
     prototypes: [ CentcommGear ]
+  - type: AdminCentcomm
+    username: Supercell
 
 - type: entity
   parent: MobHuman
@@ -24,3 +28,5 @@
   components:
   - type: Loadout
     prototypes: [ CentcommGear ]
+  - type: AdminCentcomm
+    username: Bfox2
